@@ -1,0 +1,473 @@
+openapi: 3.0.3
+info:
+  title: jphacks2020_f_2002
+  version: 0.0.0
+servers:
+  - url: https://e3c902a3-9f7d-4f1c-9b9a-daa5e4633165.mock.pstmn.io
+    description: Mock Server
+  - url: localhost:8080
+    description: ローカル環境
+tags:
+  - name: user
+  - name: plant
+  - name: message
+
+paths:
+  /users:
+    get:
+      tags:
+        - user
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+    post:
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  example: 御謝部　次多振
+                email:
+                  type: string
+                  format: email
+                  maxLength: 255
+                  example: user@example.com
+              required:
+                - name
+                - email
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{user_id}:
+    get:
+      tags:
+        - user
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          $ref: '#/components/responses/404'
+
+    put:
+      tags:
+        - user
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  example: 御謝部　次多振
+                email:
+                  type: string
+                  format: email
+                  maxLength: 255
+                  example: user@example.com
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          $ref: '#/components/responses/404'
+
+    delete:
+      tags:
+        - user
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        404:
+          $ref: '#/components/responses/404'
+
+  /plants:
+    get:
+      tags:
+        - plant
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plant'
+
+    post:
+      tags:
+        - plant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: 朝顔
+                description:
+                  type: string
+                  example: 朝に咲く
+                thumbnail:
+                  $ref: '#/components/schemas/URL'
+                water:
+                  type: number
+                  format: float
+                  description: 未定
+                season:
+                  type: array
+                  items:
+                    type: integer
+                    description: 月
+                    example: 4
+                temperature:
+                  type: object
+                  properties:
+                    from:
+                      type: number
+                      format: float
+                      example: 20.5
+                    to:
+                      type: number
+                      format: float
+                      example: 29.5
+              required:
+                - name
+                - description
+                - thumbnail
+                - water
+                - season
+                - temperature
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /plants/{plant_id}:
+    get:
+      tags:
+        - plant
+      parameters:
+        - name: plant_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+        404:
+          $ref: '#/components/responses/404'
+
+    put:
+      tags:
+        - plant
+      parameters:
+        - name: plant_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: 朝顔
+                description:
+                  type: string
+                  example: 朝に咲く
+                thumbnail:
+                  $ref: '#/components/schemas/URL'
+                water:
+                  type: number
+                  format: float
+                  description: 未定
+                season:
+                  type: array
+                  items:
+                    type: integer
+                    description: 月
+                    example: 4
+                temperature:
+                  type: object
+                  properties:
+                    from:
+                      type: number
+                      format: float
+                      example: 20.5
+                    to:
+                      type: number
+                      format: float
+                      example: 29.5
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+        404:
+          $ref: '#/components/responses/404'
+
+    delete:
+      tags:
+        - plant
+      parameters:
+        - name: plant_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        404:
+          $ref: '#/components/responses/404'
+
+  /messages:
+    get:
+      tags:
+        - message
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+
+    post:
+      tags:
+        - message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  example: 水が欲しいな♪
+              required:
+                - text
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+
+  /admin/reset:
+    get:
+      summary: 'DBを初期化し、初期データを挿入'
+      tags:
+        - admin
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+
+components:
+  schemas:
+    Id:
+      type: integer
+      minimum: 1
+      example: 1
+
+    Time:
+      type: string
+      format: HH:MM:SS
+      example: '12:59:59'
+
+    Datetime:
+      type: string
+      format: date-time
+      example: 2020-01-01T12:59:59Z
+
+    Count:
+      type: integer
+      minimum: 0
+      example: 10
+
+    URL:
+      type: string
+      format: url
+      example: 'https://example.com'
+
+    User:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        name:
+          type: string
+          example: 御謝部　次多振
+        email:
+          type: string
+          format: email
+          example: user@example.com
+        thumbnail:
+          $ref: '#/components/schemas/URL'
+        owned_plants:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/Id'
+              plant:
+                $ref: '#/components/schemas/Plant'
+              purchase_date:
+                $ref: '#/components/schemas/Datetime'
+              start_growing_date:
+                $ref: '#/components/schemas/Datetime'
+
+    Plant:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        name:
+          type: string
+          example: 朝顔
+        description:
+          type: string
+          example: 朝に咲く
+        thumbnail:
+          $ref: '#/components/schemas/URL'
+        water:
+          type: number
+          format: float
+          description: 未定
+        season:
+          type: array
+          items:
+            type: integer
+            description: 月
+            example: 4
+        temperature:
+          type: object
+          properties:
+            from:
+              type: number
+              format: float
+              example: 20.5
+            to:
+              type: number
+              format: float
+              example: 29.5
+
+    Message:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/Datetime'
+        speaker:
+          type: string
+          description: user | plant
+          example: plant
+        text:
+          type: string
+          example: 水が欲しいな♪
+
+  responses:
+    200:
+      description: OK
+    201:
+      description: Created
+    204:
+      description: No Content
+    400:
+      description: Bad Request
+    401:
+      description: Unauthorized
+    403:
+      description: ForbIdden
+    404:
+      description: Not Found
+    cors:
+      description: Default response for CORS method
+      headers:
+        Access-Control-Allow-Headers:
+          schema:
+            type: 'string'
+        Access-Control-Allow-Methods:
+          schema:
+            type: 'string'
+        Access-Control-Allow-Origin:
+          schema:
+            type: 'string'
