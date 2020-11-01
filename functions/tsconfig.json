@@ -13,7 +13,10 @@
       "@/*": ["src/*"]
     },
     "rootDir": "src",
-    "incremental": true
+    "incremental": true,
+    "typeRoots": [
+      "./functions/node_modules/@types" // ← functions内のnode_modules/@typesを指定する
+    ]
 
   },
   "compileOnSave": true,
