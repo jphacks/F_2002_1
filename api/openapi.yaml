@@ -4,10 +4,14 @@ info:
   version: 0.0.0
 servers:
   - url: https://e3c902a3-9f7d-4f1c-9b9a-daa5e4633165.mock.pstmn.io
-    description: Mock Server
+    description: モックサーバー
   - url: localhost:8080
     description: ローカル環境
 tags:
+  - name: admin
+    description: 管理者ユーザー用
+  - name: general
+    description: 一般ユーザー用
   - name: user
   - name: plant
   - name: message
@@ -16,7 +20,11 @@ paths:
   /users:
     get:
       tags:
+        - admin
         - user
+      summary: 全ユーザーを取得
+      security:
+        - Admin: []
       responses:
         200:
           description: OK
@@ -26,10 +34,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
-
     post:
       tags:
+        - admin
+        - general
         - user
+      summary: ユーザーを登録
       requestBody:
         required: true
         content:
@@ -60,7 +70,11 @@ paths:
   /users/{user_id}:
     get:
       tags:
+        - admin
         - user
+      security:
+        - Admin: []
+      summary: 特定のユーザーを取得
       parameters:
         - name: user_id
           in: path
@@ -79,7 +93,11 @@ paths:
 
     put:
       tags:
+        - admin
         - user
+      security:
+        - Admin: []
+      summary: 特定のユーザーを更新
       parameters:
         - name: user_id
           in: path
@@ -114,7 +132,85 @@ paths:
 
     delete:
       tags:
+        - admin
         - user
+      summary: 特定のユーザーを論理削除
+      security:
+        - Admin: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        404:
+          $ref: '#/components/responses/404'
+
+  /user:
+    get:
+      tags:
+        - general
+        - user
+      summary: ログイン中のユーザーを取得
+      security:
+        - Firebase: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+    put:
+      tags:
+        - general
+        - user
+      summary: ログイン中のユーザーを取得
+      security:
+        - Firebase: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  example: 御謝部　次多振
+                email:
+                  type: string
+                  format: email
+                  maxLength: 255
+                  example: user@example.com
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          $ref: '#/components/responses/404'
+
+    delete:
+      tags:
+        - general
+        - user
+      summary: ログイン中のユーザーを論理削除
+      security:
+        - Firebase: []
       parameters:
         - name: user_id
           in: path
@@ -130,7 +226,10 @@ paths:
   /plants:
     get:
       tags:
+        - admin
+        - general
         - plant
+      summary: 全植物を取得
       responses:
         200:
           description: OK
@@ -143,7 +242,11 @@ paths:
 
     post:
       tags:
+        - admin
         - plant
+      summary: 植物を登録
+      security:
+        - Admin: []
       requestBody:
         required: true
         content:
@@ -198,7 +301,10 @@ paths:
   /plants/{plant_id}:
     get:
       tags:
+        - admin
+        - general
         - plant
+      summary: 特定の植物を取得
       parameters:
         - name: plant_id
           in: path
@@ -217,13 +323,17 @@ paths:
 
     put:
       tags:
+        - admin
         - plant
+      summary: 徳栄値の植物を更新
       parameters:
         - name: plant_id
           in: path
           required: true
           schema:
             $ref: '#/components/schemas/Id'
+      security:
+        - Admin: []
       requestBody:
         required: true
         content:
@@ -273,6 +383,9 @@ paths:
     delete:
       tags:
         - plant
+      summary: 特定の植物を論理削除
+      security:
+        - Admin: []
       parameters:
         - name: plant_id
           in: path
@@ -324,9 +437,11 @@ paths:
 
   /admin/reset:
     get:
-      summary: 'DBを初期化し、初期データを挿入'
       tags:
         - admin
+      summary: 'DBを初期化し、初期データを挿入'
+      security:
+        - Admin: []
       responses:
         204:
           $ref: '#/components/responses/204'
@@ -367,6 +482,10 @@ components:
           $ref: '#/components/schemas/Datetime'
         updated_at:
           $ref: '#/components/schemas/Datetime'
+        uid:
+          type: string
+          example: DFXSgRVbVKjBdAnYxN6wCZx74UNsDf3
+          description: firebaseのuid
         name:
           type: string
           example: 御謝部　次多振
@@ -374,8 +493,6 @@ components:
           type: string
           format: email
           example: user@example.com
-        thumbnail:
-          $ref: '#/components/schemas/URL'
         owned_plants:
           type: array
           items:
@@ -405,8 +522,6 @@ components:
         description:
           type: string
           example: 朝に咲く
-        thumbnail:
-          $ref: '#/components/schemas/URL'
         water:
           type: number
           format: float
@@ -471,3 +586,16 @@ components:
         Access-Control-Allow-Origin:
           schema:
             type: 'string'
+
+  securitySchemes:
+    Admin:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: IDトークンを付与
+
+    Firebase:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: IDトークンを付与
