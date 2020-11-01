@@ -28,7 +28,6 @@ jobs:
       working-directory: ./functions
       run: |
         npm install
-        npm install -g @nestjs/cli
         npm run build
     - name: Deploy to Cloud Functions
       uses: w9jds/firebase-action@master
