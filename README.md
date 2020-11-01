@@ -36,8 +36,6 @@
 - 環境: Docker Compose v3
 
 #### フレームワーク・ライブラリ・モジュール
-
->>>>>>> 06999e9e2724fa0c10978aebf6d52f8d3a1cb4a6
 - go v1.15.2
   - [echo/v4](https://github.com/labstack/echo)
   - [gorm](https://github.com/go-gorm/gorm)
