@@ -24,10 +24,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install & Build
+    - name: Install Test Build
       working-directory: ./functions
       run: |
         npm install
+        npm run test
         npm run build
     - name: Deploy to Cloud Functions
       uses: w9jds/firebase-action@master
