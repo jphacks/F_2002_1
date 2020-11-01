@@ -27,7 +27,7 @@ jobs:
     - name: npm install, build
       working-directory: ./functions
       run: |
-        npm install
+        npm ci
         npm run build
     - name: Deploy to Cloud Functions
       uses: w9jds/firebase-action@master
