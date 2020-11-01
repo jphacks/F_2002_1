@@ -16,6 +16,9 @@
     "incremental": true,
     "typeRoots": [
       "./functions/node_modules/@types" // ← functions内のnode_modules/@typesを指定する
+    ],  
+    "types": [
+      "@types/jest"
     ]
 
   },
