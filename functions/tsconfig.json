@@ -23,6 +23,9 @@
 
   },
   "compileOnSave": true,
+  "paths": {
+      "@/*": ["src/*"]
+  },
   "include": [
     "src"
   ],
