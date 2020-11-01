@@ -24,7 +24,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        working-directory: ./functions
-    - run: npm install
-    - run: npm run build --if-present
+    - name: npm install, build
+      working-directory: ./functions
+      run: |
+        npm install
+        npm run build
+    - name: Run tests
+      working-directory: ./functions
+      run: npm run test
+    - name: Deploy to Cloud Functions
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only functions
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
