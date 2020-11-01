@@ -106,7 +106,3 @@ build:
 
 https://github.com/jphacks/F_2002_1/blob/main/database/README.md
 
-#### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
-
--
--
