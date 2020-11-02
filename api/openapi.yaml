@@ -14,6 +14,7 @@ tags:
     description: 一般ユーザー用
   - name: user
   - name: plant
+  - name: cultivation
   - name: message
 
 paths:
@@ -169,15 +170,9 @@ paths:
       tags:
         - general
         - user
-      summary: ログイン中のユーザーを取得
+      summary: ログイン中のユーザーを変更
       security:
         - Firebase: []
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/Id'
       requestBody:
         required: true
         content:
@@ -211,12 +206,6 @@ paths:
       summary: ログイン中のユーザーを論理削除
       security:
         - Firebase: []
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/Id'
       responses:
         204:
           $ref: '#/components/responses/204'
@@ -267,11 +256,16 @@ paths:
                   format: float
                   description: 未定
                 season:
-                  type: array
-                  items:
-                    type: integer
-                    description: 月
-                    example: 4
+                  type: object
+                  properties:
+                    from:
+                      description: 月
+                      type: integer
+                      example: 4
+                    to:
+                      description: 月
+                      type: integer
+                      example: 6
                 temperature:
                   type: object
                   properties:
@@ -398,6 +392,69 @@ paths:
         404:
           $ref: '#/components/responses/404'
 
+  /user/cultivations/{cultivation_id}:
+    get:
+      tags:
+        - general
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物を取得
+      security:
+        - Firebase: []
+      parameters:
+        - name: cultivation_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cultivation'
+
+    delete:
+      tags:
+        - general
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物を論理削除
+      security:
+        - Firebase: []
+      parameters:
+        - name: cultivation_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        404:
+          $ref: '#/components/responses/404'
+
+  /user/cultivations/{cultivation_id}/watering:
+    post:
+      tags:
+        - general
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物に水やり
+      security:
+        - Firebase: []
+      parameters:
+        - name: cultivation_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Watering'
+
   /messages:
     get:
       tags:
@@ -474,18 +531,21 @@ components:
       example: 'https://example.com'
 
     User:
+      description: ユーザー
       type: object
       properties:
         id:
           $ref: '#/components/schemas/Id'
-        created_at:
+        ccreated_at:
           $ref: '#/components/schemas/Datetime'
         updated_at:
           $ref: '#/components/schemas/Datetime'
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
         uid:
+          description: firebaseのuid
           type: string
           example: DFXSgRVbVKjBdAnYxN6wCZx74UNsDf3
-          description: firebaseのuid
         name:
           type: string
           example: 御謝部　次多振
@@ -493,7 +553,7 @@ components:
           type: string
           format: email
           example: user@example.com
-        owned_plants:
+        cultivation:
           type: array
           items:
             type: object
@@ -504,10 +564,39 @@ components:
                 $ref: '#/components/schemas/Plant'
               purchase_date:
                 $ref: '#/components/schemas/Datetime'
-              start_growing_date:
+              start_date:
                 $ref: '#/components/schemas/Datetime'
 
+    Temperature:
+      description: 気温
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+          example: 暑い
+        value:
+          type: number
+          format: float
+          example: 29.5
+
+    Water:
+      description: 水分量
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+          example: 多い
+        value:
+          description: 値が小さいほど水分が多い
+          type: integer
+          example: 464
+
     Plant:
+      description: 植物
       type: object
       properties:
         id:
@@ -516,33 +605,94 @@ components:
           $ref: '#/components/schemas/Datetime'
         updated_at:
           $ref: '#/components/schemas/Datetime'
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
         name:
           type: string
-          example: 朝顔
+          example: じゃがいも
+        nick_name:
+          type: string
+          example: じゃがーくん
+        price:
+          description: 円
+          type: integer
+          minimum: 0
+          example: 880
+        period:
+          description: 栽培期間（日）
+          type: integer
+          minimum: 0
+          example: 90
+        difficulty:
+          description: 難易度（１〜？）
+          type: integer
+          minimum: 1
+          # maximum: ?
+          example: 2
         description:
           type: string
-          example: 朝に咲く
-        water:
-          type: number
-          format: float
-          description: 未定
+          example: おいしさ満点のジャガイモだよ！ほくほく
+        kit_name:
+          type: string
+          example: 始めてでも安心ジャガイモキット
         season:
-          type: array
-          items:
-            type: integer
-            description: 月
-            example: 4
-        temperature:
+          description: 適正時期
           type: object
           properties:
             from:
-              type: number
-              format: float
-              example: 20.5
+              description: 月
+              type: integer
+              example: 4
             to:
-              type: number
-              format: float
-              example: 29.5
+              description: 月
+              type: integer
+              example: 6
+        temperatures:
+          description: 温度環境
+          type: array
+          items:
+            $ref: '#/components/schemas/Temperature'
+        waters:
+          description: 水分環境
+          type: array
+          items:
+            $ref: '#/components/schemas/Water'
+
+    Watering:
+      description: 水やりの記録
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
+
+    Cultivation:
+      description: 栽培している植物
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
+        plant:
+          $ref: '#/components/schemas/Plant'
+        purchase_date:
+          $ref: '#/components/schemas/Datetime'
+        start_date:
+          $ref: '#/components/schemas/Datetime'
+        watering:
+          type: array
+          items:
+            $ref: '#/components/schemas/Watering'
 
     Message:
       type: object
@@ -550,6 +700,10 @@ components:
         id:
           $ref: '#/components/schemas/Id'
         created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        deleted_at:
           $ref: '#/components/schemas/Datetime'
         speaker:
           type: string
