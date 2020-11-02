@@ -444,8 +444,8 @@ paths:
               required:
                 - plant_id
       responses:
-        200:
-          description: OK
+        201:
+          description: Created
           content:
             application/json:
               schema:
@@ -613,8 +613,8 @@ paths:
               required:
                 - plant_id
       responses:
-        200:
-          description: OK
+        201:
+          description: Created
           content:
             application/json:
               schema:
@@ -710,8 +710,8 @@ paths:
           schema:
             $ref: '#/components/schemas/Id'
       responses:
-        200:
-          description: OK
+        201:
+          description: Created
           content:
             application/json:
               schema:
