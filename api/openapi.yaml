@@ -435,6 +435,12 @@ paths:
               properties:
                 plant_id:
                   $ref: '#/components/schemas/Id'
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
               required:
                 - plant_id
       responses:
@@ -470,6 +476,34 @@ paths:
                 $ref: '#/components/schemas/Cultivation'
         404:
           $ref: '#/components/responses/404'
+
+    put:
+      tags:
+        - admin
+        - cultivation
+      summary: 特定の栽培物を変更
+      security:
+        - Admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cultivation'
 
     delete:
       tags:
@@ -564,6 +598,12 @@ paths:
               properties:
                 plant_id:
                   $ref: '#/components/schemas/Id'
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
               required:
                 - plant_id
       responses:
@@ -588,6 +628,34 @@ paths:
           required: true
           schema:
             $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cultivation'
+
+    put:
+      tags:
+        - general
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物を変更
+      security:
+        - Firebase: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
       responses:
         200:
           description: OK
@@ -902,6 +970,12 @@ components:
           $ref: '#/components/schemas/Datetime'
         plant:
           $ref: '#/components/schemas/Plant'
+        nick_name:
+          description: ユーザーが任意に決定できるニックネーム
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: じゃがーくん2世
         start_cultivating_at:
           $ref: '#/components/schemas/Datetime'
         finish_cultivating_at:
