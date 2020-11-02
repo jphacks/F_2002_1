@@ -484,6 +484,12 @@ paths:
       summary: 特定の栽培物を変更
       security:
         - Admin: []
+      parameters:
+        - name: cultivation_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
       requestBody:
         required: true
         content:
@@ -643,6 +649,12 @@ paths:
       summary: ログイン中のユーザーの特定の栽培物を変更
       security:
         - Firebase: []
+      parameters:
+        - name: cultivation_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
       requestBody:
         required: true
         content:
