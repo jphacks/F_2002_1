@@ -8,15 +8,261 @@ servers:
   - url: localhost:8080
     description: ローカル環境
 tags:
-  - name: admin
-    description: 管理者ユーザー用
   - name: general
     description: 一般ユーザー用
-  - name: user
+  - name: admin
+    description: 管理者ユーザー用
   - name: plant
+  - name: user
+  - name: cultivation
   - name: message
 
 paths:
+  /plants:
+    get:
+      tags:
+        - admin
+        - general
+        - plant
+      summary: 全植物を取得
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plant'
+
+    post:
+      tags:
+        - admin
+        - plant
+      summary: 植物を登録
+      security:
+        - Admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがいも
+                nick_name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん
+                price:
+                  description: 円
+                  type: integer
+                  minimum: 0
+                  example: 880
+                period:
+                  description: 栽培期間（日）
+                  type: integer
+                  minimum: 0
+                  example: 90
+                difficulty:
+                  description: 難易度（１〜？）
+                  type: integer
+                  minimum: 1
+                  # maximum: ?
+                  example: 2
+                description:
+                  type: string
+                  minLength: 0
+                  maxLength: 255
+                  example: おいしさ満点のジャガイモだよ！ほくほく
+                kit_name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: 始めてでも安心ジャガイモキット
+                season:
+                  description: 適正時期
+                  type: object
+                  properties:
+                    from:
+                      description: 月
+                      type: integer
+                      minimum: 1
+                      maximum: 12
+                      example: 4
+                    to:
+                      description: 月
+                      type: integer
+                      minimum: 1
+                      maximum: 12
+                      example: 6
+                temperatures:
+                  description: 温度環境
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Temperature'
+                waters:
+                  description: 水分環境
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Water'
+              required:
+                - name
+                - nick_name
+                - price
+                - period
+                - difficulty
+                - description
+                - kit_name
+                - season
+                - temperatures
+                - waters
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /plants/{plant_id}:
+    get:
+      tags:
+        - admin
+        - general
+        - plant
+      summary: 特定の植物を取得
+      parameters:
+        - name: plant_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+        404:
+          $ref: '#/components/responses/404'
+
+    put:
+      tags:
+        - admin
+        - plant
+      summary: 徳栄値の植物を更新
+      parameters:
+        - name: plant_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      security:
+        - Admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがいも
+                nick_name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん
+                price:
+                  description: 円
+                  type: integer
+                  minimum: 0
+                  example: 880
+                period:
+                  description: 栽培期間（日）
+                  type: integer
+                  minimum: 0
+                  example: 90
+                difficulty:
+                  description: 難易度（１〜？）
+                  type: integer
+                  minimum: 1
+                  # maximum: ?
+                  example: 2
+                description:
+                  type: string
+                  minLength: 0
+                  maxLength: 255
+                  example: おいしさ満点のジャガイモだよ！ほくほく
+                kit_name:
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: 始めてでも安心ジャガイモキット
+                season:
+                  description: 適正時期
+                  type: object
+                  properties:
+                    from:
+                      description: 月
+                      type: integer
+                      minimum: 1
+                      maximum: 12
+                      example: 4
+                    to:
+                      description: 月
+                      type: integer
+                      minimum: 1
+                      maximum: 12
+                      example: 6
+                temperatures:
+                  description: 温度環境
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Temperature'
+                waters:
+                  description: 水分環境
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Water'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+        404:
+          $ref: '#/components/responses/404'
+
+    delete:
+      tags:
+        - plant
+      summary: 特定の植物を論理削除
+      security:
+        - Admin: []
+      parameters:
+        - name: plant_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        404:
+          $ref: '#/components/responses/404'
+
   /users:
     get:
       tags:
@@ -34,12 +280,15 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+
     post:
       tags:
         - admin
         - general
         - user
       summary: ユーザーを登録
+      security:
+        - Firebase: []
       requestBody:
         required: true
         content:
@@ -49,16 +298,11 @@ paths:
               properties:
                 name:
                   type: string
+                  minLength: 1
                   maxLength: 255
                   example: 御謝部　次多振
-                email:
-                  type: string
-                  format: email
-                  maxLength: 255
-                  example: user@example.com
               required:
                 - name
-                - email
       responses:
         201:
           description: Created
@@ -113,13 +357,9 @@ paths:
               properties:
                 name:
                   type: string
+                  minLength: 1
                   maxLength: 255
                   example: 御謝部　次多振
-                email:
-                  type: string
-                  format: email
-                  maxLength: 255
-                  example: user@example.com
       responses:
         200:
           description: OK
@@ -139,6 +379,141 @@ paths:
         - Admin: []
       parameters:
         - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        404:
+          $ref: '#/components/responses/404'
+
+  /users/{user_id}/cultivations:
+    get:
+      tags:
+        - admin
+        - cultivation
+      security:
+        - Admin: []
+      summary: 特定のユーザーの全栽培物を取得
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cultivation'
+        404:
+          $ref: '#/components/responses/404'
+
+    post:
+      tags:
+        - admin
+        - cultivation
+      security:
+        - Admin: []
+      summary: 特定のユーザーに栽培物を登録
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plant_id:
+                  $ref: '#/components/schemas/Id'
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
+              required:
+                - plant_id
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cultivation'
+        404:
+          $ref: '#/components/responses/404'
+
+  /cultivations/{cultivation_id}:
+    get:
+      tags:
+        - admin
+        - cultivation
+      security:
+        - Admin: []
+      summary: 特定の栽培物を取得
+      parameters:
+        - name: cultivation_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cultivation'
+        404:
+          $ref: '#/components/responses/404'
+
+    put:
+      tags:
+        - admin
+        - cultivation
+      summary: 特定の栽培物を変更
+      security:
+        - Admin: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
+                  type: string
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cultivation'
+
+    delete:
+      tags:
+        - admin
+        - cultivation
+      security:
+        - Admin: []
+      summary: 特定の栽培物を削除
+      parameters:
+        - name: cultivation_id
           in: path
           required: true
           schema:
@@ -169,15 +544,9 @@ paths:
       tags:
         - general
         - user
-      summary: ログイン中のユーザーを取得
+      summary: ログイン中のユーザーを変更
       security:
         - Firebase: []
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/Id'
       requestBody:
         required: true
         content:
@@ -189,11 +558,6 @@ paths:
                   type: string
                   maxLength: 255
                   example: 御謝部　次多振
-                email:
-                  type: string
-                  format: email
-                  maxLength: 255
-                  example: user@example.com
       responses:
         200:
           description: OK
@@ -211,42 +575,20 @@ paths:
       summary: ログイン中のユーザーを論理削除
       security:
         - Firebase: []
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/Id'
       responses:
         204:
           $ref: '#/components/responses/204'
         404:
           $ref: '#/components/responses/404'
 
-  /plants:
-    get:
-      tags:
-        - admin
-        - general
-        - plant
-      summary: 全植物を取得
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Plant'
-
+  /user/cultivations:
     post:
       tags:
-        - admin
-        - plant
-      summary: 植物を登録
+        - general
+        - cultivation
+      summary: ログイン中のユーザーに特定の栽培物を登録
       security:
-        - Admin: []
+        - Firebase: []
       requestBody:
         required: true
         content:
@@ -254,59 +596,34 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                plant_id:
+                  $ref: '#/components/schemas/Id'
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
                   type: string
-                  example: 朝顔
-                description:
-                  type: string
-                  example: 朝に咲く
-                thumbnail:
-                  $ref: '#/components/schemas/URL'
-                water:
-                  type: number
-                  format: float
-                  description: 未定
-                season:
-                  type: array
-                  items:
-                    type: integer
-                    description: 月
-                    example: 4
-                temperature:
-                  type: object
-                  properties:
-                    from:
-                      type: number
-                      format: float
-                      example: 20.5
-                    to:
-                      type: number
-                      format: float
-                      example: 29.5
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
               required:
-                - name
-                - description
-                - thumbnail
-                - water
-                - season
-                - temperature
+                - plant_id
       responses:
-        201:
-          description: Created
+        200:
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Cultivation'
 
-  /plants/{plant_id}:
+  /user/cultivations/{cultivation_id}:
     get:
       tags:
-        - admin
         - general
-        - plant
-      summary: 特定の植物を取得
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物を取得
+      security:
+        - Firebase: []
       parameters:
-        - name: plant_id
+        - name: cultivation_id
           in: path
           required: true
           schema:
@@ -317,23 +634,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Plant'
-        404:
-          $ref: '#/components/responses/404'
+                $ref: '#/components/schemas/Cultivation'
 
     put:
       tags:
-        - admin
-        - plant
-      summary: 徳栄値の植物を更新
-      parameters:
-        - name: plant_id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/Id'
+        - general
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物を変更
       security:
-        - Admin: []
+        - Firebase: []
       requestBody:
         required: true
         content:
@@ -341,53 +650,29 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                nick_name:
+                  description: ユーザーが任意に決定できるニックネーム
                   type: string
-                  example: 朝顔
-                description:
-                  type: string
-                  example: 朝に咲く
-                thumbnail:
-                  $ref: '#/components/schemas/URL'
-                water:
-                  type: number
-                  format: float
-                  description: 未定
-                season:
-                  type: array
-                  items:
-                    type: integer
-                    description: 月
-                    example: 4
-                temperature:
-                  type: object
-                  properties:
-                    from:
-                      type: number
-                      format: float
-                      example: 20.5
-                    to:
-                      type: number
-                      format: float
-                      example: 29.5
+                  minLength: 1
+                  maxLength: 255
+                  example: じゃがーくん2世
       responses:
         200:
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Plant'
-        404:
-          $ref: '#/components/responses/404'
+                $ref: '#/components/schemas/Cultivation'
 
     delete:
       tags:
-        - plant
-      summary: 特定の植物を論理削除
+        - general
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物を論理削除
       security:
-        - Admin: []
+        - Firebase: []
       parameters:
-        - name: plant_id
+        - name: cultivation_id
           in: path
           required: true
           schema:
@@ -397,6 +682,28 @@ paths:
           $ref: '#/components/responses/204'
         404:
           $ref: '#/components/responses/404'
+
+  /user/cultivations/{cultivation_id}/watering:
+    post:
+      tags:
+        - general
+        - cultivation
+      summary: ログイン中のユーザーの特定の栽培物に水やり
+      security:
+        - Firebase: []
+      parameters:
+        - name: cultivation_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Watering'
 
   /messages:
     get:
@@ -473,7 +780,40 @@ components:
       format: url
       example: 'https://example.com'
 
-    User:
+    Temperature:
+      description: 気温
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 暑い
+        value:
+          type: number
+          format: float
+          example: 29.5
+
+    Water:
+      description: 水分量
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 多い
+        value:
+          description: 値が小さいほど水分が多い
+          type: integer
+          example: 464
+
+    Plant:
+      description: 植物
       type: object
       properties:
         id:
@@ -482,32 +822,115 @@ components:
           $ref: '#/components/schemas/Datetime'
         updated_at:
           $ref: '#/components/schemas/Datetime'
-        uid:
-          type: string
-          example: DFXSgRVbVKjBdAnYxN6wCZx74UNsDf3
-          description: firebaseのuid
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
         name:
           type: string
-          example: 御謝部　次多振
-        email:
+          minLength: 1
+          maxLength: 255
+          example: じゃがいも
+        nick_name:
           type: string
-          format: email
-          example: user@example.com
-        owned_plants:
+          minLength: 1
+          maxLength: 255
+          example: じゃがーくん
+        price:
+          description: 円
+          type: integer
+          minimum: 0
+          example: 880
+        period:
+          description: 栽培期間（日）
+          type: integer
+          minimum: 0
+          example: 90
+        difficulty:
+          description: 難易度（１〜？）
+          type: integer
+          minimum: 1
+          # maximum: ?
+          example: 2
+        description:
+          type: string
+          minLength: 0
+          maxLength: 255
+          example: おいしさ満点のジャガイモだよ！ほくほく
+        kit_name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 始めてでも安心ジャガイモキット
+        season:
+          description: 適正時期
+          type: object
+          properties:
+            from:
+              description: 月
+              type: integer
+              minimum: 1
+              maximum: 12
+              example: 4
+            to:
+              description: 月
+              type: integer
+              minimum: 1
+              maximum: 12
+              example: 6
+        temperatures:
+          description: 温度環境
+          type: array
+          items:
+            $ref: '#/components/schemas/Temperature'
+        waters:
+          description: 水分環境
+          type: array
+          items:
+            $ref: '#/components/schemas/Water'
+
+    User:
+      description: ユーザー
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
+        uid:
+          description: firebaseのuid
+          type: string
+          example: DFXSgRVbVKjBdAnYxN6wCZx74UNsDf3
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 御謝部　次多振
+        cultivations:
           type: array
           items:
             type: object
             properties:
               id:
                 $ref: '#/components/schemas/Id'
+              created_at:
+                description: 購入日と同義
+                $ref: '#/components/schemas/Datetime'
+              updated_at:
+                $ref: '#/components/schemas/Datetime'
+              deleted_at:
+                $ref: '#/components/schemas/Datetime'
               plant:
                 $ref: '#/components/schemas/Plant'
-              purchase_date:
+              start_cultivating_at:
                 $ref: '#/components/schemas/Datetime'
-              start_growing_date:
+              finish_cultivating_at:
                 $ref: '#/components/schemas/Datetime'
 
-    Plant:
+    Watering:
+      description: 水やりの記録
       type: object
       properties:
         id:
@@ -516,33 +939,59 @@ components:
           $ref: '#/components/schemas/Datetime'
         updated_at:
           $ref: '#/components/schemas/Datetime'
-        name:
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
+
+    Harvesting:
+      description: 収穫の記録
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
+
+    Cultivation:
+      description: 栽培している植物
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        created_at:
+          description: 購入日と同義
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        deleted_at:
+          $ref: '#/components/schemas/Datetime'
+        plant:
+          $ref: '#/components/schemas/Plant'
+        nick_name:
+          description: ユーザーが任意に決定できるニックネーム
           type: string
-          example: 朝顔
-        description:
-          type: string
-          example: 朝に咲く
-        water:
-          type: number
-          format: float
-          description: 未定
-        season:
-          type: array
-          items:
-            type: integer
-            description: 月
-            example: 4
-        temperature:
+          minLength: 1
+          maxLength: 255
+          example: じゃがーくん2世
+        start_cultivating_at:
+          $ref: '#/components/schemas/Datetime'
+        finish_cultivating_at:
+          $ref: '#/components/schemas/Datetime'
+        rerord:
+          description: 余裕があれば
           type: object
           properties:
-            from:
-              type: number
-              format: float
-              example: 20.5
-            to:
-              type: number
-              format: float
-              example: 29.5
+            watering:
+              type: array
+              items:
+                $ref: '#/components/schemas/Watering'
+            harvesing:
+              type: array
+              items:
+                $ref: '#/components/schemas/Harvesting'
 
     Message:
       type: object
@@ -550,6 +999,10 @@ components:
         id:
           $ref: '#/components/schemas/Id'
         created_at:
+          $ref: '#/components/schemas/Datetime'
+        updated_at:
+          $ref: '#/components/schemas/Datetime'
+        deleted_at:
           $ref: '#/components/schemas/Datetime'
         speaker:
           type: string
