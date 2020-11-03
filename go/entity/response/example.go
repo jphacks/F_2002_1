@@ -1,21 +1,13 @@
 package response
 
-import "time"
+import "github.com/jphacks/F_2002_1/go/entity/openapi"
 
-type Example struct {
-	ID        int        `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt time.Time  `json:"updated_at"`
-	DeletedAt *time.Time `json:"deleted_at"`
-	Name      string     `json:"name"`
-}
+type ExampleGet []openapi.Example
 
-type ExampleGet []Example
+type ExampleGetById openapi.Example
 
-type ExampleGetById Example
+type ExamplePost openapi.Example
 
-type ExamplePost Example
-
-type ExamplePutById Example
+type ExamplePutById openapi.Example
 
 type ExampleDeleteById struct{}
