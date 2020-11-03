@@ -39,3 +39,9 @@ type Plant struct {
 type PlantGet []Plant
 
 type PlantGetById Plant
+
+type PlantPost Plant
+
+type PlantPutById Plant
+
+type PlantDeleteById struct{}
