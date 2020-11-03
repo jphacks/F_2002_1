@@ -996,11 +996,11 @@ components:
           description: 余裕があれば
           type: object
           properties:
-            watering:
+            waterings:
               type: array
               items:
                 $ref: '#/components/schemas/Watering'
-            harvesing:
+            harvesings:
               type: array
               items:
                 $ref: '#/components/schemas/Harvesting'
