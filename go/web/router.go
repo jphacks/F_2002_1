@@ -25,20 +25,20 @@ func NewServer(logger *log.Logger) *echo.Echo {
 		}
 	}()
 
-	userUC := usecase.NewUserUseCase(db)
-
 	e := echo.New()
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
 
-	userHandler := handler.NewUserHandler(userUC)
-
 	v1 := e.Group("") // v1 := e.Group("/api/v1")
 	v1.GET("/", hello)
 	// v1.GET("/admin/reset", ResetDB)
 
+	plantHandler:= handler.NewPlantHandler(db)
+	v1.GET("/plants", plantHandler.GetPlants)
+
+	userHandler := handler.NewUserHandler(db)
 	v1.GET("/users", userHandler.GetUsers)
 	v1.GET("/users/:id", userHandler.GetUser)
 	v1.POST("/users", userHandler.PostUser)

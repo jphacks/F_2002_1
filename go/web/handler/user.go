@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 
+	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
@@ -17,8 +18,8 @@ type UserHandler struct {
 }
 
 // NewUserHandler はUserHandlerのポインタを生成する関数です。
-func NewUserHandler(userUC *usecase.UserUseCase) *UserHandler {
-	return &UserHandler{userUC: userUC}
+func NewUserHandler(db *gorm.DB) *UserHandler {
+	return &UserHandler{userUC: usecase.NewUserUseCase(db)}
 }
 
 // GetUsers は GET /users に対応するハンドラです。
