@@ -38,6 +38,15 @@ func (u *UserUseCase) ReadUser(ctx context.Context, id string) (*entity.User, er
 	return user, nil
 }
 
+// ReadUserByUid はユーザを取得します。
+func (u *UserUseCase) ReadUserByUid(ctx context.Context, uid string) (*entity.User, error) {
+	user, err := u.userRepo.FindByUID(uid)
+	if err != nil {
+		return nil, fmt.Errorf("find user from repo uid=%s: %w", uid, err)
+	}
+	return user, nil
+}
+
 // CreateUser はユーザを作成します。
 func (u *UserUseCase) CreateUser(ctx context.Context, user *entity.User) (*entity.User, error) {
 	user, err := u.userRepo.Store(user)
@@ -56,11 +65,29 @@ func (u *UserUseCase) UpdateUser(ctx context.Context, id string, user *entity.Us
 	return user, nil
 }
 
+// UpdateUserByUid はユーザを作成します。
+func (u *UserUseCase) UpdateUserByUid(ctx context.Context, uid string, user *entity.User) (*entity.User, error) {
+	user, err := u.userRepo.UpdateByIDUid(uid, user)
+	if err != nil {
+		return nil, fmt.Errorf("update user from repo uid=%s: %w", uid, err)
+	}
+	return user, nil
+}
+
 // DeleteUser はユーザを作成します。
 func (u *UserUseCase) DeleteUser(ctx context.Context, id string) (*entity.User, error) {
 	user, err := u.userRepo.DeleteByID(id)
 	if err != nil {
 		return nil, fmt.Errorf("delete user from repo id=%s: %w", id, err)
+	}
+	return user, nil
+}
+
+// DeleteUserByUid はユーザを作成します。
+func (u *UserUseCase) DeleteUserByUid(ctx context.Context, uid string) (*entity.User, error) {
+	user, err := u.userRepo.DeleteByUid(uid)
+	if err != nil {
+		return nil, fmt.Errorf("delete user from repo uid=%s: %w", uid, err)
 	}
 	return user, nil
 }
