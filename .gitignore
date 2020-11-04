@@ -28,5 +28,4 @@ node_modules/
 # vscode
 *.vscode
 
-# made by go build
-go/main
+.DS_Store
