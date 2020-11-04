@@ -2,12 +2,12 @@ package response
 
 import "github.com/jphacks/F_2002_1/go/entity/openapi"
 
-type UserGet []openapi.User
+type UsersGet []openapi.User
 
-type UserGetById openapi.User
+type UsersGetById openapi.User
 
-type UserPost openapi.User
+type UsersPost openapi.User
 
-type UserPutById openapi.User
+type UsersPutById openapi.User
 
-type UserDeleteById struct{}
+type UsersDeleteById struct{}

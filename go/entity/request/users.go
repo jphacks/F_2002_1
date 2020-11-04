@@ -1,20 +1,20 @@
 package request
 
-type UserGet struct{}
+type UsersGet struct{}
 
-type UserGetById struct {
+type UsersGetById struct {
 	UserId int `json:"user_id"`
 }
 
-type UserPost struct {
+type UsersPost struct {
 	Name string `json:"name"`
 }
 
-type UserPutById struct {
+type UsersPutById struct {
 	UserId int    `json:"user_id"`
 	Name   string `json:"name"`
 }
 
-type UserDeleteById struct {
+type UsersDeleteById struct {
 	UserId int `json:"user_id"`
 }
