@@ -1,9 +1,6 @@
 package entity
 
-// 仮
-type (
-	User struct {
-	}
+type User struct {
+}
 
-	Users []User
-)
+type Users []User
