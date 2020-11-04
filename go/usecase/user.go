@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/jinzhu/gorm"
@@ -21,7 +20,7 @@ func NewUserUseCase(db *gorm.DB) *UserUseCase {
 }
 
 // ReadUsers は全ユーザを取得します。
-func (u *UserUseCase) ReadUsers(ctx context.Context) (*entity.Users, error) {
+func (u *UserUseCase) ReadUsers() (*entity.Users, error) {
 	users, err := u.userRepo.FindAll()
 	if err != nil {
 		return nil, fmt.Errorf("find users from repo: %w", err)
@@ -30,7 +29,7 @@ func (u *UserUseCase) ReadUsers(ctx context.Context) (*entity.Users, error) {
 }
 
 // ReadUser はユーザを取得します。
-func (u *UserUseCase) ReadUser(ctx context.Context, id string) (*entity.User, error) {
+func (u *UserUseCase) ReadUser(id string) (*entity.User, error) {
 	user, err := u.userRepo.FindByID(id)
 	if err != nil {
 		return nil, fmt.Errorf("find user from repo id=%s: %w", id, err)
@@ -39,7 +38,7 @@ func (u *UserUseCase) ReadUser(ctx context.Context, id string) (*entity.User, er
 }
 
 // ReadUserByUid はユーザを取得します。
-func (u *UserUseCase) ReadUserByUid(ctx context.Context, uid string) (*entity.User, error) {
+func (u *UserUseCase) ReadUserByUid(uid string) (*entity.User, error) {
 	user, err := u.userRepo.FindByUID(uid)
 	if err != nil {
 		return nil, fmt.Errorf("find user from repo uid=%s: %w", uid, err)
@@ -48,7 +47,7 @@ func (u *UserUseCase) ReadUserByUid(ctx context.Context, uid string) (*entity.Us
 }
 
 // CreateUser はユーザを作成します。
-func (u *UserUseCase) CreateUser(ctx context.Context, user *entity.User) (*entity.User, error) {
+func (u *UserUseCase) CreateUser(user *entity.User) (*entity.User, error) {
 	user, err := u.userRepo.Store(user)
 	if err != nil {
 		return nil, fmt.Errorf("store user from repo: %w", err)
@@ -57,7 +56,7 @@ func (u *UserUseCase) CreateUser(ctx context.Context, user *entity.User) (*entit
 }
 
 // UpdateUser はユーザを作成します。
-func (u *UserUseCase) UpdateUser(ctx context.Context, id string, user *entity.User) (*entity.User, error) {
+func (u *UserUseCase) UpdateUser(id string, user *entity.User) (*entity.User, error) {
 	user, err := u.userRepo.UpdateByID(id, user)
 	if err != nil {
 		return nil, fmt.Errorf("update user from repo id=%s: %w", id, err)
@@ -66,7 +65,7 @@ func (u *UserUseCase) UpdateUser(ctx context.Context, id string, user *entity.Us
 }
 
 // UpdateUserByUid はユーザを作成します。
-func (u *UserUseCase) UpdateUserByUid(ctx context.Context, uid string, user *entity.User) (*entity.User, error) {
+func (u *UserUseCase) UpdateUserByUid(uid string, user *entity.User) (*entity.User, error) {
 	user, err := u.userRepo.UpdateByIDUid(uid, user)
 	if err != nil {
 		return nil, fmt.Errorf("update user from repo uid=%s: %w", uid, err)
@@ -75,7 +74,7 @@ func (u *UserUseCase) UpdateUserByUid(ctx context.Context, uid string, user *ent
 }
 
 // DeleteUser はユーザを作成します。
-func (u *UserUseCase) DeleteUser(ctx context.Context, id string) (*entity.User, error) {
+func (u *UserUseCase) DeleteUser(id string) (*entity.User, error) {
 	user, err := u.userRepo.DeleteByID(id)
 	if err != nil {
 		return nil, fmt.Errorf("delete user from repo id=%s: %w", id, err)
@@ -84,7 +83,7 @@ func (u *UserUseCase) DeleteUser(ctx context.Context, id string) (*entity.User, 
 }
 
 // DeleteUserByUid はユーザを作成します。
-func (u *UserUseCase) DeleteUserByUid(ctx context.Context, uid string) (*entity.User, error) {
+func (u *UserUseCase) DeleteUserByUid(uid string) (*entity.User, error) {
 	user, err := u.userRepo.DeleteByUid(uid)
 	if err != nil {
 		return nil, fmt.Errorf("delete user from repo uid=%s: %w", uid, err)

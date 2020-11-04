@@ -13,7 +13,7 @@ import (
 func main() {
 	logger := log.New()
 
-	s := web.NewServer(logger)
+	s := web.NewServer()
 
 	logger.Print(config.Port())
 	if err := s.Start(":" + config.Port()); err != nil {

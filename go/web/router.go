@@ -6,6 +6,7 @@ import (
 
 	"github.com/jphacks/F_2002_1/go/database"
 	"github.com/jphacks/F_2002_1/go/usecase"
+	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/web/handler"
 
 	"github.com/labstack/echo/v4"
@@ -14,6 +15,8 @@ import (
 
 // NewServer はREST APIエンドポイントのハンドラやミドルウェアが登録されたechoの構造体を返却します。
 func NewServer(logger *log.Logger) *echo.Echo {
+	logger := log.New()
+
 	db, err := database.NewDB()
 	if err != nil {
 		logger.Fatal(err)
@@ -39,16 +42,31 @@ func NewServer(logger *log.Logger) *echo.Echo {
 	v1.GET("/plants", plantHandler.GetPlants)
 
 	usersHandler := handler.NewUsersHandler(db)
-	v1.GET("/users", usersHandler.GetUsers)
-	v1.GET("/users/:id", usersHandler.GetUser)
+	// v1.GET("/users", usersHandler.GetUsers)
+	// v1.GET("/users/:id", usersHandler.GetUser)
 	v1.POST("/users", usersHandler.PostUser)
-	v1.PUT("/users/:id", usersHandler.UpdateUser)
-	v1.DELETE("/users/:id", usersHandler.DeleteUser)
+	// v1.PUT("/users/:id", usersHandler.UpdateUser)
+	// v1.DELETE("/users/:id", usersHandler.DeleteUser)
 
 	userHandler := handler.NewUserHandler(db)
 	v1.GET("/user", userHandler.GetUser)
 	v1.PUT("/user", userHandler.UpdateUser)
 	v1.DELETE("/user", userHandler.DeleteUser)
+
+	// usersCultivationsHandler := handler.NewUsersCultivationsHandler(db)
+	// v1.GET("/users/:id/cultivations", usersCultivationsHandler.GetCultivations)
+	// v1.POST("/users/:id/cultivations", usersCultivationsHandler.PostCultivation)
+
+	// cultivationsHandler := handler.NewCultivationsHandler(db)
+	// v1.GET("/cultivations/:id", cultivationsHandler.GetCultivation)
+	// v1.PUT("/cultivations/:id", cultivationsHandler.UpdateCultivation)
+	// v1.DELETE("/cultivations/:id", cultivationsHandler.DeleteCultivation)
+
+	userCultivationsHandler := handler.NewUserCultivationsHandler(db)
+	v1.POST("/user/cultivations", userCultivationsHandler.PostCultivation)
+	v1.GET("/user/cultivations/:id", userCultivationsHandler.GetCultivation)
+	v1.PUT("/user/cultivations/:id", userCultivationsHandler.UpdateCultivation)
+	v1.DELETE("/user/cultivations/:id", userCultivationsHandler.DeleteCultivation)
 
 	return e
 }
