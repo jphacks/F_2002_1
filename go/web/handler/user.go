@@ -25,10 +25,9 @@ func NewUserHandler(db *gorm.DB) *UserHandler {
 // GetUser は GET /user に対応するハンドラです。
 func (h *UserHandler) GetUser(c echo.Context) error {
 	logger := log.New()
-	ctx := c.Request().Context()
 	uid := c.Request().Header.Get("Authorization")
 
-	user, err := h.userUC.ReadUserByUid(ctx, uid)
+	user, err := h.userUC.ReadUserByUid(uid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -49,10 +48,9 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	ctx := c.Request().Context()
-	uid := uid := c.Request().Header.Get("Authorization")
+	uid := c.Request().Header.Get("Authorization")
 
-	user, err := h.userUC.UpdateUserByUid(ctx, uid, user)
+	user, err := h.userUC.UpdateUserByUid(uid, user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -67,10 +65,9 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 // DeleteUser は DELETE /user に対応するハンドラです。
 func (h *UserHandler) DeleteUser(c echo.Context) error {
 	logger := log.New()
-	ctx := c.Request().Context()
 	uid := uid := c.Request().Header.Get("Authorization")
 
-	user, err := h.userUC.DeleteUserByUid(ctx, uid)
+	user, err := h.userUC.DeleteUserByUid(uid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)

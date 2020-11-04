@@ -25,9 +25,8 @@ func NewUsersHandler(db *gorm.DB) *UsersHandler {
 // GetUsers は GET /users に対応するハンドラです。
 func (h *UsersHandler) GetUsers(c echo.Context) error {
 	logger := log.New()
-	ctx := c.Request().Context()
 
-	users, err := h.userUC.ReadUsers(ctx)
+	users, err := h.userUC.ReadUsers()
 	if err != nil {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
@@ -38,10 +37,9 @@ func (h *UsersHandler) GetUsers(c echo.Context) error {
 // GetUser は GET /users/:id に対応するハンドラです。
 func (h *UsersHandler) GetUser(c echo.Context) error {
 	logger := log.New()
-	ctx := c.Request().Context()
 	id := c.Param("id")
 
-	user, err := h.userUC.ReadUser(ctx, id)
+	user, err := h.userUC.ReadUser(id)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -62,8 +60,7 @@ func (h *UsersHandler) PostUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	ctx := c.Request().Context()
-	user, err := h.userUC.CreateUser(ctx, user)
+	user, err := h.userUC.CreateUser(user)
 	if err != nil {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
@@ -81,10 +78,9 @@ func (h *UsersHandler) UpdateUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	ctx := c.Request().Context()
 	id := c.Param("id")
 
-	user, err := h.userUC.UpdateUser(ctx, id, user)
+	user, err := h.userUC.UpdateUser(id, user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -99,10 +95,9 @@ func (h *UsersHandler) UpdateUser(c echo.Context) error {
 // DeleteUser は DELETE /users/:id に対応するハンドラです。
 func (h *UsersHandler) DeleteUser(c echo.Context) error {
 	logger := log.New()
-	ctx := c.Request().Context()
 	id := c.Param("id")
 
-	user, err := h.userUC.DeleteUser(ctx, id)
+	user, err := h.userUC.DeleteUser(id)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
