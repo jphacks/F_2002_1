@@ -5,8 +5,9 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2017",
-    "sourceMap": true,
+    "resolveJsonModule": true,
+    "target": "ES2017",
+    "sourceMap": false,
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
