@@ -1,8 +1,10 @@
 package web
 
 import (
+	"log"
 	"net/http"
 
+	"github.com/jphacks/F_2002_1/go/database"
 	"github.com/jphacks/F_2002_1/go/usecase"
 	"github.com/jphacks/F_2002_1/go/web/handler"
 
@@ -11,7 +13,20 @@ import (
 )
 
 // NewServer はREST APIエンドポイントのハンドラやミドルウェアが登録されたechoの構造体を返却します。
-func NewServer(userUC *usecase.UserUseCase) *echo.Echo {
+func NewServer(logger *log.Logger) *echo.Echo {
+	db, err := database.NewDB()
+	if err != nil {
+		logger.Fatal(err)
+	}
+	defer func() {
+		err := db.Close()
+		if err != nil {
+			logger.Fatal(err)
+		}
+	}()
+
+	userUC := usecase.NewUserUseCase(db)
+
 	e := echo.New()
 
 	e.Use(middleware.Logger())

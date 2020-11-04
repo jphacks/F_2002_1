@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/jinzhu/gorm"
+	"github.com/jphacks/F_2002_1/go/database"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/domain/repository"
 )
@@ -14,8 +16,8 @@ type UserUseCase struct {
 }
 
 // NewUserUseCase はUserUseCaseのポインタを生成する関数です。
-func NewUserUseCase(userRepo repository.User) *UserUseCase {
-	return &UserUseCase{userRepo: userRepo}
+func NewUserUseCase(db *gorm.DB) *UserUseCase {
+	return &UserUseCase{userRepo: database.NewUserRepository(db)}
 }
 
 // ReadUsers は全ユーザを取得します。
