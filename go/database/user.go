@@ -38,7 +38,7 @@ func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
 	return nil, nil
 }
 
-// Update はユーザの情報を更新します。
+// UpdateByID はユーザの情報を更新します。
 func (r *UserRepository) UpdateByID(id string, user *entity.User) (*entity.User, error) {
 	return nil, nil
 }
