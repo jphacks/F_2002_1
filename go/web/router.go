@@ -38,12 +38,17 @@ func NewServer(logger *log.Logger) *echo.Echo {
 	plantHandler:= handler.NewPlantHandler(db)
 	v1.GET("/plants", plantHandler.GetPlants)
 
+	usersHandler := handler.NewUsersHandler(db)
+	v1.GET("/users", usersHandler.GetUsers)
+	v1.GET("/users/:id", usersHandler.GetUser)
+	v1.POST("/users", usersHandler.PostUser)
+	v1.PUT("/users/:id", usersHandler.UpdateUser)
+	v1.DELETE("/users/:id", usersHandler.DeleteUser)
+
 	userHandler := handler.NewUserHandler(db)
-	v1.GET("/users", userHandler.GetUsers)
-	v1.GET("/users/:id", userHandler.GetUser)
-	v1.POST("/users", userHandler.PostUser)
-	v1.PUT("/users/:id", userHandler.UpdateUser)
-	v1.DELETE("/users/:id", userHandler.DeleteUser)
+	v1.GET("/user", userHandler.GetUser)
+	v1.PUT("/user", userHandler.UpdateUser)
+	v1.DELETE("/user", userHandler.DeleteUser)
 
 	return e
 }
