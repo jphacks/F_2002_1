@@ -1,6 +1,9 @@
+ENV_LOCAL_FILE := env.local
+ENV_LOCAL = $(shell cat $(ENV_LOCAL_FILE))
+
 up:
-	docker-compose up
+	$(ENV_LOCAL) docker-compose up
 down:
-	docker-compose down
+	$(ENV_LOCAL) docker-compose down
 build:
-	docker-compose build
+	$(ENV_LOCAL) docker-compose build
