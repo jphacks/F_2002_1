@@ -20,12 +20,12 @@ func NewUserRepository(db *gorm.DB) *UserRepository {
 }
 
 // FindByID は指定されたIDを持つユーザを取得します。
-func (r *UserRepository) FindByID(id string) (*entity.User, error) {
+func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 	return nil, nil
 }
 
 // FindIDByUID は指定されたUIDを持つユーザのIDを取得します。
-func (r *UserRepository) FindIDByUID(uid string) (*entity.Id, error) {
+func (r *UserRepository) FindIDByUID(uid int) (*entity.Id, error) {
 	return nil, nil
 }
 
@@ -39,11 +39,11 @@ func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
 }
 
 // UpdateByID はユーザの情報を更新します。
-func (r *UserRepository) UpdateByID(id string, user *entity.User) (*entity.User, error) {
+func (r *UserRepository) UpdateByID(id int, user *entity.User) (*entity.User, error) {
 	return nil, nil
 }
 
 // DeleteByID は指定されたIDを持つユーザを削除します。
-func (r *UserRepository) DeleteByID(id string) (*entity.User, error) {
+func (r *UserRepository) DeleteByID(id int) (*entity.User, error) {
 	return nil, nil
 }
