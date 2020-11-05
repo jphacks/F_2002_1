@@ -3,12 +3,12 @@ package handler
 import (
 	"errors"
 	"net/http"
-	"strconv"
 
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
+	"github.com/jphacks/F_2002_1/go/web/handler/request"
 
 	"github.com/labstack/echo/v4"
 )
@@ -24,12 +24,16 @@ func NewCultivationsHandler(db *gorm.DB) *CultivationsHandler {
 }
 
 // GetCultivation は GET /cultivations/:id に対応するハンドラです。
-func (h *UserCultivationsHandler) GetCultivation(c echo.Context) error {
+func (h *CultivationsHandler) GetCultivation(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
+	req := &request.CultivationsGet{}
+	if err := c.Bind(&req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 
-	cultivation, err := h.cultivationUC.ReadCultivation(id)
+	cultivation, err := h.cultivationUC.ReadCultivation(req.CultivationID)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -45,13 +49,13 @@ func (h *UserCultivationsHandler) GetCultivation(c echo.Context) error {
 func (h *CultivationsHandler) UpdateCultivation(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
-	cultivation := &entity.Cultivation{ID: id}
-	if err := c.Bind(cultivation); err != nil {
+	req := &request.CultivationsPut{}
+	if err := c.Bind(req); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
+	cultivation := &entity.Cultivation{} // TODO
 	cultivation, err := h.cultivationUC.UpdateCultivation(cultivation)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
@@ -68,8 +72,13 @@ func (h *CultivationsHandler) UpdateCultivation(c echo.Context) error {
 func (h *CultivationsHandler) DeleteCultivation(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
-	cultivation, err := h.cultivationUC.DeleteCultivation(id)
+	req := &request.CultivationsDelete{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	cultivation, err := h.cultivationUC.DeleteCultivation(req.CultivationID)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)

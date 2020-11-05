@@ -3,13 +3,13 @@ package handler
 import (
 	"errors"
 	"net/http"
-	"strconv"
 
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
 	"github.com/jphacks/F_2002_1/go/web/fbauth"
+	"github.com/jphacks/F_2002_1/go/web/handler/request"
 
 	"github.com/labstack/echo/v4"
 )
@@ -29,14 +29,9 @@ func NewUserCultivationsHandler(db *gorm.DB) *UserCultivationsHandler {
 func (h *UserCultivationsHandler) GetUserCultivation(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
-	cultivation, err := h.cultivationUC.ReadCultivation(id)
-	if err != nil {
-		if errors.Is(err, entity.ErrUserNotFound) {
-			logger.Debug(err)
-			return echo.NewHTTPError(http.StatusNotFound)
-		}
-		logger.Error(err)
+	req := &request.UserCultivationsGetByID{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
@@ -50,9 +45,31 @@ func (h *UserCultivationsHandler) GetUserCultivation(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-	if uid != cultivation.UserID {
+
+	isExist, err := h.cultivationUC.CheckCultivationByIDUID(req.CultivationID, uid)
+	if err != nil {
+		if errors.Is(err, entity.ErrCultivationNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	if !isExist {
 		return echo.NewHTTPError(http.StatusForbidden)
 	}
+
+	cultivation, err := h.cultivationUC.ReadCultivation(req.CultivationID)
+	if err != nil {
+		if errors.Is(err, entity.ErrUserNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
 	return c.JSON(http.StatusOK, cultivation)
 }
 
@@ -60,6 +77,12 @@ func (h *UserCultivationsHandler) GetUserCultivation(c echo.Context) error {
 func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 	logger := log.New()
 
+	req := &request.UserCultivationsPost{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
 	uuid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	uid, err := h.userUC.ReadUserIDByUID(uuid)
 	if err != nil {
@@ -71,11 +94,7 @@ func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	cultivation := &entity.Cultivation{UserID: uid}
-	if err := c.Bind(cultivation); err != nil {
-		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
-		return echo.NewHTTPError(http.StatusInternalServerError)
-	}
+	cultivation := &entity.Cultivation{UserID: uid} // TODO
 	cultivation, err = h.cultivationUC.CreateCultivation(cultivation)
 	if err != nil {
 		logger.Error(err)
@@ -89,7 +108,11 @@ func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 func (h *UserCultivationsHandler) UpdateUserCultivation(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
+	req := &request.UserCultivationsPutByID{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 
 	uuid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	uid, err := h.userUC.ReadUserIDByUID(uuid)
@@ -102,17 +125,21 @@ func (h *UserCultivationsHandler) UpdateUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	isExist, _ := h.cultivationUC.CheckCultivationByIDUID(id, uid)
+	isExist, err := h.cultivationUC.CheckCultivationByIDUID(req.CultivationID, uid)
+	if err != nil {
+		if errors.Is(err, entity.ErrCultivationNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
 	if !isExist {
 		return echo.NewHTTPError(http.StatusForbidden)
 	}
 
-	cultivation := &entity.Cultivation{ID: id, UserID: uid}
-	if err := c.Bind(cultivation); err != nil {
-		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
-		return echo.NewHTTPError(http.StatusInternalServerError)
-	}
-
+	cultivation := &entity.Cultivation{ID: req.CultivationID, UserID: uid} // TODO
 	cultivation, err = h.cultivationUC.UpdateCultivation(cultivation)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
@@ -129,7 +156,11 @@ func (h *UserCultivationsHandler) UpdateUserCultivation(c echo.Context) error {
 func (h *UserCultivationsHandler) DeleteUserCultivation(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
+	req := &request.UserCultivationsDeleteByID{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 
 	uuid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	uid, err := h.userUC.ReadUserIDByUID(uuid)
@@ -142,18 +173,21 @@ func (h *UserCultivationsHandler) DeleteUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	isExist, _ := h.cultivationUC.CheckCultivationByIDUID(id, uid)
+	isExist, err := h.cultivationUC.CheckCultivationByIDUID(req.CultivationID, uid)
+	if err != nil {
+		if errors.Is(err, entity.ErrCultivationNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
 	if !isExist {
 		return echo.NewHTTPError(http.StatusForbidden)
 	}
 
-	cultivation := &entity.Cultivation{ID: id, UserID: uid}
-	if err := c.Bind(cultivation); err != nil {
-		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
-		return echo.NewHTTPError(http.StatusInternalServerError)
-	}
-
-	cultivation, err = h.cultivationUC.DeleteCultivation(id)
+	cultivation, err := h.cultivationUC.DeleteCultivation(req.CultivationID)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)

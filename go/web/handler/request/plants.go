@@ -3,7 +3,7 @@ package request
 type PlantGet struct{}
 
 type PlantGetById struct {
-	PlantId int `json:"plant_id"`
+	PlantID int `param:"plant_id"`
 }
 
 type PlantPost struct {
@@ -11,10 +11,10 @@ type PlantPost struct {
 }
 
 type PlantPutById struct {
-	PlantId int    `json:"plant_id"`
+	PlantID int    `param:"plant_id"`
 	Name    string `json:"name"`
 }
 
 type PlantDeleteById struct {
-	PlantId int `json:"plant_id"`
+	PlantID int `param:"plant_id"`
 }

@@ -9,6 +9,7 @@ import (
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
 	"github.com/jphacks/F_2002_1/go/web/fbauth"
+	"github.com/jphacks/F_2002_1/go/web/handler/request"
 
 	"github.com/labstack/echo/v4"
 )
@@ -26,6 +27,12 @@ func NewUserHandler(db *gorm.DB) *UserHandler {
 // GetUser は GET /user に対応するハンドラです。
 func (h *UserHandler) GetUser(c echo.Context) error {
 	logger := log.New()
+
+	req := &request.UserGet{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 
 	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	id, err := h.userUC.ReadUserIDByUID(uid)
@@ -54,6 +61,12 @@ func (h *UserHandler) GetUser(c echo.Context) error {
 func (h *UserHandler) UpdateUser(c echo.Context) error {
 	logger := log.New()
 
+	req := &request.UserGet{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
 	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	id, err := h.userUC.ReadUserIDByUID(uid)
 	if err != nil {
@@ -65,12 +78,7 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	user := &entity.User{ID: id}
-	if err := c.Bind(user); err != nil {
-		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
-		return echo.NewHTTPError(http.StatusInternalServerError)
-	}
-
+	user := &entity.User{ID: id} // TODO
 	user, err = h.userUC.UpdateUser(user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -86,6 +94,12 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 // DeleteUser は DELETE /user に対応するハンドラです。
 func (h *UserHandler) DeleteUser(c echo.Context) error {
 	logger := log.New()
+
+	req := &request.UserGet{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 
 	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	id, err := h.userUC.ReadUserIDByUID(uid)

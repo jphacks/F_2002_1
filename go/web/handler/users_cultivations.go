@@ -3,12 +3,12 @@ package handler
 import (
 	"errors"
 	"net/http"
-	"strconv"
 
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
+	"github.com/jphacks/F_2002_1/go/web/handler/request"
 
 	"github.com/labstack/echo/v4"
 )
@@ -27,8 +27,13 @@ func NewUsersCultivationsHandler(db *gorm.DB) *UsersCultivationsHandler {
 func (h *UsersCultivationsHandler) GetUsersCultivationsByUID(c echo.Context) error {
 	logger := log.New()
 
-	uid, _ := strconv.Atoi(c.Param("id"))
-	cultivation, err := h.cultivationUC.ReadCultivationsByUID(uid)
+	req := &request.UsersCultivationsGet{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	cultivation, err := h.cultivationUC.ReadCultivationsByUID(req.UserID)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)
@@ -44,13 +49,13 @@ func (h *UsersCultivationsHandler) GetUsersCultivationsByUID(c echo.Context) err
 func (h *UsersCultivationsHandler) PostUsersCultivation(c echo.Context) error {
 	logger := log.New()
 
-	uid, _ := strconv.Atoi(c.Param("id"))
-	cultivation := &entity.Cultivation{UserID: uid} // req
-	if err := c.Bind(cultivation); err != nil {
+	req := &request.UsersCultivationsPost{}
+	if err := c.Bind(req); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
+	cultivation := &entity.Cultivation{UserID: req.UserID} // TODO
 	cultivation, err := h.cultivationUC.CreateCultivation(cultivation)
 	if err != nil {
 		logger.Error(err)

@@ -3,12 +3,12 @@ package handler
 import (
 	"errors"
 	"net/http"
-	"strconv"
 
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
+	"github.com/jphacks/F_2002_1/go/web/handler/request"
 
 	"github.com/labstack/echo/v4"
 )
@@ -39,8 +39,13 @@ func (h *UsersHandler) GetUsers(c echo.Context) error {
 func (h *UsersHandler) GetUser(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
-	user, err := h.userUC.ReadUser(id)
+	req := &request.UsersGetByID{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	user, err := h.userUC.ReadUser(req.UserID)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -56,12 +61,13 @@ func (h *UsersHandler) GetUser(c echo.Context) error {
 func (h *UsersHandler) PostUser(c echo.Context) error {
 	logger := log.New()
 
-	user := new(entity.User) // req
-	if err := c.Bind(user); err != nil {
+	req := &request.UsersPost{}
+	if err := c.Bind(req); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
+	user := &entity.User{} // TODO
 	user, err := h.userUC.CreateUser(user)
 	if err != nil {
 		logger.Error(err)
@@ -75,13 +81,13 @@ func (h *UsersHandler) PostUser(c echo.Context) error {
 func (h *UsersHandler) UpdateUser(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
-	user := &entity.User{ID: id}
-	if err := c.Bind(user); err != nil {
+	req := &request.UsersPutByID{}
+	if err := c.Bind(req); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
+	user := &entity.User{} // TODO
 	user, err := h.userUC.UpdateUser(user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -98,8 +104,13 @@ func (h *UsersHandler) UpdateUser(c echo.Context) error {
 func (h *UsersHandler) DeleteUser(c echo.Context) error {
 	logger := log.New()
 
-	id, _ := strconv.Atoi(c.Param("id"))
-	user, err := h.userUC.DeleteUser(id)
+	req := &request.UsersPutByID{}
+	if err := c.Bind(req); err != nil {
+		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	user, err := h.userUC.DeleteUser(req.UserID)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)

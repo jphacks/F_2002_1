@@ -1,14 +1,9 @@
 package request
 
-type UserGet struct {
-	IdToken string `json:"Authorization"`
-}
+type UserGet struct{}
 
 type UserPut struct {
-	IdToken string `json:"Authorization"`
-	Name    string `json:"name"`
+	Name string `json:"name"`
 }
 
-type UserDelete struct {
-	IdToken string `json:"Authorization"`
-}
+type UserDelete struct{}
