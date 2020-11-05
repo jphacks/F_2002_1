@@ -71,11 +71,9 @@ IoT機能…適切な水分量と現状の水分量から、チャット機能�
 
 ### 注力したこと（こだわり等）
 - デザイン
-  - 今回、三人のデザイナーで協力して制作したため、デザイントーンがずれないように認識のすり合わせを念入りに行った。
-UIUX、デザインスタイルはヒアリングを元に、刺さるものを考案し制作した。
+  - 今回、三人のデザイナーで協力して制作したため、デザイントーンがずれないように認識のすり合わせを念入りに行った。UIUX、デザインスタイルはヒアリングを元に、刺さるものを考案し制作した。
 - 機能
   - 提供いただいた機材を元にできることを増やし、チャットに連動できるようにした。
-
 
 ## 開発技術
 
@@ -87,17 +85,22 @@ UIUX、デザインスタイルはヒアリングを元に、刺さるものを�
 - モックサーバー: Postman
 - データベース: MySQL v8.0
 - 環境: Docker Compose v3
+- サーバーレスサーバー：Firebase
+- CI/ CD 環境：GitHub Actions
 
 #### フレームワーク・ライブラリ・モジュール
 - go v1.15.2
   - [echo/v4](https://github.com/labstack/echo)
   - [gorm](https://github.com/go-gorm/gorm)
   - [realize](https://github.com/oxequa/realize)
+- TypeScript
+  - [NestJS](https://docs.nestjs.com/)
+  - [Firebase](https://firebase.google.com/?hl=ja)
 
 #### デバイス
 
--
--
+- Raspberry PI
+
 
 ### 独自技術
 
