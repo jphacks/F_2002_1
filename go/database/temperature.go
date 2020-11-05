@@ -28,13 +28,14 @@ func (r *TemperatureRepository) FindByID(id int) (*entity.Temperature, error) {
 func (r *TemperatureRepository) FindAll() (*entity.Temperatures, error) {
 	return nil, nil
 }
+
 // Store は気温を新規保存します。
 func (r *TemperatureRepository) Store(temperature *entity.Temperature) (*entity.Temperature, error) {
 	return nil, nil
 }
 
 // UpdateByID は気温の情報を更新します。
-func (r *TemperatureRepository) UpdateByID(id int, temperature *entity.Temperature) (*entity.Temperature, error) {
+func (r *TemperatureRepository) UpdateByID(temperature *entity.Temperature) (*entity.Temperature, error) {
 	return nil, nil
 }
 

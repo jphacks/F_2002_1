@@ -28,13 +28,14 @@ func (r *SeasonRepository) FindByID(id int) (*entity.Season, error) {
 func (r *SeasonRepository) FindAll() (*entity.Seasons, error) {
 	return nil, nil
 }
+
 // Store は季節を新規保存します。
 func (r *SeasonRepository) Store(season *entity.Season) (*entity.Season, error) {
 	return nil, nil
 }
 
 // UpdateByID は季節の情報を更新します。
-func (r *SeasonRepository) UpdateByID(id int, season *entity.Season) (*entity.Season, error) {
+func (r *SeasonRepository) UpdateByID(season *entity.Season) (*entity.Season, error) {
 	return nil, nil
 }
 

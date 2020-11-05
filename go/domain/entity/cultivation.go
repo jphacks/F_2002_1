@@ -7,6 +7,8 @@ package entity
 // type records []record
 
 type Cultivation struct {
+	ID     int
+	UserID int
 }
 
 type Cultivations []Cultivation

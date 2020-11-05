@@ -6,7 +6,7 @@ import "github.com/jphacks/F_2002_1/go/domain/entity"
 type Season interface {
 	FindByID(id int) (*entity.Season, error)
 	FindAll() (*entity.Seasons, error)
-	Store(season *entity.Season)  (*entity.Season, error)
-	UpdateByID(id int, season *entity.Season) (*entity.Season, error)
+	Store(season *entity.Season) (*entity.Season, error)
+	UpdateByID(season *entity.Season) (*entity.Season, error)
 	DeleteByID(id int) (*entity.Season, error)
 }

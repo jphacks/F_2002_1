@@ -28,13 +28,14 @@ func (r *WateringRepository) FindByID(id int) (*entity.Watering, error) {
 func (r *WateringRepository) FindAll() (*entity.Waterings, error) {
 	return nil, nil
 }
+
 // Store は水やりの記録を新規保存します。
 func (r *WateringRepository) Store(watering *entity.Watering) (*entity.Watering, error) {
 	return nil, nil
 }
 
 // UpdateByID は水やりの記録の情報を更新します。
-func (r *WateringRepository) UpdateByID(id int, watering *entity.Watering) (*entity.Watering, error) {
+func (r *WateringRepository) UpdateByID(watering *entity.Watering) (*entity.Watering, error) {
 	return nil, nil
 }
 

@@ -1,23 +1,19 @@
 package request
 
 type UserCultivationsGetByID struct {
-	IdToken       string `json:"Authorization"`
-	CultivationId int    `json:"cultivation_id"`
+	CultivationID int `param:"cultivation_id"`
 }
 
 type UserCultivationsPost struct {
-	IdToken  string `json:"Authorization"`
-	PlantId  int    `json:"plant_id"`
+	PlantID  int    `json:"plant_id"`
 	NickName string `json:"nick_name"`
 }
 
-type UserCultivationsPutById struct {
-	IdToken       string `json:"Authorization"`
-	CultivationId int    `json:"cultivation_id"`
+type UserCultivationsPutByID struct {
+	CultivationID int    `param:"cultivation_id"`
 	NickName      string `json:"nick_name"`
 }
 
-type UserCultivationsDeleteById struct {
-	IdToken       string `json:"Authorization"`
-	CultivationId int    `json:"cultivation_id"`
+type UserCultivationsDeleteByID struct {
+	CultivationID int `param:"cultivation_id"`
 }

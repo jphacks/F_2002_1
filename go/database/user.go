@@ -24,22 +24,23 @@ func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 	return nil, nil
 }
 
-// FindIDByUID は指定されたUIDを持つユーザのIDを取得します。
-func (r *UserRepository) FindIDByUID(uid int) (*entity.Id, error) {
-	return nil, nil
+// FindIDByUID は指定されたUIDを持つユーザを取得します。
+func (r *UserRepository) FindIDByUID(uid string) (int, error) {
+	return 0, nil
 }
 
 // FindAll は指定されたIDを持つユーザを取得します。
 func (r *UserRepository) FindAll() (*entity.Users, error) {
 	return nil, nil
 }
+
 // Store はユーザを新規保存します。
 func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
 	return nil, nil
 }
 
 // UpdateByID はユーザの情報を更新します。
-func (r *UserRepository) UpdateByID(id int, user *entity.User) (*entity.User, error) {
+func (r *UserRepository) UpdateByID(user *entity.User) (*entity.User, error) {
 	return nil, nil
 }
 

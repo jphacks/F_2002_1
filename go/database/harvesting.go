@@ -28,13 +28,14 @@ func (r *HarvestingRepository) FindByID(id int) (*entity.Harvesting, error) {
 func (r *HarvestingRepository) FindAll() (*entity.Harvestings, error) {
 	return nil, nil
 }
+
 // Store は収穫の記録を新規保存します。
 func (r *HarvestingRepository) Store(harvesting *entity.Harvesting) (*entity.Harvesting, error) {
 	return nil, nil
 }
 
 // UpdateByID は収穫の記録の情報を更新します。
-func (r *HarvestingRepository) UpdateByID(id int, harvesting *entity.Harvesting) (*entity.Harvesting, error) {
+func (r *HarvestingRepository) UpdateByID(harvesting *entity.Harvesting) (*entity.Harvesting, error) {
 	return nil, nil
 }
 

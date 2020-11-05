@@ -24,17 +24,22 @@ func (r *CultivationRepository) FindByID(id int) (*entity.Cultivation, error) {
 	return nil, nil
 }
 
-// FindAll は指定されたIDを持つ栽培している植物を取得します。
-func (r *CultivationRepository) FindAll() (*entity.Cultivations, error) {
+// FindAllbyUID は指定されたIDを持つ栽培している植物を取得します。
+func (r *CultivationRepository) FindAllByUID(uid int) (*entity.Cultivations, error) {
 	return nil, nil
 }
+
+func (r *CultivationRepository) CheckByIDUID(id int, uid int) (bool, error) {
+	return false, nil
+}
+
 // Store は栽培している植物を新規保存します。
 func (r *CultivationRepository) Store(cultivation *entity.Cultivation) (*entity.Cultivation, error) {
 	return nil, nil
 }
 
 // UpdateByID は栽培している植物の情報を更新します。
-func (r *CultivationRepository) UpdateByID(id int, cultivation *entity.Cultivation) (*entity.Cultivation, error) {
+func (r *CultivationRepository) UpdateByID(cultivation *entity.Cultivation) (*entity.Cultivation, error) {
 	return nil, nil
 }
 

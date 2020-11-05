@@ -6,7 +6,7 @@ import "github.com/jphacks/F_2002_1/go/domain/entity"
 type Water interface {
 	FindByID(id int) (*entity.Water, error)
 	FindAll() (*entity.Waters, error)
-	Store(water *entity.Water)  (*entity.Water, error)
-	UpdateByID(id int, water *entity.Water) (*entity.Water, error)
+	Store(water *entity.Water) (*entity.Water, error)
+	UpdateByID(water *entity.Water) (*entity.Water, error)
 	DeleteByID(id int) (*entity.Water, error)
 }
