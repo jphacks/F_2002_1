@@ -1,13 +1,8 @@
 import { Injectable } from "@nestjs/common";
+
 import {database} from "../plugins/firebase.config";
+import {IChat} from "../interfaces/chat";
 
-
-type Chat = {
-  id?:string,
-  from: string,
-  message: string,
-  createdAt:string,
-}
 
 @Injectable()
 export class AppService {
@@ -20,13 +15,22 @@ export class AppService {
    * @param roomId :string, 送信先のチャットIDを送信する
    * @param message:string, 
   */
-  public sendText(roomId:string, chat:Chat){
+  public async responseText(roomId:string, inputMessage:IChat){
+    let responseMessage:string
 
-    // database.ref(); // ここで Firestore へデータを送信する
+    // MEMO: この処理をCSV ファイルで検索できるようにする(index を利用して検索する)
+    switch(inputMessage.message){
+      case "水やり":
+        return "";
+      default:
+        responseMessage = "すみません。このメッセージには対応していません。"
+    }
+
+    // ここでチャットを流す
+    // database.ref("chat_room").child(roomId).push(); // ここで Firestore へデータを送信する
     return;
   }
   
-  public 
 
 
 }

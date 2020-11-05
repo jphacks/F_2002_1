@@ -1,5 +1,6 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Param, Post ,Body} from "@nestjs/common";
 import { AppService } from "../services/app.service";
+import {IChat} from "../interfaces/chat";
 
 @Controller()
 export class AppController {
@@ -7,6 +8,11 @@ export class AppController {
   @Get()
   hello(): string {
     return this.appsService.hello();
+  }
+  // チャット
+  @Post("/chat/:roomId")
+  responseText(roomId:string,chat:IChat){
+    return this.appsService.responseText(roomId,chat)
   }
 
 }
