@@ -29,10 +29,6 @@ func (r *CultivationRepository) FindAllByUID(uid int) (*entity.Cultivations, err
 	return nil, nil
 }
 
-func (r *CultivationRepository) CheckByIDUID(id int, uid int) (bool, error) {
-	return false, nil
-}
-
 // Store は栽培している植物を新規保存します。
 func (r *CultivationRepository) Store(cultivation *entity.Cultivation) (*entity.Cultivation, error) {
 	return nil, nil
@@ -49,6 +45,6 @@ func (r *CultivationRepository) DeleteByID(id int) (*entity.Cultivation, error) 
 }
 
 // CheckByIDUID は栽培している植物にid, user_idの組のデータが存在すればtrue、なければfalseを返却します。
-func (r *CultivationRepository) CheckByIDUID(id int, uid string) (bool, error) {
-	return true, nil
+func (r *CultivationRepository) CheckByIDUID(id int, uid int) (bool, error) {
+	return false, nil
 }
