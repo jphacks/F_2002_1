@@ -35,7 +35,7 @@ func (h *CultivationsHandler) GetCultivation(c echo.Context) error {
 
 	cultivation, err := h.cultivationUC.ReadCultivation(req.CultivationID)
 	if err != nil {
-		if errors.Is(err, entity.ErrUserNotFound) {
+		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)
 			return echo.NewHTTPError(http.StatusNotFound)
 		}
