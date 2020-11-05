@@ -29,7 +29,7 @@ func (u *UserUseCase) ReadUsers() (*entity.Users, error) {
 }
 
 // ReadUser はユーザを取得します。
-func (u *UserUseCase) ReadUser(id string) (*entity.User, error) {
+func (u *UserUseCase) ReadUser(id int) (*entity.User, error) {
 	user, err := u.userRepo.FindByID(id)
 	if err != nil {
 		return nil, fmt.Errorf("find user from repo id=%s: %w", id, err)
@@ -37,13 +37,13 @@ func (u *UserUseCase) ReadUser(id string) (*entity.User, error) {
 	return user, nil
 }
 
-// ReadUserByUid はユーザを取得します。
-func (u *UserUseCase) ReadUserByUid(uid string) (*entity.User, error) {
-	user, err := u.userRepo.FindByUID(uid)
+// ReadUserIDByUID はユーザを取得します。
+func (u *UserUseCase) ReadUserIDByUID(uid string) (int, error) {
+	id, err := u.userRepo.FindIDByUID(uid)
 	if err != nil {
-		return nil, fmt.Errorf("find user from repo uid=%s: %w", uid, err)
+		return 0, fmt.Errorf("find user from repo uid=%s: %w", uid, err)
 	}
-	return user, nil
+	return id, nil
 }
 
 // CreateUser はユーザを作成します。
@@ -56,37 +56,19 @@ func (u *UserUseCase) CreateUser(user *entity.User) (*entity.User, error) {
 }
 
 // UpdateUser はユーザを作成します。
-func (u *UserUseCase) UpdateUser(id string, user *entity.User) (*entity.User, error) {
-	user, err := u.userRepo.UpdateByID(id, user)
+func (u *UserUseCase) UpdateUser(user *entity.User) (*entity.User, error) {
+	user, err := u.userRepo.UpdateByID(user)
 	if err != nil {
-		return nil, fmt.Errorf("update user from repo id=%s: %w", id, err)
-	}
-	return user, nil
-}
-
-// UpdateUserByUid はユーザを作成します。
-func (u *UserUseCase) UpdateUserByUid(uid string, user *entity.User) (*entity.User, error) {
-	user, err := u.userRepo.UpdateByIDUid(uid, user)
-	if err != nil {
-		return nil, fmt.Errorf("update user from repo uid=%s: %w", uid, err)
+		return nil, fmt.Errorf("update user from repo id=%s: %w", user.ID, err)
 	}
 	return user, nil
 }
 
 // DeleteUser はユーザを作成します。
-func (u *UserUseCase) DeleteUser(id string) (*entity.User, error) {
+func (u *UserUseCase) DeleteUser(id int) (*entity.User, error) {
 	user, err := u.userRepo.DeleteByID(id)
 	if err != nil {
 		return nil, fmt.Errorf("delete user from repo id=%s: %w", id, err)
-	}
-	return user, nil
-}
-
-// DeleteUserByUid はユーザを作成します。
-func (u *UserUseCase) DeleteUserByUid(uid string) (*entity.User, error) {
-	user, err := u.userRepo.DeleteByUid(uid)
-	if err != nil {
-		return nil, fmt.Errorf("delete user from repo uid=%s: %w", uid, err)
 	}
 	return user, nil
 }

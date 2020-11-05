@@ -3,6 +3,7 @@ package handler
 import (
 	"errors"
 	"net/http"
+	"strconv"
 
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
@@ -22,14 +23,14 @@ func NewUsersCultivationsHandler(db *gorm.DB) *UsersCultivationsHandler {
 	return &UsersCultivationsHandler{cultivationUC: usecase.NewCultivationUseCase(db)}
 }
 
-// GetUser は GET /cultivations/:id に対応するハンドラです。
-func (h *UsersCultivationsHandler) GetCultivation(c echo.Context) error {
+// GetCultivationsByUID は GET /users/:id/cultivations に対応するハンドラです。
+func (h *UsersCultivationsHandler) GetUsersCultivationsByUID(c echo.Context) error {
 	logger := log.New()
-	id := c.Param("id")
 
-	cultivation, err := h.cultivationUC.ReadCultivation(id)
+	uid, _ := strconv.Atoi(c.Param("id"))
+	cultivation, err := h.cultivationUC.ReadCultivationsByUID(uid)
 	if err != nil {
-		if errors.Is(err, entity.ErrUserNotFound) {
+		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)
 			return echo.NewHTTPError(http.StatusNotFound)
 		}
@@ -39,18 +40,18 @@ func (h *UsersCultivationsHandler) GetCultivation(c echo.Context) error {
 	return c.JSON(http.StatusOK, cultivation)
 }
 
-// PostUser は POST /cultivations に対応するハンドラです。
-func (h *UsersCultivationsHandler) PostUser(c echo.Context) error {
+// PostUsersCultivation は POST /user/cultivations に対応するハンドラです。
+func (h *UsersCultivationsHandler) PostUsersCultivation(c echo.Context) error {
 	logger := log.New()
-	uid := c.Param("id")
 
-	cultivation := new(entity.Cultivation) // req
+	uid, _ := strconv.Atoi(c.Param("id"))
+	cultivation := &entity.Cultivation{UserID: uid} // req
 	if err := c.Bind(cultivation); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	cultivation, err := h.cultivationUC.CreateCultivation(uid, cultivation)
+	cultivation, err := h.cultivationUC.CreateCultivation(cultivation)
 	if err != nil {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)

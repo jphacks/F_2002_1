@@ -8,6 +8,7 @@ import (
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
+	"github.com/jphacks/F_2002_1/go/web/fbauth"
 
 	"github.com/labstack/echo/v4"
 )
@@ -25,9 +26,19 @@ func NewUserHandler(db *gorm.DB) *UserHandler {
 // GetUser は GET /user に対応するハンドラです。
 func (h *UserHandler) GetUser(c echo.Context) error {
 	logger := log.New()
-	uid := c.Request().Header.Get("Authorization")
 
-	user, err := h.userUC.ReadUserByUid(uid)
+	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	id, err := h.userUC.ReadUserIDByUID(uid)
+	if err != nil {
+		if errors.Is(err, entity.ErrUserNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	user, err := h.userUC.ReadUser(id)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -42,15 +53,25 @@ func (h *UserHandler) GetUser(c echo.Context) error {
 // UpdateUser は PUT /user に対応するハンドラです。
 func (h *UserHandler) UpdateUser(c echo.Context) error {
 	logger := log.New()
-	user := new(entity.User) // req
+
+	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	id, err := h.userUC.ReadUserIDByUID(uid)
+	if err != nil {
+		if errors.Is(err, entity.ErrUserNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	user := &entity.User{ID: id}
 	if err := c.Bind(user); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uid := c.Request().Header.Get("Authorization")
-
-	user, err := h.userUC.UpdateUserByUid(uid, user)
+	user, err = h.userUC.UpdateUser(user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -65,9 +86,19 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 // DeleteUser は DELETE /user に対応するハンドラです。
 func (h *UserHandler) DeleteUser(c echo.Context) error {
 	logger := log.New()
-	uid := uid := c.Request().Header.Get("Authorization")
 
-	user, err := h.userUC.DeleteUserByUid(uid)
+	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	id, err := h.userUC.ReadUserIDByUID(uid)
+	if err != nil {
+		if errors.Is(err, entity.ErrUserNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	user, err := h.userUC.DeleteUser(id)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)

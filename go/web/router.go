@@ -1,11 +1,9 @@
 package web
 
 import (
-	"log"
 	"net/http"
 
 	"github.com/jphacks/F_2002_1/go/database"
-	"github.com/jphacks/F_2002_1/go/usecase"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/web/handler"
 
@@ -14,7 +12,7 @@ import (
 )
 
 // NewServer はREST APIエンドポイントのハンドラやミドルウェアが登録されたechoの構造体を返却します。
-func NewServer(logger *log.Logger) *echo.Echo {
+func NewServer() *echo.Echo {
 	logger := log.New()
 
 	db, err := database.NewDB()
@@ -38,8 +36,8 @@ func NewServer(logger *log.Logger) *echo.Echo {
 	v1.GET("/", hello)
 	// v1.GET("/admin/reset", ResetDB)
 
-	plantHandler:= handler.NewPlantHandler(db)
-	v1.GET("/plants", plantHandler.GetPlants)
+	plantsHandler := handler.NewPlantHandler(db)
+	v1.GET("/plants", plantsHandler.GetPlants)
 
 	usersHandler := handler.NewUsersHandler(db)
 	// v1.GET("/users", usersHandler.GetUsers)
@@ -63,10 +61,10 @@ func NewServer(logger *log.Logger) *echo.Echo {
 	// v1.DELETE("/cultivations/:id", cultivationsHandler.DeleteCultivation)
 
 	userCultivationsHandler := handler.NewUserCultivationsHandler(db)
-	v1.POST("/user/cultivations", userCultivationsHandler.PostCultivation)
-	v1.GET("/user/cultivations/:id", userCultivationsHandler.GetCultivation)
-	v1.PUT("/user/cultivations/:id", userCultivationsHandler.UpdateCultivation)
-	v1.DELETE("/user/cultivations/:id", userCultivationsHandler.DeleteCultivation)
+	v1.POST("/user/cultivations", userCultivationsHandler.PostUserCultivation)
+	v1.GET("/user/cultivations/:id", userCultivationsHandler.GetUserCultivation)
+	v1.PUT("/user/cultivations/:id", userCultivationsHandler.UpdateUserCultivation)
+	v1.DELETE("/user/cultivations/:id", userCultivationsHandler.DeleteUserCultivation)
 
 	return e
 }

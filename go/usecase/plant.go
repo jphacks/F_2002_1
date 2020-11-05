@@ -29,7 +29,7 @@ func (p *PlantUseCase) ReadPlants() (*entity.Plants, error) {
 }
 
 // // ReadPlant は植物を取得します。
-// func (p *PlantUseCase) ReadPlant(id string) (*entity.Plant, error) {
+// func (p *PlantUseCase) ReadPlant(id int) (*entity.Plant, error) {
 // 	plant, err := p.plantRepo.FindByID(id)
 // 	if err != nil {
 // 		return nil, fmt.Errorf("find plant from repo id=%s: %w", id, err)
@@ -47,16 +47,16 @@ func (p *PlantUseCase) ReadPlants() (*entity.Plants, error) {
 // }
 
 // // UpdatePlant は植物を編集します。
-// func (p *PlantUseCase) UpdatePlant(id string, plant *entity.Plant) (*entity.Plant, error) {
+// func (p *PlantUseCase) UpdatePlant(plant *entity.Plant) (*entity.Plant, error) {
 // 	plant, err := p.plantRepo.UpdateByID(id, plant)
 // 	if err != nil {
-// 		return nil, fmt.Errorf("update plant from repo id=%s: %w", id, err)
+// 		return nil, fmt.Errorf("update plant from repo id=%s: %w", plant.ID, err)
 // 	}
 // 	return plant, nil
 // }
 
 // // DeletePlant は植物を削除します。
-// func (p *PlantUseCase) DeletePlant(id string) (*entity.Plant, error) {
+// func (p *PlantUseCase) DeletePlant(id int) (*entity.Plant, error) {
 // 	plant, err := p.plantRepo.DeleteByID(id)
 // 	if err != nil {
 // 		return nil, fmt.Errorf("delete plant from repo id=%s: %w", id, err)

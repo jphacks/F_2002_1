@@ -17,7 +17,7 @@ type PlantHandler struct {
 
 // NewPlantHandler はPlantHandlerのポインタを生成する関数です。
 func NewPlantHandler(db *gorm.DB) *PlantHandler {
-	return &PlantHandler{plantUC: usecase.PlantUseCase(db)}
+	return &PlantHandler{plantUC: usecase.NewPlantUseCase(db)}
 }
 
 // GetPlants は GET /plants に対応するハンドラです。

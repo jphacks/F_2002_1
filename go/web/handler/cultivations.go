@@ -3,6 +3,7 @@ package handler
 import (
 	"errors"
 	"net/http"
+	"strconv"
 
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
@@ -23,13 +24,14 @@ func NewCultivationsHandler(db *gorm.DB) *CultivationsHandler {
 }
 
 // GetCultivation は GET /cultivations/:id に対応するハンドラです。
-func (h *CultivationsHandler) GetCultivations(c echo.Context) error {
+func (h *UserCultivationsHandler) GetCultivation(c echo.Context) error {
 	logger := log.New()
-	uid := c.Param("id")
 
-	cultivation, err := h.cultivationUC.ReadCultivationsByCultivationId(uid)
+	id, _ := strconv.Atoi(c.Param("id"))
+
+	cultivation, err := h.cultivationUC.ReadCultivation(id)
 	if err != nil {
-		if errors.Is(err, entity.ErrCultivationNotFound) {
+		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
 			return echo.NewHTTPError(http.StatusNotFound)
 		}
@@ -42,15 +44,15 @@ func (h *CultivationsHandler) GetCultivations(c echo.Context) error {
 // UpdateCultivation は PUT /cultivations/:id に対応するハンドラです。
 func (h *CultivationsHandler) UpdateCultivation(c echo.Context) error {
 	logger := log.New()
-	cultivation := new(entity.Cultivation) // req
+
+	id, _ := strconv.Atoi(c.Param("id"))
+	cultivation := &entity.Cultivation{ID: id}
 	if err := c.Bind(cultivation); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	id := c.Param("id")
-
-	cultivation, err := h.cultivationUC.UpdateCultivation(id, cultivation)
+	cultivation, err := h.cultivationUC.UpdateCultivation(cultivation)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)
@@ -63,11 +65,11 @@ func (h *CultivationsHandler) UpdateCultivation(c echo.Context) error {
 }
 
 // DeleteCultivation は DELETE /cultivation に対応するハンドラです。
-func (h *CultivationHandler) DeleteCultivation(c echo.Context) error {
+func (h *CultivationsHandler) DeleteCultivation(c echo.Context) error {
 	logger := log.New()
-	uid := c.Request().Header.Get("Authorization")
 
-	cultivation, err := h.cultivationUC.DeleteCultivationByUid(uid)
+	id, _ := strconv.Atoi(c.Param("id"))
+	cultivation, err := h.cultivationUC.DeleteCultivation(id)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)

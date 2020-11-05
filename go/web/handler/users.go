@@ -3,6 +3,7 @@ package handler
 import (
 	"errors"
 	"net/http"
+	"strconv"
 
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
@@ -37,8 +38,8 @@ func (h *UsersHandler) GetUsers(c echo.Context) error {
 // GetUser は GET /users/:id に対応するハンドラです。
 func (h *UsersHandler) GetUser(c echo.Context) error {
 	logger := log.New()
-	id := c.Param("id")
 
+	id, _ := strconv.Atoi(c.Param("id"))
 	user, err := h.userUC.ReadUser(id)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -54,6 +55,7 @@ func (h *UsersHandler) GetUser(c echo.Context) error {
 // PostUser は POST /users に対応するハンドラです。
 func (h *UsersHandler) PostUser(c echo.Context) error {
 	logger := log.New()
+
 	user := new(entity.User) // req
 	if err := c.Bind(user); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
@@ -72,15 +74,15 @@ func (h *UsersHandler) PostUser(c echo.Context) error {
 // UpdateUser は PUT /users/:id に対応するハンドラです。
 func (h *UsersHandler) UpdateUser(c echo.Context) error {
 	logger := log.New()
-	user := new(entity.User) // req
+
+	id, _ := strconv.Atoi(c.Param("id"))
+	user := &entity.User{ID: id}
 	if err := c.Bind(user); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	id := c.Param("id")
-
-	user, err := h.userUC.UpdateUser(id, user)
+	user, err := h.userUC.UpdateUser(user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
 			logger.Debug(err)
@@ -95,8 +97,8 @@ func (h *UsersHandler) UpdateUser(c echo.Context) error {
 // DeleteUser は DELETE /users/:id に対応するハンドラです。
 func (h *UsersHandler) DeleteUser(c echo.Context) error {
 	logger := log.New()
-	id := c.Param("id")
 
+	id, _ := strconv.Atoi(c.Param("id"))
 	user, err := h.userUC.DeleteUser(id)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {

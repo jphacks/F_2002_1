@@ -20,7 +20,7 @@ func NewTemperatureRepository(db *gorm.DB) *TemperatureRepository {
 }
 
 // FindByID は指定されたIDを持つ気温を取得します。
-func (r *TemperatureRepository) FindByID(id string) (*entity.Temperature, error) {
+func (r *TemperatureRepository) FindByID(id int) (*entity.Temperature, error) {
 	return nil, nil
 }
 
@@ -28,17 +28,18 @@ func (r *TemperatureRepository) FindByID(id string) (*entity.Temperature, error)
 func (r *TemperatureRepository) FindAll() (*entity.Temperatures, error) {
 	return nil, nil
 }
+
 // Store は気温を新規保存します。
 func (r *TemperatureRepository) Store(temperature *entity.Temperature) (*entity.Temperature, error) {
 	return nil, nil
 }
 
 // UpdateByID は気温の情報を更新します。
-func (r *TemperatureRepository) UpdateByID(id string, temperature *entity.Temperature) (*entity.Temperature, error) {
+func (r *TemperatureRepository) UpdateByID(temperature *entity.Temperature) (*entity.Temperature, error) {
 	return nil, nil
 }
 
 // DeleteByID は指定されたIDを持つ気温を削除します。
-func (r *TemperatureRepository) DeleteByID(id string) (*entity.Temperature, error) {
+func (r *TemperatureRepository) DeleteByID(id int) (*entity.Temperature, error) {
 	return nil, nil
 }
