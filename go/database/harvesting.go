@@ -20,7 +20,7 @@ func NewHarvestingRepository(db *gorm.DB) *HarvestingRepository {
 }
 
 // FindByID は指定されたIDを持つ収穫の記録を取得します。
-func (r *HarvestingRepository) FindByID(id string) (*entity.Harvesting, error) {
+func (r *HarvestingRepository) FindByID(id int) (*entity.Harvesting, error) {
 	return nil, nil
 }
 
@@ -34,11 +34,11 @@ func (r *HarvestingRepository) Store(harvesting *entity.Harvesting) (*entity.Har
 }
 
 // UpdateByID は収穫の記録の情報を更新します。
-func (r *HarvestingRepository) UpdateByID(id string, harvesting *entity.Harvesting) (*entity.Harvesting, error) {
+func (r *HarvestingRepository) UpdateByID(id int, harvesting *entity.Harvesting) (*entity.Harvesting, error) {
 	return nil, nil
 }
 
 // DeleteByID は指定されたIDを持つ収穫の記録を削除します。
-func (r *HarvestingRepository) DeleteByID(id string) (*entity.Harvesting, error) {
+func (r *HarvestingRepository) DeleteByID(id int) (*entity.Harvesting, error) {
 	return nil, nil
 }

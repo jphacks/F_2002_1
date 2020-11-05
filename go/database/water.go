@@ -20,7 +20,7 @@ func NewWaterRepository(db *gorm.DB) *WaterRepository {
 }
 
 // FindByID は指定されたIDを持つ水分量を取得します。
-func (r *WaterRepository) FindByID(id string) (*entity.Water, error) {
+func (r *WaterRepository) FindByID(id int) (*entity.Water, error) {
 	return nil, nil
 }
 
@@ -34,11 +34,11 @@ func (r *WaterRepository) Store(water *entity.Water) (*entity.Water, error) {
 }
 
 // UpdateByID は水分量の情報を更新します。
-func (r *WaterRepository) UpdateByID(id string, water *entity.Water) (*entity.Water, error) {
+func (r *WaterRepository) UpdateByID(id int, water *entity.Water) (*entity.Water, error) {
 	return nil, nil
 }
 
 // DeleteByID は指定されたIDを持つ水分量を削除します。
-func (r *WaterRepository) DeleteByID(id string) (*entity.Water, error) {
+func (r *WaterRepository) DeleteByID(id int) (*entity.Water, error) {
 	return nil, nil
 }

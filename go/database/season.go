@@ -20,7 +20,7 @@ func NewSeasonRepository(db *gorm.DB) *SeasonRepository {
 }
 
 // FindByID は指定されたIDを持つ季節を取得します。
-func (r *SeasonRepository) FindByID(id string) (*entity.Season, error) {
+func (r *SeasonRepository) FindByID(id int) (*entity.Season, error) {
 	return nil, nil
 }
 
@@ -34,11 +34,11 @@ func (r *SeasonRepository) Store(season *entity.Season) (*entity.Season, error) 
 }
 
 // UpdateByID は季節の情報を更新します。
-func (r *SeasonRepository) UpdateByID(id string, season *entity.Season) (*entity.Season, error) {
+func (r *SeasonRepository) UpdateByID(id int, season *entity.Season) (*entity.Season, error) {
 	return nil, nil
 }
 
 // DeleteByID は指定されたIDを持つ季節を削除します。
-func (r *SeasonRepository) DeleteByID(id string) (*entity.Season, error) {
+func (r *SeasonRepository) DeleteByID(id int) (*entity.Season, error) {
 	return nil, nil
 }

@@ -20,7 +20,7 @@ func NewCultivationRepository(db *gorm.DB) *CultivationRepository {
 }
 
 // FindByID は指定されたIDを持つ栽培している植物を取得します。
-func (r *CultivationRepository) FindByID(id string) (*entity.Cultivation, error) {
+func (r *CultivationRepository) FindByID(id int) (*entity.Cultivation, error) {
 	return nil, nil
 }
 
@@ -34,11 +34,11 @@ func (r *CultivationRepository) Store(cultivation *entity.Cultivation) (*entity.
 }
 
 // UpdateByID は栽培している植物の情報を更新します。
-func (r *CultivationRepository) UpdateByID(id string, cultivation *entity.Cultivation) (*entity.Cultivation, error) {
+func (r *CultivationRepository) UpdateByID(id int, cultivation *entity.Cultivation) (*entity.Cultivation, error) {
 	return nil, nil
 }
 
 // DeleteByID は指定されたIDを持つ栽培している植物を削除します。
-func (r *CultivationRepository) DeleteByID(id string) (*entity.Cultivation, error) {
+func (r *CultivationRepository) DeleteByID(id int) (*entity.Cultivation, error) {
 	return nil, nil
 }
