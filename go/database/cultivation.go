@@ -42,3 +42,8 @@ func (r *CultivationRepository) UpdateByID(id int, cultivation *entity.Cultivati
 func (r *CultivationRepository) DeleteByID(id int) (*entity.Cultivation, error) {
 	return nil, nil
 }
+
+// CheckByIDUID は栽培している植物にid, user_idの組のデータが存在すればtrue、なければfalseを返却します。
+func (r *CultivationRepository) CheckByIDUID(id int, userID int) (bool, error) {
+	return true, nil
+}

@@ -9,4 +9,5 @@ type Cultivation interface {
 	Store(cultivation *entity.Cultivation)  (*entity.Cultivation, error)
 	UpdateByID(id int, cultivation *entity.Cultivation) (*entity.Cultivation, error)
 	DeleteByID(id int) (*entity.Cultivation, error)
+	CheckByIDUID(id int, userID int) (bool, error)
 }
