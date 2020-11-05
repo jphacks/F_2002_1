@@ -24,8 +24,8 @@ func (r *UserRepository) FindByID(id string) (*entity.User, error) {
 	return nil, nil
 }
 
-// FindByUID は指定されたUIDを持つユーザを取得します。
-func (r *UserRepository) FindByUID(uid string) (*entity.User, error) {
+// FindIDByUID は指定されたUIDを持つユーザのIDを取得します。
+func (r *UserRepository) FindIDByUID(uid string) (*entity.Id, error) {
 	return nil, nil
 }
 
