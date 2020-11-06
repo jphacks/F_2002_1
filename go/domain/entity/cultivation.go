@@ -15,6 +15,7 @@ type Cultivation struct {
 	DeletedAt           *time.Time `sql:"index"`
 	UserID              int
 	PlantID             int
+	Plant               Plant
 	StartCultivatingAt  *time.Time
 	FinishCultivatingAt *time.Time
 	NickName            string

@@ -65,10 +65,10 @@ func (c *CultivationUseCase) UpdateCultivation(cultivation *entity.Cultivation) 
 }
 
 // DeleteCultivation は栽培物を作成します。
-func (c *CultivationUseCase) DeleteCultivation(id int) (*entity.Cultivation, error) {
-	cultivation, err := c.cultivationRepo.DeleteByID(id)
+func (c *CultivationUseCase) DeleteCultivation(id int) error {
+	err := c.cultivationRepo.DeleteByID(id)
 	if err != nil {
-		return nil, fmt.Errorf("delete cultivation from repo id=%s: %w", id, err)
+		return fmt.Errorf("delete cultivation from repo id=%s: %w", id, err)
 	}
-	return cultivation, nil
+	return nil
 }

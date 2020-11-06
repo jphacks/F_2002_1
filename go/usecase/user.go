@@ -65,10 +65,10 @@ func (u *UserUseCase) UpdateUser(user *entity.User) (*entity.User, error) {
 }
 
 // DeleteUser はユーザを作成します。
-func (u *UserUseCase) DeleteUser(id int) (*entity.User, error) {
-	user, err := u.userRepo.DeleteByID(id)
+func (u *UserUseCase) DeleteUser(id int) error {
+	err := u.userRepo.DeleteByID(id)
 	if err != nil {
-		return nil, fmt.Errorf("delete user from repo id=%s: %w", id, err)
+		return fmt.Errorf("delete user from repo id=%s: %w", id, err)
 	}
-	return user, nil
+	return nil
 }
