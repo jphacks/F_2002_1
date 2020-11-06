@@ -5,6 +5,11 @@ import * as express from "express";
 import * as functions from "firebase-functions";
 import * as helmet from "helmet";
 
+import { ConfigService } from '@nestjs/config';
+import * as firebase from 'firebase-admin'
+import { ServiceAccount } from "firebase-admin";
+
+
 const server = express();
 
 export const createNestServer = async (expressInstance: any) => {
@@ -12,12 +17,20 @@ export const createNestServer = async (expressInstance: any) => {
     AppModule,
     new ExpressAdapter(expressInstance)
   );
-
+  const configService: ConfigService = app.get(ConfigService);
+  const adminConfig: ServiceAccount = {
+    "projectId"  : configService.get<string>('FIREBASE_PROJECT_ID'),
+    "privateKey" : configService.get<string>('FIREBASE_PRIVATE_KEY').replace(/\\n/g, '\n'),
+    "clientEmail": configService.get<string>('FIREBASE_CLIENT_EMAIL'),
+  };
   // ここにセキュリティについての設定を追加する
   app.use(helmet());
   app.enableCors();
 
-  console.log("the server is starting @ firebase");
+  firebase.initializeApp({
+    credential: firebase.credential.cert(adminConfig),
+    databaseURL: "https://speak-vegetable.firebaseio.com"
+  })
   return app.init();
 };
 
