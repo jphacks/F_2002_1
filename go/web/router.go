@@ -19,12 +19,12 @@ func NewServer() *echo.Echo {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	defer func() {
-		err := db.Close()
-		if err != nil {
-			logger.Fatal(err)
-		}
-	}()
+	// defer func() {
+	// 	err := db.Close()
+	// 	if err != nil {
+	// 		logger.Fatal(err)
+	// 	}
+	// }()
 
 	e := echo.New()
 

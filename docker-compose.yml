@@ -13,8 +13,8 @@ services:
       MYSQL_PASSWORD: password # = DB_PASSWORD
     cap_add:
       - SYS_ADMIN
-    # security_opt:
-    #   - seccomp:unconfined
+    security_opt:
+      - seccomp:unconfined
     volumes:
       - ./database/data:/var/lib/mysql
       - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
