@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/jphacks/F_2002_1/go/config"
 	"github.com/jphacks/F_2002_1/go/domain/entity"
@@ -32,6 +33,13 @@ func NewDB() (*gorm.DB, error) {
 }
 
 func ResetDB(c echo.Context) error {
+	givenPass := c.Request().Header.Get("Authorization")
+	log.Println(givenPass)
+	requiredPass := os.Getenv("ADMIN_PASSW0RD")
+	log.Println(requiredPass)
+	if givenPass != requiredPass {
+		return c.String(http.StatusUnauthorized, "Unauthorized")
+	}
 	db, err := gorm.Open("mysql", config.DSN())
 	if err != nil {
 		_ = fmt.Errorf("failed to open MySQL: %w", err)

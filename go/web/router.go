@@ -34,7 +34,7 @@ func NewServer() *echo.Echo {
 
 	v1 := e.Group("") // v1 := e.Group("/api/v1")
 	v1.GET("/", hello)
-	v1.GET("/admin/reset", database.ResetDB)
+	v1.PUT("/admin/reset", database.ResetDB)
 
 	plantsHandler := handler.NewPlantHandler(db)
 	v1.GET("/plants", plantsHandler.GetPlants)
@@ -52,7 +52,7 @@ func NewServer() *echo.Echo {
 	v1.DELETE("/user", userHandler.DeleteUser)
 
 	// usersCultivationsHandler := handler.NewUsersCultivationsHandler(db)
-	// v1.POST("/users/:id/cultivations", usersCultivationsHandler.PostCultivation)
+	// v1.POST("/users/:id/cultivations", usersCultivationsHandler.PostUsersCultivation)
 
 	// cultivationsHandler := handler.NewCultivationsHandler(db)
 	// v1.GET("/cultivations/:id", cultivationsHandler.GetCultivation)
