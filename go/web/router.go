@@ -19,12 +19,12 @@ func NewServer() *echo.Echo {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	defer func() {
-		err := db.Close()
-		if err != nil {
-			logger.Fatal(err)
-		}
-	}()
+	// defer func() {
+	// 	err := db.Close()
+	// 	if err != nil {
+	// 		logger.Fatal(err)
+	// 	}
+	// }()
 
 	e := echo.New()
 
@@ -34,7 +34,7 @@ func NewServer() *echo.Echo {
 
 	v1 := e.Group("") // v1 := e.Group("/api/v1")
 	v1.GET("/", hello)
-	// v1.GET("/admin/reset", ResetDB)
+	v1.GET("/admin/reset", database.ResetDB)
 
 	plantsHandler := handler.NewPlantHandler(db)
 	v1.GET("/plants", plantsHandler.GetPlants)
