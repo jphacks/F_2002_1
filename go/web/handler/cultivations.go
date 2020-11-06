@@ -30,7 +30,7 @@ func (h *CultivationsHandler) GetCultivation(c echo.Context) error {
 	logger := log.New()
 
 	req := &request.CultivationsGetByID{}
-	if err := c.Bind(&req); err != nil {
+	if err := c.Bind(req); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
