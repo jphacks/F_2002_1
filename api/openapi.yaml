@@ -390,31 +390,6 @@ paths:
           $ref: '#/components/responses/404'
 
   /users/{user_id}/cultivations:
-    get:
-      tags:
-        - admin
-        - cultivation
-      security:
-        - Admin: []
-      summary: 特定のユーザーの全栽培物を取得
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/Id'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Cultivation'
-        404:
-          $ref: '#/components/responses/404'
-
     post:
       tags:
         - admin
