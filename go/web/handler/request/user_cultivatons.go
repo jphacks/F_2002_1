@@ -1,7 +1,7 @@
 package request
 
 type UserCultivationsGetByID struct {
-	CultivationID int `param:"cultivation_id"`
+	CultivationID int `param:"id"`
 }
 
 type UserCultivationsPost struct {
@@ -10,10 +10,10 @@ type UserCultivationsPost struct {
 }
 
 type UserCultivationsPutByID struct {
-	CultivationID int    `param:"cultivation_id"`
+	CultivationID int    `param:"id"`
 	NickName      string `json:"nick_name"`
 }
 
 type UserCultivationsDeleteByID struct {
-	CultivationID int `param:"cultivation_id"`
+	CultivationID int `param:"id"`
 }

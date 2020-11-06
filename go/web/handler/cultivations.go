@@ -68,8 +68,8 @@ func (h *CultivationsHandler) GetCultivation(c echo.Context) error {
 			},
 		},
 		NickName:            cultivation.NickName,
-		StartCultivatingAt:  *cultivation.StartCultivatingAt,
-		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+		StartCultivatingAt:  cultivation.StartCultivatingAt,
+		FinishCultivatingAt: cultivation.FinishCultivatingAt,
 	}
 	return c.JSON(http.StatusOK, res)
 }
@@ -121,8 +121,8 @@ func (h *CultivationsHandler) UpdateCultivation(c echo.Context) error {
 			},
 		},
 		NickName:            cultivation.NickName,
-		StartCultivatingAt:  *cultivation.StartCultivatingAt,
-		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+		StartCultivatingAt:  cultivation.StartCultivatingAt,
+		FinishCultivatingAt: cultivation.FinishCultivatingAt,
 	}
 	return c.JSON(http.StatusOK, res)
 }

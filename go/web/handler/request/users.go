@@ -3,7 +3,7 @@ package request
 type UsersGet struct{}
 
 type UsersGetByID struct {
-	UserID int `param:"user_id"`
+	UserID int `param:"id"`
 }
 
 type UsersPost struct {
@@ -11,10 +11,10 @@ type UsersPost struct {
 }
 
 type UsersPutByID struct {
-	UserID int    `param:"user_id"`
+	UserID int    `param:"id"`
 	Name   string `json:"name"`
 }
 
 type UsersDeleteByID struct {
-	UserID int `param:"user_id"`
+	UserID int `param:"id"`
 }
