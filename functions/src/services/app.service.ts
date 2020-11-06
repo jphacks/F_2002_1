@@ -1,17 +1,13 @@
 import { Injectable } from "@nestjs/common";
 
-<<<<<<< HEAD
 import {IChat} from "../entity/chat";
 
 
-=======
->>>>>>> origin
 @Injectable()
 export class AppService {
   public hello(): string {
     return "Hello World!";
   }
-<<<<<<< HEAD
 
   /**
    * テキストメッセージをサーバーに送信する
@@ -45,6 +41,4 @@ export class AppService {
   
 
 
-=======
->>>>>>> origin
 }

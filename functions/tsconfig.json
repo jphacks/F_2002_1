@@ -5,14 +5,9 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-<<<<<<< HEAD
     "resolveJsonModule": true,
     "target": "ES2017",
     "sourceMap": false,
-=======
-    "target": "es2017",
-    "sourceMap": true,
->>>>>>> origin
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
@@ -29,20 +24,13 @@
 
   },
   "compileOnSave": true,
-<<<<<<< HEAD
   "paths": {
       "@/*": ["src/*"]
   },
-=======
->>>>>>> origin
   "include": [
     "src"
   ],
   "exclude": [
-<<<<<<< HEAD
     "node_modules","dist","src/test"
-=======
-    "node_modules","dist"
->>>>>>> origin
   ]
 }

@@ -1,7 +1,6 @@
 import { Module } from "@nestjs/common";
 import { AppService } from "../services/app.service";
 import { AppController } from "../controllers/app.controller";
-<<<<<<< HEAD
 
 import { FirebaseModule } from './firebase.module';
 import {ConfigModule, } from "@nestjs/config";
@@ -12,10 +11,5 @@ import {ConfigModule, } from "@nestjs/config";
     isGlobal:true,
     envFilePath:".env"
   })]
-=======
-@Module({
-  providers: [AppService],
-  controllers: [AppController]
->>>>>>> origin
 })
 export class AppModule {}
