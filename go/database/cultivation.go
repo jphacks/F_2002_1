@@ -65,7 +65,7 @@ func (r *CultivationRepository) DeleteByID(id int) error {
 // CheckByIDUID は栽培している植物にid, user_idの組のデータが存在すればtrue、なければfalseを返却します。
 func (r *CultivationRepository) CheckByIDUID(id int, uid int) (bool, error) {
 	var cultivations entity.Cultivations
-	if err := r.db.Where("id = ? AND uid = ?", id, uid).Find(&cultivations).Error; err != nil {
+	if err := r.db.Where("id = ? AND user_id = ?", id, uid).Find(&cultivations).Error; err != nil {
 		return false, err
 	}
 	return true, nil
