@@ -55,7 +55,10 @@ func (h *CultivationsHandler) UpdateCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	cultivation := &entity.Cultivation{} // TODO
+	cultivation := &entity.Cultivation{
+		ID:       req.CultivationID,
+		NickName: req.NickName,
+	}
 	cultivation, err := h.cultivationUC.UpdateCultivation(cultivation)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {

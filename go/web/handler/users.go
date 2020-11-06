@@ -67,7 +67,9 @@ func (h *UsersHandler) PostUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	user := &entity.User{} // TODO
+	user := &entity.User{
+		Name: req.Name,
+	}
 	user, err := h.userUC.CreateUser(user)
 	if err != nil {
 		logger.Error(err)
@@ -87,7 +89,10 @@ func (h *UsersHandler) UpdateUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	user := &entity.User{} // TODO
+	user := &entity.User{
+		ID:   req.UserID,
+		Name: req.Name,
+	}
 	user, err := h.userUC.UpdateUser(user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
