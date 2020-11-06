@@ -22,7 +22,7 @@ func NewPlantRepository(db *gorm.DB) *PlantRepository {
 // FindByID は指定されたIDを持つ植物を取得します。
 func (r *PlantRepository) FindByID(id int) (*entity.Plant, error) {
 	var plant entity.Plant
-	if err := r.db.Set("gorm:auto_preload", true).First(&plant, id); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).First(&plant, id).Error; err != nil {
 	}
 	return &plant, nil
 }
@@ -30,28 +30,28 @@ func (r *PlantRepository) FindByID(id int) (*entity.Plant, error) {
 // FindAll は指定されたIDを持つ植物を取得します。
 func (r *PlantRepository) FindAll() (*entity.Plants, error) {
 	var plants entity.Plants
-	if err := r.db.Set("gorm:auto_preload", true).Find(&plants); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).Find(&plants).Error; err != nil {
 	}
 	return &plants, nil
 }
 
 // Store は植物を新規保存します。
 func (r *PlantRepository) Store(plant *entity.Plant) (*entity.Plant, error) {
-	if err := r.db.Set("gorm:auto_preload", true).Create(&plant); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).Create(&plant).Error; err != nil {
 	}
 	return plant, nil
 }
 
 // UpdateByID は植物の情報を更新します。
 func (r *PlantRepository) UpdateByID(plant *entity.Plant) (*entity.Plant, error) {
-	if err := r.db.Set("gorm:auto_preload", true).Model(&entity.User{}).Update(&plant).First(&plant); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).Model(&entity.User{}).Update(&plant).First(&plant).Error; err != nil {
 	}
 	return plant, nil
 }
 
 // DeleteByID は指定されたIDを持つ植物を削除します。
 func (r *PlantRepository) DeleteByID(id int) error {
-	if err := r.db.Delete(&entity.Plant{}, id); err != nil {
+	if err := r.db.Delete(&entity.Plant{}, id).Error; err != nil {
 	}
 	return nil
 }
