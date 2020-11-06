@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://e3c902a3-9f7d-4f1c-9b9a-daa5e4633165.mock.pstmn.io
     description: モックサーバー
-  - url: localhost:8080
+  - url: http://localhost:8080
     description: ローカル環境
 tags:
   - name: general
