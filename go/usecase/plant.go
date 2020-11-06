@@ -50,7 +50,7 @@ func (p *PlantUseCase) CreatePlant(plant *entity.Plant) (*entity.Plant, error) {
 func (p *PlantUseCase) UpdatePlant(plant *entity.Plant) (*entity.Plant, error) {
 	plant, err := p.plantRepo.UpdateByID(plant)
 	if err != nil {
-		return nil, fmt.Errorf("update plant from repo id=%s: %w", plant.ID, err)
+		return nil, fmt.Errorf("update plant from repo id=%d: %w", plant.ID, err)
 	}
 	return plant, nil
 }
@@ -59,7 +59,7 @@ func (p *PlantUseCase) UpdatePlant(plant *entity.Plant) (*entity.Plant, error) {
 func (p *PlantUseCase) DeletePlant(id int) error {
 	err := p.plantRepo.DeleteByID(id)
 	if err != nil {
-		return fmt.Errorf("delete plant from repo id=%s: %w", id, err)
+		return fmt.Errorf("delete plant from repo id=%d: %w", id, err)
 	}
 	return nil
 }
