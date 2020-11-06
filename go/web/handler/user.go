@@ -18,9 +18,7 @@ import (
 
 // UserHandler は /users 以下のエンドポイントを管理する構造体です。
 type UserHandler struct {
-	userUC        *usecase.UserUseCase
-	plantUC       *usecase.PlantUseCase
-	cultivationUC *usecase.CultivationUseCase
+	userUC *usecase.UserUseCase
 }
 
 // NewUserHandler はUserHandlerのポインタを生成する関数です。

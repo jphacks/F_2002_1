@@ -11,7 +11,7 @@ type PlantWater struct {
 	Plant     Plant `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	WaterID   int
 	Water     Water `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
-	threshold int
+	Threshold int
 }
 
 type PlantWaters []Water
