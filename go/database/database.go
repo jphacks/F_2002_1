@@ -34,9 +34,7 @@ func NewDB() (*gorm.DB, error) {
 
 func ResetDB(c echo.Context) error {
 	givenPass := c.Request().Header.Get("Authorization")
-	log.Println(givenPass)
-	requiredPass := os.Getenv("ADMIN_PASSW0RD")
-	log.Println(requiredPass)
+	requiredPass := os.Getenv("ADMIN_PASSWORD")
 	if givenPass != requiredPass {
 		return c.String(http.StatusUnauthorized, "Unauthorized")
 	}
