@@ -40,6 +40,6 @@ func (r *WaterRepository) UpdateByID(water *entity.Water) (*entity.Water, error)
 }
 
 // DeleteByID は指定されたIDを持つ水分量を削除します。
-func (r *WaterRepository) DeleteByID(id int) (*entity.Water, error) {
-	return nil, nil
+func (r *WaterRepository) DeleteByID(id int) error {
+	return nil
 }

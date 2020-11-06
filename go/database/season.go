@@ -40,6 +40,6 @@ func (r *SeasonRepository) UpdateByID(season *entity.Season) (*entity.Season, er
 }
 
 // DeleteByID は指定されたIDを持つ季節を削除します。
-func (r *SeasonRepository) DeleteByID(id int) (*entity.Season, error) {
-	return nil, nil
+func (r *SeasonRepository) DeleteByID(id int) error {
+	return nil
 }

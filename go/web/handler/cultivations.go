@@ -18,7 +18,6 @@ import (
 // CultivationsHandler は /cultivations 以下のエンドポイントを管理する構造体です。
 type CultivationsHandler struct {
 	cultivationUC *usecase.CultivationUseCase
-	plantUC       *usecase.PlantUseCase
 }
 
 // NewCultivationsHandler はCultivationsHandlerのポインタを生成する関数です。

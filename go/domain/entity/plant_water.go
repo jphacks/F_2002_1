@@ -8,8 +8,10 @@ type PlantWater struct {
 	UpdatedAt time.Time
 	DeletedAt *time.Time `sql:"index"`
 	PlantID   int
+	Plant     Plant `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	WaterID   int
-	threshold int
+	Water     Water `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
+	Threshold int
 }
 
 type PlantWaters []Water

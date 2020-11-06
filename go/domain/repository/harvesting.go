@@ -8,5 +8,5 @@ type Harvesting interface {
 	FindAll() (*entity.Harvestings, error)
 	Store(harvesting *entity.Harvesting) (*entity.Harvesting, error)
 	UpdateByID(harvesting *entity.Harvesting) (*entity.Harvesting, error)
-	DeleteByID(id int) (*entity.Harvesting, error)
+	DeleteByID(id int) error
 }

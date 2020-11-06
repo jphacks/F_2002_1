@@ -32,7 +32,7 @@ func (u *UserUseCase) ReadUsers() (*entity.Users, error) {
 func (u *UserUseCase) ReadUser(id int) (*entity.User, error) {
 	user, err := u.userRepo.FindByID(id)
 	if err != nil {
-		return nil, fmt.Errorf("find user from repo id=%s: %w", id, err)
+		return nil, fmt.Errorf("find user from repo id=%d: %w", id, err)
 	}
 	return user, nil
 }
@@ -59,7 +59,7 @@ func (u *UserUseCase) CreateUser(user *entity.User) (*entity.User, error) {
 func (u *UserUseCase) UpdateUser(user *entity.User) (*entity.User, error) {
 	user, err := u.userRepo.UpdateByID(user)
 	if err != nil {
-		return nil, fmt.Errorf("update user from repo id=%s: %w", user.ID, err)
+		return nil, fmt.Errorf("update user from repo id=%d: %w", user.ID, err)
 	}
 	return user, nil
 }
@@ -68,7 +68,7 @@ func (u *UserUseCase) UpdateUser(user *entity.User) (*entity.User, error) {
 func (u *UserUseCase) DeleteUser(id int) error {
 	err := u.userRepo.DeleteByID(id)
 	if err != nil {
-		return fmt.Errorf("delete user from repo id=%s: %w", id, err)
+		return fmt.Errorf("delete user from repo id=%d: %w", id, err)
 	}
 	return nil
 }

@@ -14,8 +14,9 @@ type Cultivation struct {
 	UpdatedAt           time.Time
 	DeletedAt           *time.Time `sql:"index"`
 	UserID              int
+	User     			User `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	PlantID             int
-	Plant               Plant
+	Plant     			Plant `gorm:"constraint:OnUpdate:CASCADE,OnDelete:RESTRICT;"`
 	StartCultivatingAt  *time.Time
 	FinishCultivatingAt *time.Time
 	NickName            string

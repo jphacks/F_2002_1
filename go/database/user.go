@@ -21,30 +21,51 @@ func NewUserRepository(db *gorm.DB) *UserRepository {
 
 // FindByID は指定されたIDを持つユーザを取得します。
 func (r *UserRepository) FindByID(id int) (*entity.User, error) {
-	return nil, nil
+	var user entity.User
+	if err := r.db.Set("gorm:auto_preload", true).First(&user, id).Error; err != nil {
+		return nil, err
+	}
+	return &user, nil
 }
 
-// FindIDByUID は指定されたUIDを持つユーザを取得します。
+// FindIDByUID は指定されたUIDを持つユーザIDを取得します。
 func (r *UserRepository) FindIDByUID(uid string) (int, error) {
-	return 0, nil
+	var user entity.User
+	if err := r.db.Set("gorm:auto_preload", true).Find(&user, "uid = ?", uid).Error; err != nil {
+		return 0, err
+	}
+	return user.ID, nil
 }
 
 // FindAll は指定されたIDを持つユーザを取得します。
 func (r *UserRepository) FindAll() (*entity.Users, error) {
-	return nil, nil
+	var users entity.Users
+	if err := r.db.Set("gorm:auto_preload", true).Find(&users).Error; err != nil {
+		return nil, err
+	}
+	return &users, nil
 }
 
 // Store はユーザを新規保存します。
 func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
-	return nil, nil
+	if err := r.db.Set("gorm:auto_preload", true).Create(&user).Error; err != nil {
+		return nil, err
+	}
+	return user, nil
 }
 
 // UpdateByID はユーザの情報を更新します。
 func (r *UserRepository) UpdateByID(user *entity.User) (*entity.User, error) {
-	return nil, nil
+	if err := r.db.Set("gorm:auto_preload", true).Model(&entity.User{}).Update(&user).First(&user).Error; err != nil {
+		return nil, err
+	}
+	return user, nil
 }
 
 // DeleteByID は指定されたIDを持つユーザを削除します。
-func (r *UserRepository) DeleteByID(id int) (*entity.User, error) {
-	return nil, nil
+func (r *UserRepository) DeleteByID(id int) error {
+	if err := r.db.Delete(&entity.User{}, id).Error; err != nil {
+		return err
+	}
+	return nil
 }
