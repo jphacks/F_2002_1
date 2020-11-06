@@ -2,12 +2,14 @@ package entity
 
 import "time"
 
-type Temperature struct {
+type PlantTemperature struct {
 	ID        int `gorm:"primary_key"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt *time.Time `sql:"index"`
-	Name      string
+	PlantID   int
+	WaterID   int
+	threshold int
 }
 
-type Temperatures []Temperature
+type PlantTemperatures []Temperature
