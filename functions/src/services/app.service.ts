@@ -15,6 +15,8 @@ export class AppService {
    * @param roomId :string, 送信先のチャットIDを送信する
    * @param message:string
   */
+
+  
   public async responseText(roomId:string, inputMessage:IChat){
     let responseMessage:string
 

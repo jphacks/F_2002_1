@@ -28,9 +28,13 @@ describe("E2E テストについて",()=>{
             const getHelloWorld  = await request(app.getHttpServer()).get("/");
             expect(getHelloWorld.status).toEqual(200);
             expect(getHelloWorld.text).toBe("Hello World!")
-            
         })
     });
+    describe("URL: /:roomId",()=>{
+        it("正常: 200",async()=>{
+            
+        })
+    })
     afterEach(async () => {
         await app.close();
     });
