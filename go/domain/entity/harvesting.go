@@ -8,6 +8,7 @@ type Harvesting struct {
 	UpdatedAt     time.Time
 	DeletedAt     *time.Time `sql:"index"`
 	CultivationID int
+	Cultivation   Cultivation `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }
 
 type Harvestings []Harvesting
