@@ -1627,7 +1627,7 @@
         "affectsGlobalScope": false
       },
       "./src/services/app.service.ts": {
-        "version": "9457326c7e9f940d9ffc302b4ba472b287ff1c3555a2e54322f17c68cc4ec4fc",
+        "version": "794dab6348a29ce23c0742022451704c613a5566a6b05861dd1ded33d1bbf007",
         "signature": "0352a07bba56fb3343baa401322ef0e4c34b0e5fbc7148496a54cb5c0071f018",
         "affectsGlobalScope": false
       },
@@ -1636,8 +1636,23 @@
         "signature": "286a9ffb7679253b952b6a297ff250a1913edc0c04493aa227773eafbfc9d8ba",
         "affectsGlobalScope": false
       },
+      "./src/services/api/api.service.ts": {
+        "version": "44951d735c346ce8e5e9ef0bf355e97e6c8b768f8630ef3e8e381a6a36f9a5cc",
+        "signature": "f115f2b4253a4a790c187a57d82d7a75204da683a12699ae84317a529454a643",
+        "affectsGlobalScope": false
+      },
+      "./src/controllers/api/api.controller.ts": {
+        "version": "194cf1557228033e8e40cc273cb3c107984a13a3f269a1c48224e3be4e737456",
+        "signature": "407a0f10709a69aac622e2db7faec577a7f9b0790a9a5b6aec989200f0beee91",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/api.module.ts": {
+        "version": "c62cdab0a8e6f1c2ae278a89cc94485d6a3e0a80ec5fa2c396c8ab554ccc1f0d",
+        "signature": "1ced043971a06042d9d2c0966fcdaa7d9d47751270ce5988c9da150466b1c448",
+        "affectsGlobalScope": false
+      },
       "./src/modules/app.module.ts": {
-        "version": "d258d73f11d417ce0d803544fbd2f3765249e9933f8f95119e6c5af87ac5d3fd",
+        "version": "ad2b4ddec25c87bfae3558c1164a1322b06f750efe176903be57252af8016aa0",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
@@ -4182,6 +4197,12 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+      "./src/controllers/api/api.controller.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./src/services/api/api.service.ts"
+      ],
       "./src/controllers/app.controller.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
@@ -4210,17 +4231,30 @@
         "./node_modules/helmet/dist/index.d.ts",
         "./src/modules/app.module.ts"
       ],
+      "./src/modules/api.module.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./src/controllers/api/api.controller.ts",
+        "./src/services/api/api.service.ts"
+      ],
       "./src/modules/app.module.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./src/controllers/app.controller.ts",
+        "./src/modules/api.module.ts",
         "./src/services/app.service.ts"
       ],
       "./src/plugins/firebase.config.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/firebase-admin/lib/index.d.ts"
+      ],
+      "./src/services/api/api.service.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
       ],
       "./src/services/app.service.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
@@ -6504,6 +6538,9 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+      "./src/controllers/api/api.controller.ts": [
+        "./src/services/api/api.service.ts"
+      ],
       "./src/controllers/app.controller.ts": [
         "./src/interfaces/chat.ts",
         "./src/services/app.service.ts"
@@ -6890,12 +6927,15 @@
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.scripthost.d.ts",
       "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "./src/controllers/api/api.controller.ts",
       "./src/controllers/app.controller.ts",
       "./src/index.ts",
       "./src/interfaces/chat.ts",
       "./src/main.ts",
+      "./src/modules/api.module.ts",
       "./src/modules/app.module.ts",
       "./src/plugins/firebase.config.ts",
+      "./src/services/api/api.service.ts",
       "./src/services/app.service.ts"
     ]
   },
