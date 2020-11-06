@@ -22,7 +22,7 @@ func NewCultivationRepository(db *gorm.DB) *CultivationRepository {
 // FindByID は指定されたIDを持つ栽培している植物を取得します。
 func (r *CultivationRepository) FindByID(id int) (*entity.Cultivation, error) {
 	var cultivation entity.Cultivation
-	if err := r.db.Set("gorm:auto_preload", true).First(&cultivation, "id = ?", id); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).First(&cultivation, id); err != nil {
 	}
 	return &cultivation, nil
 }
@@ -30,7 +30,7 @@ func (r *CultivationRepository) FindByID(id int) (*entity.Cultivation, error) {
 // FindAllByUID は指定されたUser.IDを持つ栽培している植物の一覧を取得します。
 func (r *CultivationRepository) FindAllByUID(uid int) (*entity.Cultivations, error) {
 	var cultivations entity.Cultivations
-	if err := r.db.Set("gorm:auto_preload", true).Find(&cultivations, uid); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).Find(&cultivations, "uid = ?", uid); err != nil {
 	}
 	return &cultivations, nil
 }

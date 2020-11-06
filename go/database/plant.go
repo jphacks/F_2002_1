@@ -22,7 +22,7 @@ func NewPlantRepository(db *gorm.DB) *PlantRepository {
 // FindByID は指定されたIDを持つ植物を取得します。
 func (r *PlantRepository) FindByID(id int) (*entity.Plant, error) {
 	var plant entity.Plant
-	if err := r.db.Set("gorm:auto_preload", true).First(&plant, "id = ?", id); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).First(&plant, id); err != nil {
 	}
 	return &plant, nil
 }
@@ -51,8 +51,7 @@ func (r *PlantRepository) UpdateByID(plant *entity.Plant) (*entity.Plant, error)
 
 // DeleteByID は指定されたIDを持つ植物を削除します。
 func (r *PlantRepository) DeleteByID(id int) error {
-	var plant entity.Plant
-	if err := r.db.Where("id = ?", id).Delete(&plant); err != nil {
+	if err := r.db.Delete(&entity.Plant{}, id); err != nil {
 	}
 	return nil
 }

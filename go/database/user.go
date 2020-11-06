@@ -22,7 +22,7 @@ func NewUserRepository(db *gorm.DB) *UserRepository {
 // FindByID は指定されたIDを持つユーザを取得します。
 func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 	var user entity.User
-	if err := r.db.Set("gorm:auto_preload", true).First(&user, "id = ?", id); err != nil {
+	if err := r.db.Set("gorm:auto_preload", true).First(&user, id); err != nil {
 	}
 	return &user, nil
 }
@@ -59,8 +59,7 @@ func (r *UserRepository) UpdateByID(user *entity.User) (*entity.User, error) {
 
 // DeleteByID は指定されたIDを持つユーザを削除します。
 func (r *UserRepository) DeleteByID(id int) error {
-	var user entity.User
-	if err := r.db.Where("id = ?", id).Delete(&user); err != nil {
+	if err := r.db.Delete(&entity.User{}, id); err != nil {
 	}
 	return nil
 }
