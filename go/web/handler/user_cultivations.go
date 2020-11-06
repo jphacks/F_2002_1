@@ -94,7 +94,11 @@ func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	cultivation := &entity.Cultivation{UserID: uid} // TODO
+	cultivation := &entity.Cultivation{
+		UserID:   uid,
+		PlantID:  req.PlantID,
+		NickName: req.NickName,
+	}
 	cultivation, err = h.cultivationUC.CreateCultivation(cultivation)
 	if err != nil {
 		logger.Error(err)
@@ -139,7 +143,11 @@ func (h *UserCultivationsHandler) UpdateUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusForbidden)
 	}
 
-	cultivation := &entity.Cultivation{ID: req.CultivationID, UserID: uid} // TODO
+	cultivation := &entity.Cultivation{
+		ID:       req.CultivationID,
+		UserID:   uid,
+		NickName: req.NickName,
+	}
 	cultivation, err = h.cultivationUC.UpdateCultivation(cultivation)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {

@@ -61,7 +61,7 @@ func (h *UserHandler) GetUser(c echo.Context) error {
 func (h *UserHandler) UpdateUser(c echo.Context) error {
 	logger := log.New()
 
-	req := &request.UserGet{}
+	req := &request.UserPut{}
 	if err := c.Bind(req); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
@@ -78,7 +78,10 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	user := &entity.User{ID: id} // TODO
+	user := &entity.User{
+		ID:   id,
+		Name: req.Name,
+	}
 	user, err = h.userUC.UpdateUser(user)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {

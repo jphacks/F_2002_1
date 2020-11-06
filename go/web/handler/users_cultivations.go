@@ -55,7 +55,11 @@ func (h *UsersCultivationsHandler) PostUsersCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	cultivation := &entity.Cultivation{UserID: req.UserID} // TODO
+	cultivation := &entity.Cultivation{
+		UserID:   req.UserID,
+		PlantID:  req.PlantID,
+		NickName: req.NickName,
+	}
 	cultivation, err := h.cultivationUC.CreateCultivation(cultivation)
 	if err != nil {
 		logger.Error(err)
