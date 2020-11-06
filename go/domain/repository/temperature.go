@@ -8,5 +8,5 @@ type Temperature interface {
 	FindAll() (*entity.Temperatures, error)
 	Store(temperature *entity.Temperature) (*entity.Temperature, error)
 	UpdateByID(temperature *entity.Temperature) (*entity.Temperature, error)
-	DeleteByID(id int) (*entity.Temperature, error)
+	DeleteByID(id int) error
 }

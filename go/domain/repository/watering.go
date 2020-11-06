@@ -8,5 +8,5 @@ type Watering interface {
 	FindAll() (*entity.Waterings, error)
 	Store(watering *entity.Watering) (*entity.Watering, error)
 	UpdateByID(watering *entity.Watering) (*entity.Watering, error)
-	DeleteByID(id int) (*entity.Watering, error)
+	DeleteByID(id int) error
 }

@@ -40,6 +40,6 @@ func (r *WateringRepository) UpdateByID(watering *entity.Watering) (*entity.Wate
 }
 
 // DeleteByID は指定されたIDを持つ水やりの記録を削除します。
-func (r *WateringRepository) DeleteByID(id int) (*entity.Watering, error) {
-	return nil, nil
+func (r *WateringRepository) DeleteByID(id int) error {
+	return nil
 }

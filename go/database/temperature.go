@@ -40,6 +40,6 @@ func (r *TemperatureRepository) UpdateByID(temperature *entity.Temperature) (*en
 }
 
 // DeleteByID は指定されたIDを持つ気温を削除します。
-func (r *TemperatureRepository) DeleteByID(id int) (*entity.Temperature, error) {
-	return nil, nil
+func (r *TemperatureRepository) DeleteByID(id int) error {
+	return nil
 }

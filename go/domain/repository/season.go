@@ -8,5 +8,5 @@ type Season interface {
 	FindAll() (*entity.Seasons, error)
 	Store(season *entity.Season) (*entity.Season, error)
 	UpdateByID(season *entity.Season) (*entity.Season, error)
-	DeleteByID(id int) (*entity.Season, error)
+	DeleteByID(id int) error
 }

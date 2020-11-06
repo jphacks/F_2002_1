@@ -8,6 +8,6 @@ type Cultivation interface {
 	FindAllByUID(uid int) (*entity.Cultivations, error)
 	Store(cultivation *entity.Cultivation) (*entity.Cultivation, error)
 	UpdateByID(cultivation *entity.Cultivation) (*entity.Cultivation, error)
-	DeleteByID(id int) (*entity.Cultivation, error)
+	DeleteByID(id int) error
 	CheckByIDUID(id int, uid int) (bool, error)
 }
