@@ -1391,74 +1391,19 @@
         "signature": "e3cd60be3c4f95c43420be67eaa21637585b7c1a8129f9b39983bbd294f9513c",
         "affectsGlobalScope": false
       },
+      "./src/entity/chat.ts": {
+        "version": "a0f051ab5d17452174605641deb5949d48e0a404e10610c03da0612d7dd26bcd",
+        "signature": "c4ee2eab0936a5fd5b522e457b2d04d01399d78c3c169020227855052a4fa410",
+        "affectsGlobalScope": false
+      },
       "./src/services/app.service.ts": {
-        "version": "a4fa548d485b0285911f8270441f06975fe7f07247c28050097e06efae275fb1",
-        "signature": "d71633712cdbf6faf521f2a2ca7a6cd85c124e92cbd03e1c2c726960b65c598a",
+        "version": "9a50da9a4c553c0df3d4e3e985794dcfa718b83aa9691c42c4e9d4413dd2b265",
+        "signature": "7191b607f6761ad06d1e501e59fa7c4b44d3100ea4f7e62ddefa1500fd9f2d60",
         "affectsGlobalScope": false
       },
       "./src/controllers/app.controller.ts": {
-        "version": "5ba86a5cdb8a08f679c65dffb9c8bda09f1e525ee25000a6a53651c7c40761b4",
-        "signature": "fb4ba91e73f7b349762ce304a90e1d81b91218e6ed481a04ca293c6e76d1c6ce",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/app.module.ts": {
-        "version": "d258d73f11d417ce0d803544fbd2f3765249e9933f8f95119e6c5af87ac5d3fd",
-        "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/range-parser/index.d.ts": {
-        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/qs/index.d.ts": {
-        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/express-serve-static-core/index.d.ts": {
-        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "affectsGlobalScope": true
-      },
-      "./node_modules/@types/mime/index.d.ts": {
-        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/serve-static/index.d.ts": {
-        "version": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
-        "signature": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/connect/index.d.ts": {
-        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/body-parser/index.d.ts": {
-        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/express/index.d.ts": {
-        "version": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e",
-        "signature": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/firebase-functions/lib/function-configuration.d.ts": {
-        "version": "08ac33557808eb8c53a8a3cfcc9fa8e51d34677bf069247588a2a49e8d965ba4",
-        "signature": "08ac33557808eb8c53a8a3cfcc9fa8e51d34677bf069247588a2a49e8d965ba4",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/firebase-functions/lib/cloud-functions.d.ts": {
-        "version": "a313f2d00131959867957572e178a04f0356dd7e38bd5677b40a53fef649a888",
-        "signature": "a313f2d00131959867957572e178a04f0356dd7e38bd5677b40a53fef649a888",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/firebase-functions/lib/providers/analytics.d.ts": {
-        "version": "230f2776b970caf8e470648d09f4bf01d6cf1612d6aadef4d4783343a8b5c7b7",
-        "signature": "230f2776b970caf8e470648d09f4bf01d6cf1612d6aadef4d4783343a8b5c7b7",
+        "version": "0afc99863a2f9f13921ca92f21c59c12141675d60a882d35b120e52b17f86905",
+        "signature": "bccf731cc0af0d09dd294c80eb02efbbbec900384d4e9e32943f035fef23eeeb",
         "affectsGlobalScope": false
       },
       "./node_modules/event-target-shim/index.d.ts": {
@@ -1686,6 +1631,141 @@
         "signature": "b6ffad9cad549d8062299edd1c5b4d414cd3df117414e0adfd619b42e684f757",
         "affectsGlobalScope": false
       },
+      "./src/services/chat/chat.service.ts": {
+        "version": "81a524e077d7bbd3377147dd9c06a1bd110d5e3b0dde9f65d2ffceca2c11933f",
+        "signature": "f2eea8e80db0af3bcba0f040361521cdc4963f95a0ffc75ed6f666ea16bba66e",
+        "affectsGlobalScope": false
+      },
+      "./src/controllers/chat/chat.controller.ts": {
+        "version": "59cd4b0d2d533fc36ea72902ca97c070002c06454097db07c1b359962ddfe8de",
+        "signature": "50d152c634a9743816302f77d47db840777bf26e63dfd1cb5366faca1469953f",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/firebase.module.ts": {
+        "version": "6c3e1863b9576c0939984496d199f77fdacb5767efd3292486c2ce067d39b61f",
+        "signature": "993cfd2e67f4f29b785be38937f39b107bb931f149ff4e588858d02483dd6d67",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/types/config.type.d.ts": {
+        "version": "839d15098cc51d756b67acda281788779645cbf8e95571897951afb52ea6535a",
+        "signature": "839d15098cc51d756b67acda281788779645cbf8e95571897951afb52ea6535a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/types/no-infer.type.d.ts": {
+        "version": "443e3123c41da4e34ba5bd439b892f01c8af842692bb943a1c5f5dccd4d3c764",
+        "signature": "443e3123c41da4e34ba5bd439b892f01c8af842692bb943a1c5f5dccd4d3c764",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/types/index.d.ts": {
+        "version": "d83ad6de2cfa93597d4dcf9877b77864d8dfefe141b0a733b1549051b8ca4455",
+        "signature": "d83ad6de2cfa93597d4dcf9877b77864d8dfefe141b0a733b1549051b8ca4455",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/config.service.d.ts": {
+        "version": "06efa4e009c1053d39207cdbcc3c1a284871336e4801752e18fe3fce1ca2b025",
+        "signature": "06efa4e009c1053d39207cdbcc3c1a284871336e4801752e18fe3fce1ca2b025",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts": {
+        "version": "c216ce81e0306d4d666bf06375f5c2693e7c6b2bc920d1939d956ab01656f744",
+        "signature": "c216ce81e0306d4d666bf06375f5c2693e7c6b2bc920d1939d956ab01656f744",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/interfaces/config-module-options.interface.d.ts": {
+        "version": "a7184b8922290d1917d520ecc9418f65b06673cacbbddd96192f4e9bca3c3fcb",
+        "signature": "a7184b8922290d1917d520ecc9418f65b06673cacbbddd96192f4e9bca3c3fcb",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/interfaces/index.d.ts": {
+        "version": "ced3404358800496232fbeb884d609b9ba7e2a4d7aca3dfe33beea0e59f1785a",
+        "signature": "ced3404358800496232fbeb884d609b9ba7e2a4d7aca3dfe33beea0e59f1785a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/config.module.d.ts": {
+        "version": "a2b4d9eaa8904e1b094a53b940b8973aefecab92b9cd3d494caad2c13e79339d",
+        "signature": "a2b4d9eaa8904e1b094a53b940b8973aefecab92b9cd3d494caad2c13e79339d",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/utils/register-as.util.d.ts": {
+        "version": "1d2254ab5fdfd1f346a6e8d03ec698954dd330fdafc2942b77366a052571eab7",
+        "signature": "1d2254ab5fdfd1f346a6e8d03ec698954dd330fdafc2942b77366a052571eab7",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/utils/index.d.ts": {
+        "version": "3ced8d48c62c5f6ecdba0e8e745156fc991a81d042a7639b713d615e5b2fe4a6",
+        "signature": "3ced8d48c62c5f6ecdba0e8e745156fc991a81d042a7639b713d615e5b2fe4a6",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/dist/index.d.ts": {
+        "version": "e3e43b2ee33a384c872f243e52aa8faa1ccd69a7c0bb44eb878d4ff662cd1991",
+        "signature": "e3e43b2ee33a384c872f243e52aa8faa1ccd69a7c0bb44eb878d4ff662cd1991",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@nestjs/config/index.d.ts": {
+        "version": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
+        "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/app.module.ts": {
+        "version": "78eb36d10f40b1f224e0991108ab2cd1d03a087c5415e39e82738fb012afe346",
+        "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/range-parser/index.d.ts": {
+        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/qs/index.d.ts": {
+        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/express-serve-static-core/index.d.ts": {
+        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "affectsGlobalScope": true
+      },
+      "./node_modules/@types/mime/index.d.ts": {
+        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/serve-static/index.d.ts": {
+        "version": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "signature": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/connect/index.d.ts": {
+        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/body-parser/index.d.ts": {
+        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/express/index.d.ts": {
+        "version": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e",
+        "signature": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/firebase-functions/lib/function-configuration.d.ts": {
+        "version": "08ac33557808eb8c53a8a3cfcc9fa8e51d34677bf069247588a2a49e8d965ba4",
+        "signature": "08ac33557808eb8c53a8a3cfcc9fa8e51d34677bf069247588a2a49e8d965ba4",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/firebase-functions/lib/cloud-functions.d.ts": {
+        "version": "a313f2d00131959867957572e178a04f0356dd7e38bd5677b40a53fef649a888",
+        "signature": "a313f2d00131959867957572e178a04f0356dd7e38bd5677b40a53fef649a888",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/firebase-functions/lib/providers/analytics.d.ts": {
+        "version": "230f2776b970caf8e470648d09f4bf01d6cf1612d6aadef4d4783343a8b5c7b7",
+        "signature": "230f2776b970caf8e470648d09f4bf01d6cf1612d6aadef4d4783343a8b5c7b7",
+        "affectsGlobalScope": false
+      },
       "./node_modules/firebase-functions/lib/providers/auth.d.ts": {
         "version": "8a5cec8e62bd0dcb6e933c76743d57fd5b712663b8fd28c2c21c098e8fe027a4",
         "signature": "8a5cec8e62bd0dcb6e933c76743d57fd5b712663b8fd28c2c21c098e8fe027a4",
@@ -1822,8 +1902,13 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "ac4ae9bafc1496f9a33daacf7c062ca3e39564f596e5bc87cbd8c5c35a6c56b8",
+        "version": "5be004c50c8f3d6da176cbfb3cf6a790e5782968eef662a5d57cdc6865cf00f1",
         "signature": "12dbf008a62a465e6f10c77def9119674c6c98318120839bd4c4f433669091fc",
+        "affectsGlobalScope": false
+      },
+      "./src/main.ts": {
+        "version": "39e860999c10bca3140562ad82cec43175c4b8663609f8634573e1d6525ecf4a",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
       "./node_modules/@nestjs/testing/interfaces/override-by-factory-options.interface.d.ts": {
@@ -1866,9 +1951,39 @@
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
-      "./src/plugins/firebase.config.ts": {
-        "version": "b9e4d70af36e870b128655906e377b52bddffbd66c89e80707631808bf139796",
-        "signature": "1dbcdbb75b256b52fd780cf113af7d8ed8baa7b564541cf2649535d4b65e9015",
+      "./src/controllers/chat/chat.controller.spec.ts": {
+        "version": "41f4d10580edd67ab3657dad1b0e2aca7bf9d118a25bc155fb1399c3afa920bc",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
+      "./src/entity/cultivation.ts": {
+        "version": "c64276864d9a5103a5d692b24ab01d0eed598bad21f85505ed98a5728d37256c",
+        "signature": "f9ad24ea9ff4d3b06cc9739d556d0284cf124930db4ed00a99ff52d026c8a2c5",
+        "affectsGlobalScope": false
+      },
+      "./src/entity/plant.ts": {
+        "version": "c64276864d9a5103a5d692b24ab01d0eed598bad21f85505ed98a5728d37256c",
+        "signature": "f9ad24ea9ff4d3b06cc9739d556d0284cf124930db4ed00a99ff52d026c8a2c5",
+        "affectsGlobalScope": false
+      },
+      "./src/entity/user.ts": {
+        "version": "e292d25c5a8e9ddeab8ca68485b7f4c09b2965438c7770902085789a39db9b55",
+        "signature": "14d2ef63f5c982fa7015fd7349f9e29f3f49e3bcbd4a768ca639e335c01c89c4",
+        "affectsGlobalScope": false
+      },
+      "./src/services/app.service.spec.ts": {
+        "version": "d289246218434f94b6a07a85915432e43b15632a7757f30dddb420d7f0b11b73",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
+      "./src/services/chat/chat.service.spec.ts": {
+        "version": "a13bcece4ac276be69b324a59bb319df86d35d6005ce84a22d399b8ba82c4ec4",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
+      "./src/tests/e2e/app.spec.ts": {
+        "version": "cee48874d5a31c39551cf96f22a588b58ab8bdbdbf715e1f0bfe7cc80ccf372e",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
       "./node_modules/jest-diff/build/cleanupsemantic.d.ts": {
@@ -1918,8 +2033,9 @@
       "removeComments": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+      "resolveJsonModule": true,
       "target": 4,
-      "sourceMap": true,
+      "sourceMap": false,
       "outDir": "./dist",
       "baseUrl": "./",
       "paths": {
@@ -2849,6 +2965,71 @@
       ],
       "./node_modules/@nestjs/common/utils/index.d.ts": [
         "./node_modules/@nestjs/common/utils/forward-ref.util.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/config.module.d.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@nestjs/common/interfaces/index.d.ts",
+        "./node_modules/@nestjs/config/dist/config.service.d.ts",
+        "./node_modules/@nestjs/config/dist/interfaces/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/config.service.d.ts": [
+        "./node_modules/@nestjs/config/dist/types/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/config.module.d.ts",
+        "./node_modules/@nestjs/config/dist/config.service.d.ts",
+        "./node_modules/@nestjs/config/dist/types/index.d.ts",
+        "./node_modules/@nestjs/config/dist/utils/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/interfaces/config-module-options.interface.d.ts": [
+        "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/interfaces/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts",
+        "./node_modules/@nestjs/config/dist/interfaces/config-module-options.interface.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/types/config.type.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/types/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/types/config.type.d.ts",
+        "./node_modules/@nestjs/config/dist/types/no-infer.type.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/types/no-infer.type.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/utils/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/utils/register-as.util.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/utils/register-as.util.d.ts": [
+        "./node_modules/@nestjs/config/dist/interfaces/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
@@ -4270,7 +4451,36 @@
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
+        "./src/entity/chat.ts",
         "./src/services/app.service.ts"
+      ],
+      "./src/controllers/chat/chat.controller.spec.ts": [
+        "./node_modules/@nestjs/testing/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./src/controllers/chat/chat.controller.ts"
+      ],
+      "./src/controllers/chat/chat.controller.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./src/services/chat/chat.service.ts"
+      ],
+      "./src/entity/chat.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./src/entity/cultivation.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./src/entity/plant.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./src/entity/user.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
       ],
       "./src/index.ts": [
         "./node_modules/@nestjs/core/index.d.ts",
@@ -4282,22 +4492,61 @@
         "./node_modules/helmet/dist/index.d.ts",
         "./src/modules/app.module.ts"
       ],
+      "./src/main.ts": [
+        "./node_modules/@nestjs/core/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/helmet/dist/index.d.ts",
+        "./src/modules/app.module.ts"
+      ],
       "./src/modules/app.module.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@nestjs/config/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./src/controllers/app.controller.ts",
+        "./src/modules/firebase.module.ts",
         "./src/services/app.service.ts"
       ],
-      "./src/plugins/firebase.config.ts": [
+      "./src/modules/firebase.module.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
-        "./node_modules/firebase-admin/lib/index.d.ts"
+        "./src/controllers/chat/chat.controller.ts",
+        "./src/services/chat/chat.service.ts"
+      ],
+      "./src/services/app.service.spec.ts": [
+        "./node_modules/@nestjs/testing/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./src/services/app.service.ts"
       ],
       "./src/services/app.service.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
-        "./node_modules/@types/node/index.d.ts"
+        "./node_modules/@types/node/index.d.ts",
+        "./src/entity/chat.ts"
+      ],
+      "./src/services/chat/chat.service.spec.ts": [
+        "./node_modules/@nestjs/testing/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./src/services/chat/chat.service.ts"
+      ],
+      "./src/services/chat/chat.service.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/firebase-admin/lib/index.d.ts"
+      ],
+      "./src/tests/e2e/app.spec.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@nestjs/testing/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./src/controllers/app.controller.ts",
+        "./src/modules/app.module.ts",
+        "./src/services/app.service.ts"
       ]
     },
     "exportedModulesMap": {
@@ -5212,6 +5461,71 @@
       ],
       "./node_modules/@nestjs/common/utils/index.d.ts": [
         "./node_modules/@nestjs/common/utils/forward-ref.util.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/config.module.d.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@nestjs/common/interfaces/index.d.ts",
+        "./node_modules/@nestjs/config/dist/config.service.d.ts",
+        "./node_modules/@nestjs/config/dist/interfaces/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/config.service.d.ts": [
+        "./node_modules/@nestjs/config/dist/types/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/config.module.d.ts",
+        "./node_modules/@nestjs/config/dist/config.service.d.ts",
+        "./node_modules/@nestjs/config/dist/types/index.d.ts",
+        "./node_modules/@nestjs/config/dist/utils/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/interfaces/config-module-options.interface.d.ts": [
+        "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/interfaces/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts",
+        "./node_modules/@nestjs/config/dist/interfaces/config-module-options.interface.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/types/config.type.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/types/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/types/config.type.d.ts",
+        "./node_modules/@nestjs/config/dist/types/no-infer.type.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/types/no-infer.type.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/utils/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/utils/register-as.util.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/dist/utils/register-as.util.d.ts": [
+        "./node_modules/@nestjs/config/dist/interfaces/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@nestjs/config/index.d.ts": [
+        "./node_modules/@nestjs/config/dist/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
@@ -6623,15 +6937,22 @@
         "./node_modules/@types/node/index.d.ts"
       ],
       "./src/controllers/app.controller.ts": [
+        "./src/entity/chat.ts",
         "./src/services/app.service.ts"
+      ],
+      "./src/controllers/chat/chat.controller.ts": [
+        "./node_modules/firebase-admin/lib/database.d.ts",
+        "./src/services/chat/chat.service.ts"
       ],
       "./src/index.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/firebase-functions/lib/index.d.ts"
       ],
-      "./src/plugins/firebase.config.ts": [
-        "./node_modules/firebase-admin/lib/database.d.ts",
-        "./node_modules/firebase-admin/lib/index.d.ts"
+      "./src/services/app.service.ts": [
+        "./src/entity/chat.ts"
+      ],
+      "./src/services/chat/chat.service.ts": [
+        "./node_modules/firebase-admin/lib/database.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -6785,6 +7106,18 @@
       "./node_modules/@nestjs/common/utils/forward-ref.util.d.ts",
       "./node_modules/@nestjs/common/utils/http-error-by-code.util.d.ts",
       "./node_modules/@nestjs/common/utils/index.d.ts",
+      "./node_modules/@nestjs/config/dist/config.module.d.ts",
+      "./node_modules/@nestjs/config/dist/config.service.d.ts",
+      "./node_modules/@nestjs/config/dist/index.d.ts",
+      "./node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts",
+      "./node_modules/@nestjs/config/dist/interfaces/config-module-options.interface.d.ts",
+      "./node_modules/@nestjs/config/dist/interfaces/index.d.ts",
+      "./node_modules/@nestjs/config/dist/types/config.type.d.ts",
+      "./node_modules/@nestjs/config/dist/types/index.d.ts",
+      "./node_modules/@nestjs/config/dist/types/no-infer.type.d.ts",
+      "./node_modules/@nestjs/config/dist/utils/index.d.ts",
+      "./node_modules/@nestjs/config/dist/utils/register-as.util.d.ts",
+      "./node_modules/@nestjs/config/index.d.ts",
       "./node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "./node_modules/@nestjs/core/adapters/index.d.ts",
       "./node_modules/@nestjs/core/application-config.d.ts",
@@ -7013,10 +7346,21 @@
       "./node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
       "./src/controllers/app.controller.spec.ts",
       "./src/controllers/app.controller.ts",
+      "./src/controllers/chat/chat.controller.spec.ts",
+      "./src/controllers/chat/chat.controller.ts",
+      "./src/entity/chat.ts",
+      "./src/entity/cultivation.ts",
+      "./src/entity/plant.ts",
+      "./src/entity/user.ts",
       "./src/index.ts",
+      "./src/main.ts",
       "./src/modules/app.module.ts",
-      "./src/plugins/firebase.config.ts",
-      "./src/services/app.service.ts"
+      "./src/modules/firebase.module.ts",
+      "./src/services/app.service.spec.ts",
+      "./src/services/app.service.ts",
+      "./src/services/chat/chat.service.spec.ts",
+      "./src/services/chat/chat.service.ts",
+      "./src/tests/e2e/app.spec.ts"
     ]
   },
   "version": "3.9.7"

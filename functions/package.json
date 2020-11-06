@@ -14,7 +14,7 @@
   "engines": {
     "node": "8"
   },
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "dependencies": {
     "@nestjs/common": "^7.4.4",
     "@nestjs/config": "^0.5.0",

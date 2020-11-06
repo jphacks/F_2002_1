@@ -27,8 +27,10 @@ export const createNestServer = async (expressInstance: any) => {
   app.use(helmet());
   app.enableCors();
 
+  const initialConfig = process.env.NODE_ENV==="development"?firebase.credential.applicationDefault():firebase.credential.cert(adminConfig);
+
   firebase.initializeApp({
-    credential: firebase.credential.cert(adminConfig),
+    credential: initialConfig,
     databaseURL: "https://speak-vegetable.firebaseio.com"
   })
   return app.init();
