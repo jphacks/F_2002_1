@@ -34,7 +34,7 @@ func NewDB() (*gorm.DB, error) {
 func ResetDB(c echo.Context) error {
 	db, err := gorm.Open("mysql", config.DSN())
 	if err != nil {
-		fmt.Errorf("failed to open MySQL: %w", err)
+		_ = fmt.Errorf("failed to open MySQL: %w", err)
 		return c.String(http.StatusInternalServerError, "Reset Failed")
 	}
 	db.LogMode(true)
@@ -46,7 +46,7 @@ func ResetDB(c echo.Context) error {
 	sqlDB.SetMaxOpenConns(100)
 
 	if err := sqlDB.Ping(); err != nil {
-		fmt.Errorf("failed to ping: %w", err)
+		_ = fmt.Errorf("failed to ping: %w", err)
 		return c.String(http.StatusInternalServerError, "Reset Failed")
 	}
 	return c.String(http.StatusOK, "Reset Completed!")
