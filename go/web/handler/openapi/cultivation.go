@@ -14,7 +14,7 @@ type Cultivation struct {
 	DeletedAt           *time.Time `json:"deleted_at"`
 	Plant               Plant      `json:"plant"`
 	NickName            string     `json:"nick_name"`
-	StartCultivatingAt  time.Time  `json:"start_cultivating_at"`
-	FinishCultivatingAt time.Time  `json:"finish_cultivating_at"`
+	StartCultivatingAt  *time.Time `json:"start_cultivating_at"`
+	FinishCultivatingAt *time.Time `json:"finish_cultivating_at"`
 	Record              record     `json:"record"`
 }
