@@ -23,6 +23,7 @@ func NewUserRepository(db *gorm.DB) *UserRepository {
 func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 	var user entity.User
 	if err := r.db.Set("gorm:auto_preload", true).First(&user, id).Error; err != nil {
+		return nil, err
 	}
 	return &user, nil
 }
@@ -31,6 +32,7 @@ func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 func (r *UserRepository) FindIDByUID(uid string) (int, error) {
 	var user entity.User
 	if err := r.db.Set("gorm:auto_preload", true).Find(&user, "uid = ?", uid).Error; err != nil {
+		return 0, err
 	}
 	return user.ID, nil
 }
@@ -39,6 +41,7 @@ func (r *UserRepository) FindIDByUID(uid string) (int, error) {
 func (r *UserRepository) FindAll() (*entity.Users, error) {
 	var users entity.Users
 	if err := r.db.Set("gorm:auto_preload", true).Find(&users).Error; err != nil {
+		return nil, err
 	}
 	return &users, nil
 }
@@ -46,6 +49,7 @@ func (r *UserRepository) FindAll() (*entity.Users, error) {
 // Store はユーザを新規保存します。
 func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
 	if err := r.db.Set("gorm:auto_preload", true).Create(&user).Error; err != nil {
+		return nil, err
 	}
 	return user, nil
 }
@@ -53,6 +57,7 @@ func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
 // UpdateByID はユーザの情報を更新します。
 func (r *UserRepository) UpdateByID(user *entity.User) (*entity.User, error) {
 	if err := r.db.Set("gorm:auto_preload", true).Model(&entity.User{}).Update(&user).First(&user).Error; err != nil {
+		return nil, err
 	}
 	return user, nil
 }
@@ -60,6 +65,7 @@ func (r *UserRepository) UpdateByID(user *entity.User) (*entity.User, error) {
 // DeleteByID は指定されたIDを持つユーザを削除します。
 func (r *UserRepository) DeleteByID(id int) error {
 	if err := r.db.Delete(&entity.User{}, id).Error; err != nil {
+		return err
 	}
 	return nil
 }
