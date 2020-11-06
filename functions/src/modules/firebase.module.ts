@@ -5,6 +5,6 @@ import { ChatController } from "../controllers/chat/chat.controller";
 // Firebase のログイン状況を取得する
 @Module({
     providers:[ChatService],
-    controllers:[ChatController]
+    controllers:[ChatController],
 })
 export class FirebaseModule {}
