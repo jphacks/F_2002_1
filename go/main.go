@@ -6,6 +6,8 @@ import (
 	"github.com/jphacks/F_2002_1/go/config"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/web"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
