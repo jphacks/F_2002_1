@@ -14,6 +14,7 @@ func NewDB() (*gorm.DB, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to open MySQL: %w", err)
 	}
+	db.LogMode(true)
 
 	sqlDB := db.DB()
 	sqlDB.SetMaxIdleConns(100)
