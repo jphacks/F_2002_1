@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { AppService } from "../../../infrastructure/services/app.service";
+import { AppService } from "../../services/app.service";
 import { AppController } from "../../controllers/app.controller";
 
 import { ApiModule } from './firebase.module';

@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 
-import {database} from "../../plugins/firebase.config";
-import {IChat} from "../../entity/chat";
+import {database} from "../plugins/firebase.config";
+import {IChat} from "../entity/chat";
 
 
 @Injectable()

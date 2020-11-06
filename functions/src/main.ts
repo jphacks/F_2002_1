@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './interfaces/gateways/modules/app.module';
+import { AppModule } from './modules/modules/app.module';
 import * as helmet from "helmet";
 
 async function bootstrap() {
