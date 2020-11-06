@@ -37,6 +37,7 @@ services:
       DB_PORT: 3306
       DB_NAME: database # = MYSQL_DATABASE
       FIREBASE_SDK_CREDENTIALS: ${FIREBASE_SDK_CREDENTIALS}
+      ADMIN_PASSW0RD: ${ADMIN_PASSW0RD}
     volumes:
       - ./go:/go/src
     depends_on:
