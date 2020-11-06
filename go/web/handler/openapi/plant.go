@@ -9,7 +9,7 @@ type Plant struct {
 	DeletedAt    *time.Time    `json:"deleted_at"`
 	Name         string        `json:"name"`
 	NickName     string        `json:"nick_name"`
-	Price        string        `json:"price"`
+	Price        int           `json:"price"`
 	Period       int           `json:"period"`
 	Difficulty   int           `json:"difficulty"`
 	Description  string        `json:"description"`

@@ -6,6 +6,8 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
+	"github.com/jphacks/F_2002_1/go/web/handler/openapi"
+	"github.com/jphacks/F_2002_1/go/web/handler/response"
 
 	"github.com/labstack/echo/v4"
 )
@@ -29,5 +31,27 @@ func (h *PlantHandler) GetPlants(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-	return c.JSON(http.StatusOK, plants)
+
+	res := response.PlantGet{}
+	for _, plant := range *plants {
+		res = append(res, openapi.Plant{
+			ID:          plant.ID,
+			CreatedAt:   plant.CreatedAt,
+			UpdatedAt:   plant.UpdatedAt,
+			DeletedAt:   plant.DeletedAt,
+			Name:        plant.Name,
+			NickName:    plant.NickName,
+			Price:       plant.Price,
+			Period:      plant.Period,
+			Difficulty:  plant.Difficulty,
+			Description: plant.Description,
+			KitName:     plant.KitName,
+			Season: openapi.Season{
+				From: plant.SeasonFrom,
+				To:   plant.SeasonTo,
+			},
+		})
+	}
+
+	return c.JSON(http.StatusOK, res)
 }

@@ -52,7 +52,6 @@ func NewServer() *echo.Echo {
 	v1.DELETE("/user", userHandler.DeleteUser)
 
 	// usersCultivationsHandler := handler.NewUsersCultivationsHandler(db)
-	// v1.GET("/users/:id/cultivations", usersCultivationsHandler.GetCultivations)
 	// v1.POST("/users/:id/cultivations", usersCultivationsHandler.PostCultivation)
 
 	// cultivationsHandler := handler.NewCultivationsHandler(db)

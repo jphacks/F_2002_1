@@ -28,14 +28,14 @@ func (p *PlantUseCase) ReadPlants() (*entity.Plants, error) {
 	return plants, nil
 }
 
-// // ReadPlant は植物を取得します。
-// func (p *PlantUseCase) ReadPlant(id int) (*entity.Plant, error) {
-// 	plant, err := p.plantRepo.FindByID(id)
-// 	if err != nil {
-// 		return nil, fmt.Errorf("find plant from repo id=%s: %w", id, err)
-// 	}
-// 	return plant, nil
-// }
+// ReadPlant は植物を取得します。
+func (p *PlantUseCase) ReadPlant(id int) (*entity.Plant, error) {
+	plant, err := p.plantRepo.FindByID(id)
+	if err != nil {
+		return nil, fmt.Errorf("find plant from repo id=%d: %w", id, err)
+	}
+	return plant, nil
+}
 
 // // CreatePlant は植物を作成します。
 // func (p *PlantUseCase) CreatePlant(plant *entity.Plant) (*entity.Plant, error) {

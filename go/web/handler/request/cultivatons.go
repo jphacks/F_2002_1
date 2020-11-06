@@ -1,14 +1,14 @@
 package request
 
-type CultivationsGet struct {
+type CultivationsGetByID struct {
 	CultivationID int `param:"cultivation_id"`
 }
 
-type CultivationsPut struct {
+type CultivationsPutByID struct {
 	CultivationID int    `param:"cultivation_id"`
 	NickName      string `json:"nick_name"`
 }
 
-type CultivationsDelete struct {
+type CultivationsDeleteByID struct {
 	CultivationID int `param:"cultivation_id"`
 }

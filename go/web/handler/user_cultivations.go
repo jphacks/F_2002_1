@@ -9,7 +9,9 @@ import (
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
 	"github.com/jphacks/F_2002_1/go/web/fbauth"
+	"github.com/jphacks/F_2002_1/go/web/handler/openapi"
 	"github.com/jphacks/F_2002_1/go/web/handler/request"
+	"github.com/jphacks/F_2002_1/go/web/handler/response"
 
 	"github.com/labstack/echo/v4"
 )
@@ -18,6 +20,7 @@ import (
 type UserCultivationsHandler struct {
 	cultivationUC *usecase.CultivationUseCase
 	userUC        *usecase.UserUseCase
+	plantUC       *usecase.PlantUseCase
 }
 
 // NewCultivationsHandler はCultivationsHandlerのポインタを生成する関数です。
@@ -70,7 +73,44 @@ func (h *UserCultivationsHandler) GetUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	return c.JSON(http.StatusOK, cultivation)
+	plant, err := h.plantUC.ReadPlant(cultivation.PlantID)
+	if err != nil {
+		if errors.Is(err, entity.ErrPlantNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	res := &response.UserCultivationsGetById{
+		ID:        cultivation.ID,
+		CreatedAt: cultivation.CreatedAt,
+		UpdatedAt: cultivation.UpdatedAt,
+		DeletedAt: cultivation.DeletedAt,
+		Plant: openapi.Plant{
+			ID:          plant.ID,
+			CreatedAt:   plant.CreatedAt,
+			UpdatedAt:   plant.UpdatedAt,
+			DeletedAt:   plant.DeletedAt,
+			Name:        plant.Name,
+			NickName:    plant.NickName,
+			Price:       plant.Price,
+			Period:      plant.Period,
+			Difficulty:  plant.Difficulty,
+			Description: plant.Description,
+			KitName:     plant.KitName,
+			Season: openapi.Season{
+				From: plant.SeasonFrom,
+				To:   plant.SeasonTo,
+			},
+		},
+		NickName:            cultivation.NickName,
+		StartCultivatingAt:  *cultivation.StartCultivatingAt,
+		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+	}
+
+	return c.JSON(http.StatusOK, res)
 }
 
 // PostUser は POST /cultivations に対応するハンドラです。
@@ -101,7 +141,44 @@ func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	return c.JSON(http.StatusCreated, cultivation)
+	plant, err := h.plantUC.ReadPlant(cultivation.PlantID)
+	if err != nil {
+		if errors.Is(err, entity.ErrPlantNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	res := &response.UserCultivationsPost{
+		ID:        cultivation.ID,
+		CreatedAt: cultivation.CreatedAt,
+		UpdatedAt: cultivation.UpdatedAt,
+		DeletedAt: cultivation.DeletedAt,
+		Plant: openapi.Plant{
+			ID:          plant.ID,
+			CreatedAt:   plant.CreatedAt,
+			UpdatedAt:   plant.UpdatedAt,
+			DeletedAt:   plant.DeletedAt,
+			Name:        plant.Name,
+			NickName:    plant.NickName,
+			Price:       plant.Price,
+			Period:      plant.Period,
+			Difficulty:  plant.Difficulty,
+			Description: plant.Description,
+			KitName:     plant.KitName,
+			Season: openapi.Season{
+				From: plant.SeasonFrom,
+				To:   plant.SeasonTo,
+			},
+		},
+		NickName:            cultivation.NickName,
+		StartCultivatingAt:  *cultivation.StartCultivatingAt,
+		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+	}
+
+	return c.JSON(http.StatusCreated, res)
 }
 
 // UpdateCultivation は PUT /cultivations/:id に対応するハンドラです。
@@ -149,7 +226,45 @@ func (h *UserCultivationsHandler) UpdateUserCultivation(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-	return c.JSON(http.StatusOK, cultivation)
+
+	plant, err := h.plantUC.ReadPlant(cultivation.PlantID)
+	if err != nil {
+		if errors.Is(err, entity.ErrPlantNotFound) {
+			logger.Debug(err)
+			return echo.NewHTTPError(http.StatusNotFound)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
+
+	res := &response.UserCultivationsPutById{
+		ID:        cultivation.ID,
+		CreatedAt: cultivation.CreatedAt,
+		UpdatedAt: cultivation.UpdatedAt,
+		DeletedAt: cultivation.DeletedAt,
+		Plant: openapi.Plant{
+			ID:          plant.ID,
+			CreatedAt:   plant.CreatedAt,
+			UpdatedAt:   plant.UpdatedAt,
+			DeletedAt:   plant.DeletedAt,
+			Name:        plant.Name,
+			NickName:    plant.NickName,
+			Price:       plant.Price,
+			Period:      plant.Period,
+			Difficulty:  plant.Difficulty,
+			Description: plant.Description,
+			KitName:     plant.KitName,
+			Season: openapi.Season{
+				From: plant.SeasonFrom,
+				To:   plant.SeasonTo,
+			},
+		},
+		NickName:            cultivation.NickName,
+		StartCultivatingAt:  *cultivation.StartCultivatingAt,
+		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+	}
+
+	return c.JSON(http.StatusOK, res)
 }
 
 // DeleteCultivation は DELETE /cultivation に対応するハンドラです。
@@ -187,7 +302,7 @@ func (h *UserCultivationsHandler) DeleteUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusForbidden)
 	}
 
-	cultivation, err := h.cultivationUC.DeleteCultivation(req.CultivationID)
+	err = h.cultivationUC.DeleteCultivation(req.CultivationID)
 	if err != nil {
 		if errors.Is(err, entity.ErrCultivationNotFound) {
 			logger.Debug(err)
@@ -196,5 +311,6 @@ func (h *UserCultivationsHandler) DeleteUserCultivation(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-	return c.JSON(http.StatusOK, cultivation)
+
+	return c.JSON(http.StatusNoContent, nil)
 }
