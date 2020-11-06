@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import {AppModule} from "../../modules/app.module";
-import {AppController} from "../../controllers/app.controller";
-import {AppService} from "../../services/app.service";
+import {AppModule} from "../../interfaces/gateways/modules/app.module";
+import {AppController} from "../../interfaces/controllers/app.controller";
+import {AppService} from "../../infrastructure/services/app.service";
 import * as request from 'supertest';
 // import { ConfigModule } from '@nestjs/config';
 

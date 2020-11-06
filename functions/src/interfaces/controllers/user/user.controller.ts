@@ -1,4 +1,4 @@
-import { ApiService } from '@/services/user/user.service';
+import { ApiService } from '@/infrastructure/services/user/user.service';
 import { Controller, Get } from '@nestjs/common';
 //import {ApiService} from "../../services/api/api.service";
 
