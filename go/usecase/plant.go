@@ -37,29 +37,29 @@ func (p *PlantUseCase) ReadPlant(id int) (*entity.Plant, error) {
 	return plant, nil
 }
 
-// // CreatePlant は植物を作成します。
-// func (p *PlantUseCase) CreatePlant(plant *entity.Plant) (*entity.Plant, error) {
-// 	plant, err := p.plantRepo.Store(plant)
-// 	if err != nil {
-// 		return nil, fmt.Errorf("store plant from repo: %w", err)
-// 	}
-// 	return plant, nil
-// }
+// CreatePlant は植物を作成します。
+func (p *PlantUseCase) CreatePlant(plant *entity.Plant) (*entity.Plant, error) {
+	plant, err := p.plantRepo.Store(plant)
+	if err != nil {
+		return nil, fmt.Errorf("store plant from repo: %w", err)
+	}
+	return plant, nil
+}
 
-// // UpdatePlant は植物を編集します。
-// func (p *PlantUseCase) UpdatePlant(plant *entity.Plant) (*entity.Plant, error) {
-// 	plant, err := p.plantRepo.UpdateByID(id, plant)
-// 	if err != nil {
-// 		return nil, fmt.Errorf("update plant from repo id=%s: %w", plant.ID, err)
-// 	}
-// 	return plant, nil
-// }
+// UpdatePlant は植物を編集します。
+func (p *PlantUseCase) UpdatePlant(plant *entity.Plant) (*entity.Plant, error) {
+	plant, err := p.plantRepo.UpdateByID(plant)
+	if err != nil {
+		return nil, fmt.Errorf("update plant from repo id=%s: %w", plant.ID, err)
+	}
+	return plant, nil
+}
 
-// // DeletePlant は植物を削除します。
-// func (p *PlantUseCase) DeletePlant(id int) (*entity.Plant, error) {
-// 	plant, err := p.plantRepo.DeleteByID(id)
-// 	if err != nil {
-// 		return nil, fmt.Errorf("delete plant from repo id=%s: %w", id, err)
-// 	}
-// 	return plant, nil
-// }
+// DeletePlant は植物を削除します。
+func (p *PlantUseCase) DeletePlant(id int) error {
+	err := p.plantRepo.DeleteByID(id)
+	if err != nil {
+		return fmt.Errorf("delete plant from repo id=%s: %w", id, err)
+	}
+	return nil
+}
