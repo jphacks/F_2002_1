@@ -409,7 +409,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cultivation'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cultivation'
         404:
           $ref: '#/components/responses/404'
 
@@ -996,11 +998,11 @@ components:
           description: 余裕があれば
           type: object
           properties:
-            watering:
+            waterings:
               type: array
               items:
                 $ref: '#/components/schemas/Watering'
-            harvesing:
+            harvesings:
               type: array
               items:
                 $ref: '#/components/schemas/Harvesting'

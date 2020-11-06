@@ -5,11 +5,14 @@ import * as express from "express";
 import * as functions from "firebase-functions";
 import * as helmet from "helmet";
 
+<<<<<<< HEAD
 import { ConfigService } from '@nestjs/config';
 import * as firebase from 'firebase-admin'
 import { ServiceAccount } from "firebase-admin";
 
 
+=======
+>>>>>>> origin
 const server = express();
 
 export const createNestServer = async (expressInstance: any) => {
@@ -17,22 +20,30 @@ export const createNestServer = async (expressInstance: any) => {
     AppModule,
     new ExpressAdapter(expressInstance)
   );
+<<<<<<< HEAD
   const configService: ConfigService = app.get(ConfigService);
   const adminConfig: ServiceAccount = {
     "projectId"  : configService.get<string>('FIREBASE_PROJECT_ID'),
     "privateKey" : configService.get<string>('FIREBASE_PRIVATE_KEY').replace(/\\n/g, '\n'),
     "clientEmail": configService.get<string>('FIREBASE_CLIENT_EMAIL'),
   };
+=======
+
+>>>>>>> origin
   // ここにセキュリティについての設定を追加する
   app.use(helmet());
   app.enableCors();
 
+<<<<<<< HEAD
   const initialConfig = process.env.NODE_ENV==="development"?firebase.credential.applicationDefault():firebase.credential.cert(adminConfig);
 
   firebase.initializeApp({
     credential: initialConfig,
     databaseURL: "https://speak-vegetable.firebaseio.com"
   })
+=======
+  console.log("the server is starting @ firebase");
+>>>>>>> origin
   return app.init();
 };
 

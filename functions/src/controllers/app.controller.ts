@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { Controller, Get, Param, Post ,Body} from "@nestjs/common";
 import { AppService } from "../services/app.service";
 import {IChat} from "../entity/chat";
+=======
+import { Controller, Get } from "@nestjs/common";
+import { AppService } from "../services/app.service";
+>>>>>>> origin
 
 @Controller()
 export class AppController {
@@ -9,10 +14,13 @@ export class AppController {
   hello(): string {
     return this.appsService.hello();
   }
+<<<<<<< HEAD
   // チャット
   @Post("/chat/:roomId")
   responseText(roomId:string,chat:IChat){
     return this.appsService.responseText(roomId,chat)
   }
+=======
+>>>>>>> origin
 
 }

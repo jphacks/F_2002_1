@@ -7,6 +7,10 @@ typings/
 
 # Node.js dependency directory
 node_modules/
+<<<<<<< HEAD
 dist/
 serviceAccountKey.json
 .env
+=======
+dist/
+>>>>>>> origin

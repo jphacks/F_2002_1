@@ -1391,6 +1391,79 @@
         "signature": "e3cd60be3c4f95c43420be67eaa21637585b7c1a8129f9b39983bbd294f9513c",
         "affectsGlobalScope": false
       },
+<<<<<<< HEAD
+=======
+      "./src/services/app.service.ts": {
+        "version": "a196805ad22f4c9ef24419f63139e91d182bf51adc9c393cbc6d5d63c4c1a4de",
+        "signature": "d71633712cdbf6faf521f2a2ca7a6cd85c124e92cbd03e1c2c726960b65c598a",
+        "affectsGlobalScope": false
+      },
+      "./src/controllers/app.controller.ts": {
+        "version": "88881c787ff34c267d43aecfbaa63ea1358f57b8d8a84eec854e8fe739a68f29",
+        "signature": "e9cf3d7073b32184aeab25c459aab72aea968619b73a954e884a966826def5bd",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/app.module.ts": {
+        "version": "f88d123caa6da57dceae577659e25bddac91f4814ef5bc9150f244abbd932efb",
+        "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/range-parser/index.d.ts": {
+        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/qs/index.d.ts": {
+        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/express-serve-static-core/index.d.ts": {
+        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "affectsGlobalScope": true
+      },
+      "./node_modules/@types/mime/index.d.ts": {
+        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/serve-static/index.d.ts": {
+        "version": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "signature": "a81ca93d000e36f987b91dd5b26a900aeae125bfbeda710b0369d04857c02932",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/connect/index.d.ts": {
+        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/body-parser/index.d.ts": {
+        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/express/index.d.ts": {
+        "version": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e",
+        "signature": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/firebase-functions/lib/function-configuration.d.ts": {
+        "version": "08ac33557808eb8c53a8a3cfcc9fa8e51d34677bf069247588a2a49e8d965ba4",
+        "signature": "08ac33557808eb8c53a8a3cfcc9fa8e51d34677bf069247588a2a49e8d965ba4",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/firebase-functions/lib/cloud-functions.d.ts": {
+        "version": "a313f2d00131959867957572e178a04f0356dd7e38bd5677b40a53fef649a888",
+        "signature": "a313f2d00131959867957572e178a04f0356dd7e38bd5677b40a53fef649a888",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/firebase-functions/lib/providers/analytics.d.ts": {
+        "version": "230f2776b970caf8e470648d09f4bf01d6cf1612d6aadef4d4783343a8b5c7b7",
+        "signature": "230f2776b970caf8e470648d09f4bf01d6cf1612d6aadef4d4783343a8b5c7b7",
+        "affectsGlobalScope": false
+      },
+>>>>>>> origin
       "./node_modules/event-target-shim/index.d.ts": {
         "version": "2859adaa4f2db3d4f0fc37ad86f056045341496b58fba0dbc16a222f9d5d55b1",
         "signature": "2859adaa4f2db3d4f0fc37ad86f056045341496b58fba0dbc16a222f9d5d55b1",
@@ -1616,6 +1689,7 @@
         "signature": "b6ffad9cad549d8062299edd1c5b4d414cd3df117414e0adfd619b42e684f757",
         "affectsGlobalScope": false
       },
+<<<<<<< HEAD
       "./src/plugins/firebase.config.ts": {
         "version": "6516700bb3bb3d40fc13b28b206bbef93ec0d92862e25ac3d71c2ad75455a926",
         "signature": "1dbcdbb75b256b52fd780cf113af7d8ed8baa7b564541cf2649535d4b65e9015",
@@ -1711,6 +1785,8 @@
         "signature": "230f2776b970caf8e470648d09f4bf01d6cf1612d6aadef4d4783343a8b5c7b7",
         "affectsGlobalScope": false
       },
+=======
+>>>>>>> origin
       "./node_modules/firebase-functions/lib/providers/auth.d.ts": {
         "version": "8a5cec8e62bd0dcb6e933c76743d57fd5b712663b8fd28c2c21c098e8fe027a4",
         "signature": "8a5cec8e62bd0dcb6e933c76743d57fd5b712663b8fd28c2c21c098e8fe027a4",
@@ -1847,6 +1923,7 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
+<<<<<<< HEAD
         "version": "3a85fba88873898a6ebd239568e33947c8980927f91b72d44048b6e4d6257841",
         "signature": "12dbf008a62a465e6f10c77def9119674c6c98318120839bd4c4f433669091fc",
         "affectsGlobalScope": false
@@ -1895,6 +1972,101 @@
         "version": "480dcf599750efc664ba6edba1ed91fb5761ef5ae0e45e475b69a994e312db73",
         "signature": "480dcf599750efc664ba6edba1ed91fb5761ef5ae0e45e475b69a994e312db73",
         "affectsGlobalScope": true
+=======
+        "version": "ac4ae9bafc1496f9a33daacf7c062ca3e39564f596e5bc87cbd8c5c35a6c56b8",
+        "signature": "12dbf008a62a465e6f10c77def9119674c6c98318120839bd4c4f433669091fc",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/eslint-visitor-keys/index.d.ts": {
+        "version": "725d9be2fd48440256f4deb00649adffdbc5ecd282b09e89d4e200663792c34c",
+        "signature": "725d9be2fd48440256f4deb00649adffdbc5ecd282b09e89d4e200663792c34c",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/fs-extra/index.d.ts": {
+        "version": "5171627120eeb3a7e8afb8ed04ea9be7f0b53ba09bb1fc95172483e0fbb0740c",
+        "signature": "5171627120eeb3a7e8afb8ed04ea9be7f0b53ba09bb1fc95172483e0fbb0740c",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/json-schema/index.d.ts": {
+        "version": "b2be568d8ce95fcb26eebd04c035d94825655fdf689bf67d799f5ff8cbbb1024",
+        "signature": "b2be568d8ce95fcb26eebd04c035d94825655fdf689bf67d799f5ff8cbbb1024",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/json5/index.d.ts": {
+        "version": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
+        "signature": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/common.d.ts": {
+        "version": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
+        "signature": "29304d38d619bac17128f20c21af1a03256f9edf8f0b82e6674565e09e956dff",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/array.d.ts": {
+        "version": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
+        "signature": "d03a1ae3d39f757c9f22e4e775b940a98d86bb50ec85529b59e32a17b65c2b90",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/collection.d.ts": {
+        "version": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "signature": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/date.d.ts": {
+        "version": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "signature": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/function.d.ts": {
+        "version": "c9f396e71966bd3a890d8a36a6a497dbf260e9b868158ea7824d4b5421210afe",
+        "signature": "c9f396e71966bd3a890d8a36a6a497dbf260e9b868158ea7824d4b5421210afe",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/lang.d.ts": {
+        "version": "509235563ea2b939e1bbe92aae17e71e6a82ceab8f568b45fb4fce7d72523a32",
+        "signature": "509235563ea2b939e1bbe92aae17e71e6a82ceab8f568b45fb4fce7d72523a32",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/math.d.ts": {
+        "version": "9364c7566b0be2f7b70ff5285eb34686f83ccb01bda529b82d23b2a844653bfb",
+        "signature": "9364c7566b0be2f7b70ff5285eb34686f83ccb01bda529b82d23b2a844653bfb",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/number.d.ts": {
+        "version": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "signature": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/object.d.ts": {
+        "version": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc",
+        "signature": "7fc5a3d7cff296cea5c225911726a56283b663328709088fcc912d61f73682fc",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/seq.d.ts": {
+        "version": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "signature": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/string.d.ts": {
+        "version": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
+        "signature": "4908e4c00832b26ce77a629de8501b0e23a903c094f9e79a7fec313a15da796a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/common/util.d.ts": {
+        "version": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
+        "signature": "2630a7cbb597e85d713b7ef47f2946d4280d3d4c02733282770741d40672b1a5",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/lodash/index.d.ts": {
+        "version": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
+        "signature": "0714e2046df66c0e93c3330d30dbc0565b3e8cd3ee302cf99e4ede6220e5fec8",
+        "affectsGlobalScope": true
+      },
+      "./node_modules/@types/long/index.d.ts": {
+        "version": "e8465811693dfe4e96ef2b3dffda539d6edfe896961b7af37b44db2c0e48532b",
+        "signature": "e8465811693dfe4e96ef2b3dffda539d6edfe896961b7af37b44db2c0e48532b",
+        "affectsGlobalScope": false
+>>>>>>> origin
       }
     },
     "options": {
@@ -1903,9 +2075,14 @@
       "removeComments": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+<<<<<<< HEAD
       "resolveJsonModule": true,
       "target": 4,
       "sourceMap": false,
+=======
+      "target": 4,
+      "sourceMap": true,
+>>>>>>> origin
       "outDir": "./dist",
       "baseUrl": "./",
       "paths": {
@@ -1915,12 +2092,15 @@
       },
       "rootDir": "./src",
       "incremental": true,
+<<<<<<< HEAD
       "typeRoots": [
         "./functions/node_modules/@types"
       ],
       "types": [
         "@types/jest"
       ],
+=======
+>>>>>>> origin
       "configFilePath": "./tsconfig.build.json"
     },
     "referencedMap": {
@@ -3184,6 +3364,13 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+<<<<<<< HEAD
+=======
+      "./node_modules/@types/eslint-visitor-keys/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+>>>>>>> origin
       "./node_modules/@types/express-serve-static-core/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
@@ -3197,11 +3384,237 @@
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/@types/serve-static/index.d.ts"
       ],
+<<<<<<< HEAD
       "./node_modules/@types/jest/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/jest-diff/build/index.d.ts",
         "./node_modules/pretty-format/build/index.d.ts"
+=======
+      "./node_modules/@types/fs-extra/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/json-schema/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/json5/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/array.d.ts": [
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/collection.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/common.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/date.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/function.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/lang.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/math.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/number.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/object.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/seq.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/string.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/util.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/index.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/long/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+>>>>>>> origin
       ],
       "./node_modules/@types/mime/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
@@ -3613,6 +4026,7 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+<<<<<<< HEAD
       "./node_modules/jest-diff/build/cleanupsemantic.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
@@ -3650,6 +4064,8 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+=======
+>>>>>>> origin
       "./node_modules/reflect-metadata/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
@@ -4197,17 +4613,23 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+<<<<<<< HEAD
       "./src/controllers/api/api.controller.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./src/services/api/api.service.ts"
       ],
+=======
+>>>>>>> origin
       "./src/controllers/app.controller.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
+<<<<<<< HEAD
         "./src/interfaces/chat.ts",
+=======
+>>>>>>> origin
         "./src/services/app.service.ts"
       ],
       "./src/index.ts": [
@@ -4220,6 +4642,7 @@
         "./node_modules/helmet/dist/index.d.ts",
         "./src/modules/app.module.ts"
       ],
+<<<<<<< HEAD
       "./src/interfaces/chat.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
@@ -4238,11 +4661,14 @@
         "./src/controllers/api/api.controller.ts",
         "./src/services/api/api.service.ts"
       ],
+=======
+>>>>>>> origin
       "./src/modules/app.module.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./src/controllers/app.controller.ts",
+<<<<<<< HEAD
         "./src/modules/api.module.ts",
         "./src/services/app.service.ts"
       ],
@@ -4262,6 +4688,14 @@
         "./node_modules/@types/node/index.d.ts",
         "./src/interfaces/chat.ts",
         "./src/plugins/firebase.config.ts"
+=======
+        "./src/services/app.service.ts"
+      ],
+      "./src/services/app.service.ts": [
+        "./node_modules/@nestjs/common/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+>>>>>>> origin
       ]
     },
     "exportedModulesMap": {
@@ -5525,6 +5959,13 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+<<<<<<< HEAD
+=======
+      "./node_modules/@types/eslint-visitor-keys/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+>>>>>>> origin
       "./node_modules/@types/express-serve-static-core/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
@@ -5538,11 +5979,237 @@
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/@types/serve-static/index.d.ts"
       ],
+<<<<<<< HEAD
       "./node_modules/@types/jest/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/jest-diff/build/index.d.ts",
         "./node_modules/pretty-format/build/index.d.ts"
+=======
+      "./node_modules/@types/fs-extra/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/json-schema/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/json5/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/array.d.ts": [
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/collection.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/common.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/date.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/function.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/lang.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/math.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/number.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/object.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/seq.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/string.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/common/util.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/index.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/lodash/index.d.ts": [
+        "./node_modules/@types/lodash/common/array.d.ts",
+        "./node_modules/@types/lodash/common/collection.d.ts",
+        "./node_modules/@types/lodash/common/common.d.ts",
+        "./node_modules/@types/lodash/common/date.d.ts",
+        "./node_modules/@types/lodash/common/function.d.ts",
+        "./node_modules/@types/lodash/common/lang.d.ts",
+        "./node_modules/@types/lodash/common/math.d.ts",
+        "./node_modules/@types/lodash/common/number.d.ts",
+        "./node_modules/@types/lodash/common/object.d.ts",
+        "./node_modules/@types/lodash/common/seq.d.ts",
+        "./node_modules/@types/lodash/common/string.d.ts",
+        "./node_modules/@types/lodash/common/util.d.ts",
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+      ],
+      "./node_modules/@types/long/index.d.ts": [
+        "./node_modules/@types/node/base.d.ts",
+        "./node_modules/@types/node/index.d.ts"
+>>>>>>> origin
       ],
       "./node_modules/@types/mime/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
@@ -5954,6 +6621,7 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+<<<<<<< HEAD
       "./node_modules/jest-diff/build/cleanupsemantic.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
@@ -5991,6 +6659,8 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+=======
+>>>>>>> origin
       "./node_modules/reflect-metadata/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
@@ -6538,16 +7208,21 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts"
       ],
+<<<<<<< HEAD
       "./src/controllers/api/api.controller.ts": [
         "./src/services/api/api.service.ts"
       ],
       "./src/controllers/app.controller.ts": [
         "./src/interfaces/chat.ts",
+=======
+      "./src/controllers/app.controller.ts": [
+>>>>>>> origin
         "./src/services/app.service.ts"
       ],
       "./src/index.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/firebase-functions/lib/index.d.ts"
+<<<<<<< HEAD
       ],
       "./src/plugins/firebase.config.ts": [
         "./node_modules/firebase-admin/lib/database.d.ts",
@@ -6938,6 +7613,11 @@
       "./src/services/api/api.service.ts",
       "./src/services/app.service.ts"
     ]
+=======
+      ]
+    },
+    "semanticDiagnosticsPerFile": []
+>>>>>>> origin
   },
   "version": "3.9.7"
 }
