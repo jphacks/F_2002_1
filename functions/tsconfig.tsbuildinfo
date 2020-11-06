@@ -1632,13 +1632,13 @@
         "affectsGlobalScope": false
       },
       "./src/services/chat/chat.service.ts": {
-        "version": "81a524e077d7bbd3377147dd9c06a1bd110d5e3b0dde9f65d2ffceca2c11933f",
-        "signature": "f2eea8e80db0af3bcba0f040361521cdc4963f95a0ffc75ed6f666ea16bba66e",
+        "version": "9011f6271cfabf27bf10d3c110f55088ad3eba439a52cb560b680445faf71144",
+        "signature": "0aefc0d302ec16e3430a2a84859c3aa842a2880d27b3acc0931733cd0adf5582",
         "affectsGlobalScope": false
       },
       "./src/controllers/chat/chat.controller.ts": {
         "version": "59cd4b0d2d533fc36ea72902ca97c070002c06454097db07c1b359962ddfe8de",
-        "signature": "50d152c634a9743816302f77d47db840777bf26e63dfd1cb5366faca1469953f",
+        "signature": "c6fe49819aefcd22158373f4c359fa179f8dbc65c1923d75272f021a2e8bea6d",
         "affectsGlobalScope": false
       },
       "./src/modules/firebase.module.ts": {
@@ -1902,7 +1902,7 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "5be004c50c8f3d6da176cbfb3cf6a790e5782968eef662a5d57cdc6865cf00f1",
+        "version": "60116d9fcb398773891469c22a0e8d1daf427ccc4d0bb9a58739c1516162b09c",
         "signature": "12dbf008a62a465e6f10c77def9119674c6c98318120839bd4c4f433669091fc",
         "affectsGlobalScope": false
       },
@@ -4483,11 +4483,13 @@
         "./node_modules/@types/node/index.d.ts"
       ],
       "./src/index.ts": [
+        "./node_modules/@nestjs/config/index.d.ts",
         "./node_modules/@nestjs/core/index.d.ts",
         "./node_modules/@nestjs/platform-express/index.d.ts",
         "./node_modules/@types/express/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
+        "./node_modules/firebase-admin/lib/index.d.ts",
         "./node_modules/firebase-functions/lib/index.d.ts",
         "./node_modules/helmet/dist/index.d.ts",
         "./src/modules/app.module.ts"
@@ -6941,7 +6943,6 @@
         "./src/services/app.service.ts"
       ],
       "./src/controllers/chat/chat.controller.ts": [
-        "./node_modules/firebase-admin/lib/database.d.ts",
         "./src/services/chat/chat.service.ts"
       ],
       "./src/index.ts": [
@@ -6950,9 +6951,6 @@
       ],
       "./src/services/app.service.ts": [
         "./src/entity/chat.ts"
-      ],
-      "./src/services/chat/chat.service.ts": [
-        "./node_modules/firebase-admin/lib/database.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
