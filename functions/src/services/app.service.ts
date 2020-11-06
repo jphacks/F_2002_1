@@ -13,7 +13,7 @@ export class AppService {
   /**
    * テキストメッセージをサーバーに送信する
    * @param roomId :string, 送信先のチャットIDを送信する
-   * @param message:string, 
+   * @param message:string
   */
   public async responseText(roomId:string, inputMessage:IChat){
     let responseMessage:string
@@ -25,9 +25,16 @@ export class AppService {
       default:
         responseMessage = "すみません。このメッセージには対応していません。"
     }
+    try {
+      console.log("action")
+      // ここでチャットを流す
+      // database.ref("chat_room").child(roomId).push(); // ここで Firestore へデータを送信する
+    } catch(e){
+      console.error(e);
+      throw new Error(e);
+    }
 
-    // ここでチャットを流す
-    // database.ref("chat_room").child(roomId).push(); // ここで Firestore へデータを送信する
+    
     return;
   }
   
