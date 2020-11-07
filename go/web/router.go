@@ -19,12 +19,12 @@ func NewServer() *echo.Echo {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	defer func() {
-		err := db.Close()
-		if err != nil {
-			logger.Fatal(err)
-		}
-	}()
+	// defer func() {
+	// 	err := db.Close()
+	// 	if err != nil {
+	// 		logger.Fatal(err)
+	// 	}
+	// }()
 
 	e := echo.New()
 
@@ -34,30 +34,30 @@ func NewServer() *echo.Echo {
 
 	v1 := e.Group("") // v1 := e.Group("/api/v1")
 	v1.GET("/", hello)
-	// v1.GET("/admin/reset", ResetDB)
+	v1.PUT("/admin/reset", database.ResetDB)
 
 	plantsHandler := handler.NewPlantHandler(db)
 	v1.GET("/plants", plantsHandler.GetPlants)
 
 	usersHandler := handler.NewUsersHandler(db)
-	// v1.GET("/users", usersHandler.GetUsers)
-	// v1.GET("/users/:id", usersHandler.GetUser)
+	v1.GET("/users", usersHandler.GetUsers)
+	v1.GET("/users/:id", usersHandler.GetUser)
 	v1.POST("/users", usersHandler.PostUser)
-	// v1.PUT("/users/:id", usersHandler.UpdateUser)
-	// v1.DELETE("/users/:id", usersHandler.DeleteUser)
+	v1.PUT("/users/:id", usersHandler.UpdateUser)
+	v1.DELETE("/users/:id", usersHandler.DeleteUser)
 
 	userHandler := handler.NewUserHandler(db)
 	v1.GET("/user", userHandler.GetUser)
 	v1.PUT("/user", userHandler.UpdateUser)
 	v1.DELETE("/user", userHandler.DeleteUser)
 
-	// usersCultivationsHandler := handler.NewUsersCultivationsHandler(db)
-	// v1.POST("/users/:id/cultivations", usersCultivationsHandler.PostCultivation)
+	usersCultivationsHandler := handler.NewUsersCultivationsHandler(db)
+	v1.POST("/users/:id/cultivations", usersCultivationsHandler.PostUsersCultivation)
 
-	// cultivationsHandler := handler.NewCultivationsHandler(db)
-	// v1.GET("/cultivations/:id", cultivationsHandler.GetCultivation)
-	// v1.PUT("/cultivations/:id", cultivationsHandler.UpdateCultivation)
-	// v1.DELETE("/cultivations/:id", cultivationsHandler.DeleteCultivation)
+	cultivationsHandler := handler.NewCultivationsHandler(db)
+	v1.GET("/cultivations/:id", cultivationsHandler.GetCultivation)
+	v1.PUT("/cultivations/:id", cultivationsHandler.UpdateCultivation)
+	v1.DELETE("/cultivations/:id", cultivationsHandler.DeleteCultivation)
 
 	userCultivationsHandler := handler.NewUserCultivationsHandler(db)
 	v1.POST("/user/cultivations", userCultivationsHandler.PostUserCultivation)

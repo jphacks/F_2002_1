@@ -40,6 +40,6 @@ func (r *HarvestingRepository) UpdateByID(harvesting *entity.Harvesting) (*entit
 }
 
 // DeleteByID は指定されたIDを持つ収穫の記録を削除します。
-func (r *HarvestingRepository) DeleteByID(id int) (*entity.Harvesting, error) {
-	return nil, nil
+func (r *HarvestingRepository) DeleteByID(id int) error {
+	return nil
 }

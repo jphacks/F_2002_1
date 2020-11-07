@@ -20,12 +20,11 @@ import (
 type UserCultivationsHandler struct {
 	cultivationUC *usecase.CultivationUseCase
 	userUC        *usecase.UserUseCase
-	plantUC       *usecase.PlantUseCase
 }
 
 // NewCultivationsHandler はCultivationsHandlerのポインタを生成する関数です。
 func NewUserCultivationsHandler(db *gorm.DB) *UserCultivationsHandler {
-	return &UserCultivationsHandler{cultivationUC: usecase.NewCultivationUseCase(db)}
+	return &UserCultivationsHandler{cultivationUC: usecase.NewCultivationUseCase(db), userUC: usecase.NewUserUseCase(db)}
 }
 
 // GetUser は GET /cultivations/:id に対応するハンドラです。
@@ -72,42 +71,31 @@ func (h *UserCultivationsHandler) GetUserCultivation(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-
-	plant, err := h.plantUC.ReadPlant(cultivation.PlantID)
-	if err != nil {
-		if errors.Is(err, entity.ErrPlantNotFound) {
-			logger.Debug(err)
-			return echo.NewHTTPError(http.StatusNotFound)
-		}
-		logger.Error(err)
-		return echo.NewHTTPError(http.StatusInternalServerError)
-	}
-
 	res := &response.UserCultivationsGetById{
 		ID:        cultivation.ID,
 		CreatedAt: cultivation.CreatedAt,
 		UpdatedAt: cultivation.UpdatedAt,
 		DeletedAt: cultivation.DeletedAt,
 		Plant: openapi.Plant{
-			ID:          plant.ID,
-			CreatedAt:   plant.CreatedAt,
-			UpdatedAt:   plant.UpdatedAt,
-			DeletedAt:   plant.DeletedAt,
-			Name:        plant.Name,
-			NickName:    plant.NickName,
-			Price:       plant.Price,
-			Period:      plant.Period,
-			Difficulty:  plant.Difficulty,
-			Description: plant.Description,
-			KitName:     plant.KitName,
+			ID:          cultivation.Plant.ID,
+			CreatedAt:   cultivation.Plant.CreatedAt,
+			UpdatedAt:   cultivation.Plant.UpdatedAt,
+			DeletedAt:   cultivation.Plant.DeletedAt,
+			Name:        cultivation.Plant.Name,
+			NickName:    cultivation.Plant.NickName,
+			Price:       cultivation.Plant.Price,
+			Period:      cultivation.Plant.Period,
+			Difficulty:  cultivation.Plant.Difficulty,
+			Description: cultivation.Plant.Description,
+			KitName:     cultivation.Plant.KitName,
 			Season: openapi.Season{
-				From: plant.SeasonFrom,
-				To:   plant.SeasonTo,
+				From: cultivation.Plant.SeasonFrom,
+				To:   cultivation.Plant.SeasonTo,
 			},
 		},
 		NickName:            cultivation.NickName,
-		StartCultivatingAt:  *cultivation.StartCultivatingAt,
-		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+		StartCultivatingAt:  cultivation.StartCultivatingAt,
+		FinishCultivatingAt: cultivation.FinishCultivatingAt,
 	}
 
 	return c.JSON(http.StatusOK, res)
@@ -144,42 +132,31 @@ func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-
-	plant, err := h.plantUC.ReadPlant(cultivation.PlantID)
-	if err != nil {
-		if errors.Is(err, entity.ErrPlantNotFound) {
-			logger.Debug(err)
-			return echo.NewHTTPError(http.StatusNotFound)
-		}
-		logger.Error(err)
-		return echo.NewHTTPError(http.StatusInternalServerError)
-	}
-
 	res := &response.UserCultivationsPost{
 		ID:        cultivation.ID,
 		CreatedAt: cultivation.CreatedAt,
 		UpdatedAt: cultivation.UpdatedAt,
 		DeletedAt: cultivation.DeletedAt,
 		Plant: openapi.Plant{
-			ID:          plant.ID,
-			CreatedAt:   plant.CreatedAt,
-			UpdatedAt:   plant.UpdatedAt,
-			DeletedAt:   plant.DeletedAt,
-			Name:        plant.Name,
-			NickName:    plant.NickName,
-			Price:       plant.Price,
-			Period:      plant.Period,
-			Difficulty:  plant.Difficulty,
-			Description: plant.Description,
-			KitName:     plant.KitName,
+			ID:          cultivation.Plant.ID,
+			CreatedAt:   cultivation.Plant.CreatedAt,
+			UpdatedAt:   cultivation.Plant.UpdatedAt,
+			DeletedAt:   cultivation.Plant.DeletedAt,
+			Name:        cultivation.Plant.Name,
+			NickName:    cultivation.Plant.NickName,
+			Price:       cultivation.Plant.Price,
+			Period:      cultivation.Plant.Period,
+			Difficulty:  cultivation.Plant.Difficulty,
+			Description: cultivation.Plant.Description,
+			KitName:     cultivation.Plant.KitName,
 			Season: openapi.Season{
-				From: plant.SeasonFrom,
-				To:   plant.SeasonTo,
+				From: cultivation.Plant.SeasonFrom,
+				To:   cultivation.Plant.SeasonTo,
 			},
 		},
 		NickName:            cultivation.NickName,
-		StartCultivatingAt:  *cultivation.StartCultivatingAt,
-		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+		StartCultivatingAt:  cultivation.StartCultivatingAt,
+		FinishCultivatingAt: cultivation.FinishCultivatingAt,
 	}
 
 	return c.JSON(http.StatusCreated, res)
@@ -234,42 +211,31 @@ func (h *UserCultivationsHandler) UpdateUserCultivation(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-
-	plant, err := h.plantUC.ReadPlant(cultivation.PlantID)
-	if err != nil {
-		if errors.Is(err, entity.ErrPlantNotFound) {
-			logger.Debug(err)
-			return echo.NewHTTPError(http.StatusNotFound)
-		}
-		logger.Error(err)
-		return echo.NewHTTPError(http.StatusInternalServerError)
-	}
-
 	res := &response.UserCultivationsPutById{
 		ID:        cultivation.ID,
 		CreatedAt: cultivation.CreatedAt,
 		UpdatedAt: cultivation.UpdatedAt,
 		DeletedAt: cultivation.DeletedAt,
 		Plant: openapi.Plant{
-			ID:          plant.ID,
-			CreatedAt:   plant.CreatedAt,
-			UpdatedAt:   plant.UpdatedAt,
-			DeletedAt:   plant.DeletedAt,
-			Name:        plant.Name,
-			NickName:    plant.NickName,
-			Price:       plant.Price,
-			Period:      plant.Period,
-			Difficulty:  plant.Difficulty,
-			Description: plant.Description,
-			KitName:     plant.KitName,
+			ID:          cultivation.Plant.ID,
+			CreatedAt:   cultivation.Plant.CreatedAt,
+			UpdatedAt:   cultivation.Plant.UpdatedAt,
+			DeletedAt:   cultivation.Plant.DeletedAt,
+			Name:        cultivation.Plant.Name,
+			NickName:    cultivation.Plant.NickName,
+			Price:       cultivation.Plant.Price,
+			Period:      cultivation.Plant.Period,
+			Difficulty:  cultivation.Plant.Difficulty,
+			Description: cultivation.Plant.Description,
+			KitName:     cultivation.Plant.KitName,
 			Season: openapi.Season{
-				From: plant.SeasonFrom,
-				To:   plant.SeasonTo,
+				From: cultivation.Plant.SeasonFrom,
+				To:   cultivation.Plant.SeasonTo,
 			},
 		},
 		NickName:            cultivation.NickName,
-		StartCultivatingAt:  *cultivation.StartCultivatingAt,
-		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+		StartCultivatingAt:  cultivation.StartCultivatingAt,
+		FinishCultivatingAt: cultivation.FinishCultivatingAt,
 	}
 
 	return c.JSON(http.StatusOK, res)

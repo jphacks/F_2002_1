@@ -21,30 +21,52 @@ func NewCultivationRepository(db *gorm.DB) *CultivationRepository {
 
 // FindByID は指定されたIDを持つ栽培している植物を取得します。
 func (r *CultivationRepository) FindByID(id int) (*entity.Cultivation, error) {
-	return nil, nil
+	var cultivation entity.Cultivation
+	if err := r.db.Preload("Plant").First(&cultivation, id).Error; err != nil {
+		return nil, err
+	}
+	return &cultivation, nil
 }
 
-// FindAllbyUID は指定されたIDを持つ栽培している植物を取得します。
+// FindAllByUID は指定されたUser.IDを持つ栽培している植物の一覧を取得します。
 func (r *CultivationRepository) FindAllByUID(uid int) (*entity.Cultivations, error) {
-	return nil, nil
+	var cultivations entity.Cultivations
+	if err := r.db.Preload("Plant").Find(&cultivations, "uid = ?", uid).Error; err != nil {
+		return nil, err
+	}
+	return &cultivations, nil
 }
 
 // Store は栽培している植物を新規保存します。
 func (r *CultivationRepository) Store(cultivation *entity.Cultivation) (*entity.Cultivation, error) {
-	return nil, nil
+	if err := r.db.Preload("Plant").Create(&cultivation).First(&cultivation).Error; err != nil {
+		return nil, err
+	}
+	return cultivation, nil
 }
 
 // UpdateByID は栽培している植物の情報を更新します。
 func (r *CultivationRepository) UpdateByID(cultivation *entity.Cultivation) (*entity.Cultivation, error) {
-	return nil, nil
+	if err := r.db.Preload("Plant").Model(&entity.Cultivation{}).Update(&cultivation).First(&cultivation).Error; err != nil {
+		return nil, err
+	}
+	return cultivation, nil
 }
 
 // DeleteByID は指定されたIDを持つ栽培している植物を削除します。
-func (r *CultivationRepository) DeleteByID(id int) (*entity.Cultivation, error) {
-	return nil, nil
+func (r *CultivationRepository) DeleteByID(id int) error {
+	var cultivation entity.Cultivation
+	if err := r.db.Where("id = ?", id).Delete(&cultivation).Error; err != nil {
+		return err
+	}
+	return nil
 }
 
 // CheckByIDUID は栽培している植物にid, user_idの組のデータが存在すればtrue、なければfalseを返却します。
 func (r *CultivationRepository) CheckByIDUID(id int, uid int) (bool, error) {
-	return false, nil
+	var cultivations entity.Cultivations
+	if err := r.db.Where("id = ? AND user_id = ?", id, uid).Find(&cultivations).Error; err != nil {
+		return false, err
+	}
+	return true, nil
 }

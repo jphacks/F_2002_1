@@ -8,6 +8,7 @@ import (
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
+	"github.com/jphacks/F_2002_1/go/web/fbauth"
 	"github.com/jphacks/F_2002_1/go/web/handler/openapi"
 	"github.com/jphacks/F_2002_1/go/web/handler/request"
 	"github.com/jphacks/F_2002_1/go/web/handler/response"
@@ -104,8 +105,10 @@ func (h *UsersHandler) PostUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
+	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	user := &entity.User{
 		Name: req.Name,
+		Uid:  uid,
 	}
 	user, err := h.userUC.CreateUser(user)
 	if err != nil {

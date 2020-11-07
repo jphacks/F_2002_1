@@ -33,9 +33,16 @@ func (h *PlantHandler) GetPlants(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
-
 	res := response.PlantGet{}
 	for _, plant := range *plants {
+		// res_temperatures := []openapi.Temperature{}
+		// for _, temperature := range plant.PlantTemperatures {
+		// 	res_temperatures = append(res_temperatures, openapi.Temperature{
+		// 		ID:    temperature.ID,
+		// 		Name:  ,
+		// 		Value: ,
+		// 	})
+		// }
 		res = append(res, openapi.Plant{
 			ID:          plant.ID,
 			CreatedAt:   plant.CreatedAt,

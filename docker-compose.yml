@@ -13,8 +13,8 @@ services:
       MYSQL_PASSWORD: password # = DB_PASSWORD
     cap_add:
       - SYS_ADMIN
-    # security_opt:
-    #   - seccomp:unconfined
+    security_opt:
+      - seccomp:unconfined
     volumes:
       - ./database/data:/var/lib/mysql
       - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -36,6 +36,8 @@ services:
       DB_HOST: db
       DB_PORT: 3306
       DB_NAME: database # = MYSQL_DATABASE
+      FIREBASE_SDK_CREDENTIALS: ${FIREBASE_SDK_CREDENTIALS}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     volumes:
       - ./go:/go/src
     depends_on:

@@ -8,5 +8,5 @@ type Plant interface {
 	FindAll() (*entity.Plants, error)
 	Store(plant *entity.Plant) (*entity.Plant, error)
 	UpdateByID(plant *entity.Plant) (*entity.Plant, error)
-	DeleteByID(id int) (*entity.Plant, error)
+	DeleteByID(id int) error
 }

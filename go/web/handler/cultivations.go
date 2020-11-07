@@ -18,7 +18,6 @@ import (
 // CultivationsHandler は /cultivations 以下のエンドポイントを管理する構造体です。
 type CultivationsHandler struct {
 	cultivationUC *usecase.CultivationUseCase
-	plantUC       *usecase.PlantUseCase
 }
 
 // NewCultivationsHandler はCultivationsHandlerのポインタを生成する関数です。
@@ -31,7 +30,7 @@ func (h *CultivationsHandler) GetCultivation(c echo.Context) error {
 	logger := log.New()
 
 	req := &request.CultivationsGetByID{}
-	if err := c.Bind(&req); err != nil {
+	if err := c.Bind(req); err != nil {
 		logger.Errorj(map[string]interface{}{"message": "failed to bind", "error": err.Error()})
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
@@ -69,8 +68,8 @@ func (h *CultivationsHandler) GetCultivation(c echo.Context) error {
 			},
 		},
 		NickName:            cultivation.NickName,
-		StartCultivatingAt:  *cultivation.StartCultivatingAt,
-		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+		StartCultivatingAt:  cultivation.StartCultivatingAt,
+		FinishCultivatingAt: cultivation.FinishCultivatingAt,
 	}
 	return c.JSON(http.StatusOK, res)
 }
@@ -122,8 +121,8 @@ func (h *CultivationsHandler) UpdateCultivation(c echo.Context) error {
 			},
 		},
 		NickName:            cultivation.NickName,
-		StartCultivatingAt:  *cultivation.StartCultivatingAt,
-		FinishCultivatingAt: *cultivation.FinishCultivatingAt,
+		StartCultivatingAt:  cultivation.StartCultivatingAt,
+		FinishCultivatingAt: cultivation.FinishCultivatingAt,
 	}
 	return c.JSON(http.StatusOK, res)
 }

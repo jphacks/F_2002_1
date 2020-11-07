@@ -23,7 +23,7 @@ func NewCultivationUseCase(db *gorm.DB) *CultivationUseCase {
 func (c *CultivationUseCase) ReadCultivationsByUID(uid int) (*entity.Cultivations, error) {
 	cultivations, err := c.cultivationRepo.FindAllByUID(uid)
 	if err != nil {
-		return nil, fmt.Errorf("find cultivation from repo user_id=%s: %w", uid, err)
+		return nil, fmt.Errorf("find cultivation from repo user_id=%d: %w", uid, err)
 	}
 	return cultivations, nil
 }
@@ -32,7 +32,7 @@ func (c *CultivationUseCase) ReadCultivationsByUID(uid int) (*entity.Cultivation
 func (c *CultivationUseCase) ReadCultivation(id int) (*entity.Cultivation, error) {
 	cultivation, err := c.cultivationRepo.FindByID(id)
 	if err != nil {
-		return nil, fmt.Errorf("find cultivation from repo id=%s: %w", id, err)
+		return nil, fmt.Errorf("find cultivation from repo id=%d: %w", id, err)
 	}
 	return cultivation, nil
 }
@@ -41,7 +41,7 @@ func (c *CultivationUseCase) ReadCultivation(id int) (*entity.Cultivation, error
 func (c *CultivationUseCase) CheckCultivationByIDUID(id int, uid int) (bool, error) {
 	isExist, err := c.cultivationRepo.CheckByIDUID(id, uid)
 	if err != nil {
-		return false, fmt.Errorf("find cultivation from repo user_id=%s: %w", uid, err)
+		return false, fmt.Errorf("find cultivation from repo user_id=%d: %w", uid, err)
 	}
 	return isExist, nil
 }
@@ -59,7 +59,7 @@ func (c *CultivationUseCase) CreateCultivation(cultivation *entity.Cultivation) 
 func (c *CultivationUseCase) UpdateCultivation(cultivation *entity.Cultivation) (*entity.Cultivation, error) {
 	cultivation, err := c.cultivationRepo.UpdateByID(cultivation)
 	if err != nil {
-		return nil, fmt.Errorf("update cultivation from repo id=%s: %w", cultivation.ID, err)
+		return nil, fmt.Errorf("update cultivation from repo id=%d: %w", cultivation.ID, err)
 	}
 	return cultivation, nil
 }
@@ -68,7 +68,7 @@ func (c *CultivationUseCase) UpdateCultivation(cultivation *entity.Cultivation) 
 func (c *CultivationUseCase) DeleteCultivation(id int) error {
 	err := c.cultivationRepo.DeleteByID(id)
 	if err != nil {
-		return fmt.Errorf("delete cultivation from repo id=%s: %w", id, err)
+		return fmt.Errorf("delete cultivation from repo id=%d: %w", id, err)
 	}
 	return nil
 }

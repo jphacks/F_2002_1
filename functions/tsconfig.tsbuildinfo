@@ -1632,17 +1632,17 @@
         "affectsGlobalScope": false
       },
       "./src/services/chat/chat.service.ts": {
-        "version": "9011f6271cfabf27bf10d3c110f55088ad3eba439a52cb560b680445faf71144",
+        "version": "7a2303289994a1185b6678f745259ee5ee58d74f41604f4a07d44d9b738e2824",
         "signature": "0aefc0d302ec16e3430a2a84859c3aa842a2880d27b3acc0931733cd0adf5582",
         "affectsGlobalScope": false
       },
       "./src/controllers/chat/chat.controller.ts": {
-        "version": "59cd4b0d2d533fc36ea72902ca97c070002c06454097db07c1b359962ddfe8de",
+        "version": "4fc86e3f5be29abcce7608ee8466d8a677a6909db17adc8c05841e0056291370",
         "signature": "c6fe49819aefcd22158373f4c359fa179f8dbc65c1923d75272f021a2e8bea6d",
         "affectsGlobalScope": false
       },
       "./src/modules/firebase.module.ts": {
-        "version": "6c3e1863b9576c0939984496d199f77fdacb5767efd3292486c2ce067d39b61f",
+        "version": "2462422edd294723dd4f0be6be6eb48da80d4ee2d3212a55e33fc3958f6a4185",
         "signature": "993cfd2e67f4f29b785be38937f39b107bb931f149ff4e588858d02483dd6d67",
         "affectsGlobalScope": false
       },
@@ -1902,7 +1902,7 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "60116d9fcb398773891469c22a0e8d1daf427ccc4d0bb9a58739c1516162b09c",
+        "version": "54e73a595977b8caac3124bcaec7633978edbcd8f05a9822fd610e22781203ed",
         "signature": "12dbf008a62a465e6f10c77def9119674c6c98318120839bd4c4f433669091fc",
         "affectsGlobalScope": false
       },
@@ -1952,7 +1952,7 @@
         "affectsGlobalScope": false
       },
       "./src/controllers/chat/chat.controller.spec.ts": {
-        "version": "41f4d10580edd67ab3657dad1b0e2aca7bf9d118a25bc155fb1399c3afa920bc",
+        "version": "ba14cfd13e16eef3899de2c9cebc4464bc904e7cd425d57d5ab8ad7631d34e84",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
@@ -1977,11 +1977,11 @@
         "affectsGlobalScope": false
       },
       "./src/services/chat/chat.service.spec.ts": {
-        "version": "a13bcece4ac276be69b324a59bb319df86d35d6005ce84a22d399b8ba82c4ec4",
+        "version": "28791064eec0e13336656d68685af92548809be3f439e3f5060c2972905663ae",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
-      "./src/tests/e2e/app.spec.ts": {
+      "./src/tests/e2e/app.test.ts": {
         "version": "cee48874d5a31c39551cf96f22a588b58ab8bdbdbf715e1f0bfe7cc80ccf372e",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
@@ -4458,7 +4458,8 @@
         "./node_modules/@nestjs/testing/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
-        "./src/controllers/chat/chat.controller.ts"
+        "./src/controllers/chat/chat.controller.ts",
+        "./src/services/chat/chat.service.ts"
       ],
       "./src/controllers/chat/chat.controller.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
@@ -4541,7 +4542,7 @@
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/firebase-admin/lib/index.d.ts"
       ],
-      "./src/tests/e2e/app.spec.ts": [
+      "./src/tests/e2e/app.test.ts": [
         "./node_modules/@nestjs/common/index.d.ts",
         "./node_modules/@nestjs/testing/index.d.ts",
         "./node_modules/@types/node/base.d.ts",
@@ -7358,7 +7359,7 @@
       "./src/services/app.service.ts",
       "./src/services/chat/chat.service.spec.ts",
       "./src/services/chat/chat.service.ts",
-      "./src/tests/e2e/app.spec.ts"
+      "./src/tests/e2e/app.test.ts"
     ]
   },
   "version": "3.9.7"

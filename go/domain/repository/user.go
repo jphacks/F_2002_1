@@ -9,5 +9,5 @@ type User interface {
 	FindAll() (*entity.Users, error)
 	Store(user *entity.User) (*entity.User, error)
 	UpdateByID(user *entity.User) (*entity.User, error)
-	DeleteByID(id int) (*entity.User, error)
+	DeleteByID(id int) error
 }
