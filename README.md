@@ -68,7 +68,6 @@ https://youtu.be/eXhnjGchSgs
   - 今回、三人のデザイナーで協力して制作したため、デザイントーンがずれないように認識のすり合わせを念入りに行った。UIUX、デザインスタイルはヒアリングを元に、刺さるものを考案し制作した。
 - 機能
   - 提供いただいた機材を元にできることを増やし、チャットに連動できるようにした。
-  `ToDo: 追記`
   
 さらに詳しい情報は[発表資料](https://docs.google.com/presentation/d/13iaOR-fD3DBfOAS06PP9HBRrHrt1RHAH9nM_f6ilguU/edit?usp=sharing)をご覧ください。  
 
@@ -76,7 +75,6 @@ https://youtu.be/eXhnjGchSgs
 
 ### 活用した技術
 #### デザイン・動画制作
-`ToDo: ここにデザイン・動画制作で活用した技術の一覧を書く`
 - アイデアソン: [Miro](https://miro.com/app/board/o9J_khlVPbg=/)
 - デザインスタイルガイドとUIデザイン: [Figma](https://www.figma.com/file/MMyBJ2hDuRvYvxwRzm39d1/test?node-id=0%3A1)
 
