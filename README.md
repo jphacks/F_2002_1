@@ -105,18 +105,15 @@
 - CI/CD： [GitHub Actions](https://github.com/features/actions)
 
 #### デバイス
-
+- iPhone 11 Pro
 - [Raspberry Pi](https://www.raspberrypi.org/)
 - [インフィニオン テクノロジーズ](https://www.infineon.com/cms/jp/)様からの提供デバイス
   - [気圧センサーDPS310](https://github.com/Infineon/DPS310-Pressure-Sensor)
   - [MEMSマイクIM69D130](https://github.com/Infineon/IM69D130-Microphone-Shield2Go)
   - [PSoC 6 BLE Prototyping Kit (CY8CPROTO-063-BLE)](https://www.cypress.com/documentation/development-kitsboards/psoc-6-ble-prototyping-kit-cy8cproto-063-ble)
-  
-
-### 独自技術
 
 #### ハッカソンで開発した独自機能・技術
-
+- チャット部分の実装においてライブラリでカバーできないカメラを利用した投稿機能,投稿ボタンと外部のpickerライブラリの連携を独自に実装した
 - GitHub Actions を利用して自動でテスト、デプロイできるようにした
 - OpenAPI を利用してAPI の仕様の共有を行った
 - Clean Architecture をもとに、テストしやすいディレクトリ構成で実装した
