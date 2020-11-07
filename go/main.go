@@ -1,12 +1,5 @@
 package main
 
-<<<<<<< HEAD
-import "github.com/jphacks/F_2002_1/go/infrastracture"
-
-func main() {
-	infrastracture.InitDBServer()
-	infrastracture.InitApiServer()
-=======
 import (
 	"os"
 
@@ -27,5 +20,4 @@ func main() {
 		logger.Infof("shutting down the server with error: %v", err)
 		os.Exit(1)
 	}
->>>>>>> origin
 }
