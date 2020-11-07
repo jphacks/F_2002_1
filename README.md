@@ -1,10 +1,10 @@
 
 # おしゃべじたぶる（サーバーサイド）
-アプリのソースコードはこちらのリポジトリ[jphacks/F_2002](https://github.com/jphacks/F_2002)をご参照ください。  
+サーバーサイドのソースコードはこちらのリポジトリ[jphacks/F_2002_1](https://github.com/jphacks/F_2002_1)をご参照ください。  
 
 <img src="https://user-images.githubusercontent.com/29503528/98431211-a2c81f80-20f6-11eb-9308-4246c8d84f80.png" width=100%>
 
-## デモ動画
+## 宣伝動画
 - [モーショングラフィックス](https://youtu.be/eXhnjGchSgs)
 - [プロモーションビデオ](https://youtu.be/H4oIfGaRlRs)
 
@@ -40,17 +40,29 @@
 栽培中はチャット画面から野菜とおしゃべりできるだけでなく、水やりや日光に当てるといったアドバイスもしてくれるため、事前知識のない方でも安心です。  
 可愛いキャラクターとUIデザインにより、子供と一緒に育てる保護者や若い女性におすすめです。
 
+[アプリ挙動のデモ動画](https://drive.google.com/file/d/1fWBTKr9dK8eXy-4v_FiBvCXr-8riSG1K/view?usp=sharing)
+
 ### 特長
 #### 1　キャラクター
 野菜ごとに親近感を持つ、仲良くなるために必要なキャラ付けを行い、セリフ回しに特徴が出るようにしました。キャラクターはどれもオリジナルです。
 暖かみがあるカラーリングで制作しました。
+![キャラクター](https://user-images.githubusercontent.com/29503528/98440925-0a09c200-213f-11eb-8916-e79ef6f7ebfb.png)
+
 #### 2　栽培キットの購入
 栽培に必要なセットが盛り込まれたキットを簡単に購入できます。
+
+<img src="https://user-images.githubusercontent.com/29503528/98441225-44279380-2140-11eb-8c86-3ae72a1225bb.png" width=30%> <img src="https://user-images.githubusercontent.com/29503528/98441212-3114c380-2140-11eb-9226-1b9186e6899e.png" width=30%> 
+
 #### 3　チャット
 難解な言葉を使わず、仲良くなることをメインに雑談やアラートなどを行います。
 カメラを使って、葉っぱなどの写真を撮影すると病気について診断し、適切な助言をします。
+
+<img src="https://user-images.githubusercontent.com/29503528/98441336-f5c6c480-2140-11eb-955c-727652d6da65.png" width=30%>
+
 #### 4　IoT
 気温や水分量をセンサーで計測し、データを蓄積します。十分な育成環境から規定値を下回ったり、上回ったりした場合、チャットからアラートを呼びかけます。
+
+<img src="https://user-images.githubusercontent.com/47917772/98440907-f199a780-213e-11eb-8cd4-a28efa994bf7.jpg" width=30%>    <img src="https://user-images.githubusercontent.com/47917772/98440909-f2cad480-213e-11eb-9415-8180468b8398.jpg" width=30%>
 
 ### 解決出来ること
 - 家庭菜園に関する知識や経験が身につく
