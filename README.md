@@ -2,11 +2,11 @@
 # おしゃべじたぶる（サーバーサイド）
 アプリのソースコードはこちらのリポジトリ[jphacks/F_2002](https://github.com/jphacks/F_2002)をご参照ください。  
 
-`ToDo: ここにプロダクトのロゴを貼る`
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://www.youtube.com/watch?v=G5rULR53uMk)
+<img src="https://user-images.githubusercontent.com/29503528/98431211-a2c81f80-20f6-11eb-9308-4246c8d84f80.png" width=100%>
 
 ## デモ動画
-https://youtu.be/eXhnjGchSgs
+- [モーショングラフィックス](https://youtu.be/eXhnjGchSgs)
+- [プロモーションビデオ](https://youtu.be/H4oIfGaRlRs)
 
 ## 製品概要
 農業 x Tech
@@ -68,15 +68,22 @@ https://youtu.be/eXhnjGchSgs
   - 今回、三人のデザイナーで協力して制作したため、デザイントーンがずれないように認識のすり合わせを念入りに行った。UIUX、デザインスタイルはヒアリングを元に、刺さるものを考案し制作した。
 - 機能
   - 提供いただいた機材を元にできることを増やし、チャットに連動できるようにした。
+  `ToDo: 追記`
   
 さらに詳しい情報は[発表資料](https://docs.google.com/presentation/d/13iaOR-fD3DBfOAS06PP9HBRrHrt1RHAH9nM_f6ilguU/edit?usp=sharing)をご覧ください。  
 
 ## 開発技術
+### 全体構成
+`ToDo: ここにアプリケーションの全体構成図を貼る`
 
 ### 活用した技術
 #### デザイン・動画制作
+`ToDo: ここにデザイン・動画制作で活用した技術の一覧を書く`
 - アイデアソン: [Miro](https://miro.com/app/board/o9J_khlVPbg=/)
 - デザインスタイルガイドとUIデザイン: [Figma](https://www.figma.com/file/MMyBJ2hDuRvYvxwRzm39d1/test?node-id=0%3A1)
+
+#### iOS
+`ToDo: ここにiOSで活用した技術の一覧を書く`
 
 #### Server
 - [go v1.15.2](https://golang.org/)
@@ -107,9 +114,8 @@ https://youtu.be/eXhnjGchSgs
 
 #### ハッカソンで開発した独自機能・技術
 
-- GitHub Actions を導入して自動でテスト、デプロイ環境を構築
-- Clean Architecture を採用
-- モブプログラミングを実践
+- 独自で開発したものの内容をこちらに記載してください
+- 特に力を入れた部分をファイルリンク、または commit_id を記載してください。
 
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
 - なし
