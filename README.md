@@ -76,9 +76,12 @@
 
 ### 活用した技術
 #### デザイン・動画制作
-`ToDo: ここにデザイン・動画制作で活用した技術の一覧を書く`
 - アイデアソン: [Miro](https://miro.com/app/board/o9J_khlVPbg=/)
 - デザインスタイルガイドとUIデザイン: [Figma](https://www.figma.com/file/MMyBJ2hDuRvYvxwRzm39d1/test?node-id=0%3A1)
+- Adobe Illustrator（キャラクター、グラフィックの作成）
+- Adobe Photoshop（素材加工）
+- Adobe Premire Pro（動画編集・加工）
+- Adobe After Efect（モーショングラフィックの作成）
 
 #### Server
 - [go v1.15.2](https://golang.org/)
