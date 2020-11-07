@@ -73,17 +73,12 @@
 さらに詳しい情報は[発表資料](https://docs.google.com/presentation/d/13iaOR-fD3DBfOAS06PP9HBRrHrt1RHAH9nM_f6ilguU/edit?usp=sharing)をご覧ください。  
 
 ## 開発技術
-### 全体構成
-`ToDo: ここにアプリケーションの全体構成図を貼る`
 
 ### 活用した技術
 #### デザイン・動画制作
 `ToDo: ここにデザイン・動画制作で活用した技術の一覧を書く`
 - アイデアソン: [Miro](https://miro.com/app/board/o9J_khlVPbg=/)
 - デザインスタイルガイドとUIデザイン: [Figma](https://www.figma.com/file/MMyBJ2hDuRvYvxwRzm39d1/test?node-id=0%3A1)
-
-#### iOS
-`ToDo: ここにiOSで活用した技術の一覧を書く`
 
 #### Server
 - [go v1.15.2](https://golang.org/)
@@ -114,8 +109,9 @@
 
 #### ハッカソンで開発した独自機能・技術
 
-- 独自で開発したものの内容をこちらに記載してください
-- 特に力を入れた部分をファイルリンク、または commit_id を記載してください。
+- GitHub Actions を利用して自動でテスト、デプロイできるようにした
+- OpenAPI を利用してAPI の仕様の共有を行った
+- Clean Architecture をもとに、テストしやすいディレクトリ構成で実装した
 
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
 - なし
