@@ -72,6 +72,8 @@
 さらに詳しい情報は[発表資料](https://docs.google.com/presentation/d/13iaOR-fD3DBfOAS06PP9HBRrHrt1RHAH9nM_f6ilguU/edit?usp=sharing)をご覧ください。  
 
 ## 開発技術
+### 全体構成図
+<img src="https://user-images.githubusercontent.com/29503528/98432201-300f7200-20ff-11eb-8319-862f30b81bd4.png" width=100%>
 
 ### 活用した技術
 #### デザイン・動画制作
