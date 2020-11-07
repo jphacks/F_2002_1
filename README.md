@@ -64,11 +64,10 @@
 - チャット機能への文言追加
 
 ### 注力したこと（こだわり等）
-- デザイン
-  - 今回、三人のデザイナーで協力して制作したため、デザイントーンがずれないように認識のすり合わせを念入りに行った。UIUX、デザインスタイルはヒアリングを元に、刺さるものを考案し制作した。
-- 機能
-  - 提供いただいた機材を元にできることを増やし、チャットに連動できるようにした。
-  `ToDo: 追記`
+- デザインチームはデザインがずれることを懸念して、アイデアが決まった段階でサービスの認識をすり合わせ、カラーやフォント、サイズなどのデザイントーンを統一し、作業に落とし込みました。UIUX、デザインスタイルはヒアリングを元に、刺さるものを考案し制作した。
+- iOSチームはデザインチームからの要件を可能な限り満たせるように実装しました。
+- サーバーチームはOpenAPI を利用して仕様を共有し、Clean Architecture でテストしやすい実装をしました。また、モブプログラミングも採用しました。さらに、GitHub Actions を利用して、テスト、デプロイを自動化しました。
+- また、開発全体ではDiscordを用いて各チームと素早く情報共有できるようにしました。
   
 さらに詳しい情報は[発表資料](https://docs.google.com/presentation/d/13iaOR-fD3DBfOAS06PP9HBRrHrt1RHAH9nM_f6ilguU/edit?usp=sharing)をご覧ください。  
 
@@ -82,6 +81,12 @@
 - Adobe Photoshop（素材加工）
 - Adobe Premire Pro（動画編集・加工）
 - Adobe After Efect（モーショングラフィックの作成）
+
+#### iOS
+- xcode 12.1/swift
+  - [Alamofire](https://github.com/Alamofire/Alamofire)
+  - [messagekit](https://github.com/MessageKit/MessageKit)
+  - [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0)
 
 #### Server
 - [go v1.15.2](https://golang.org/)
@@ -106,12 +111,6 @@
   - [気圧センサーDPS310](https://github.com/Infineon/DPS310-Pressure-Sensor)
   - [MEMSマイクIM69D130](https://github.com/Infineon/IM69D130-Microphone-Shield2Go)
   - [PSoC 6 BLE Prototyping Kit (CY8CPROTO-063-BLE)](https://www.cypress.com/documentation/development-kitsboards/psoc-6-ble-prototyping-kit-cy8cproto-063-ble)
-  
-#### Front(iOS)
-- xcode 12.1/swift
-  - [Alamofire](https://github.com/Alamofire/Alamofire)
-  - [messagekit](https://github.com/MessageKit/MessageKit)
-  - [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0)
   
 
 ### 独自技術
