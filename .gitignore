@@ -33,3 +33,5 @@ node_modules/
 firebase-sdk-credentials.json
 
 *.env
+
+*.log

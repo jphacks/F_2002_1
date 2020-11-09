@@ -105,12 +105,19 @@ func (h *UsersHandler) PostUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	user := &entity.User{
 		Name: req.Name,
 		Uid:  uid,
 	}
-	user, err := h.userUC.CreateUser(user)
+	user, err = h.userUC.CreateUser(user)
 	if err != nil {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
