@@ -36,7 +36,14 @@ func (h *UserHandler) GetUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	id, err := h.userUC.ReadUserIDByUID(uid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -104,7 +111,14 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	id, err := h.userUC.ReadUserIDByUID(uid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -176,7 +190,14 @@ func (h *UserHandler) DeleteUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	id, err := h.userUC.ReadUserIDByUID(uid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {

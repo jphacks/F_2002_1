@@ -37,7 +37,14 @@ func (h *UserCultivationsHandler) GetUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uuid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uuid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	uid, err := h.userUC.ReadUserIDByUID(uuid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -111,7 +118,14 @@ func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uuid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uuid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	uid, err := h.userUC.ReadUserIDByUID(uuid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -172,7 +186,14 @@ func (h *UserCultivationsHandler) UpdateUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uuid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uuid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	uid, err := h.userUC.ReadUserIDByUID(uuid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
@@ -251,7 +272,14 @@ func (h *UserCultivationsHandler) DeleteUserCultivation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uuid := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uuid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	if err != nil {
+		if errors.Is(err, entity.ErrInvalidIdToken) {
+			return echo.NewHTTPError(http.StatusUnauthorized)
+		}
+		logger.Error(err)
+		return echo.NewHTTPError(http.StatusInternalServerError)
+	}
 	uid, err := h.userUC.ReadUserIDByUID(uuid)
 	if err != nil {
 		if errors.Is(err, entity.ErrUserNotFound) {
