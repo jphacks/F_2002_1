@@ -12,6 +12,8 @@ tags:
     description: 一般ユーザー用
   - name: admin
     description: 管理者ユーザー用
+  - name: iot
+    description: IoT用
   - name: plant
   - name: user
   - name: cultivation
@@ -693,6 +695,68 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Watering'
+
+  /iot/sensors:
+    post:
+      tags:
+        - iot
+        - cultivation
+      summary: 特定の栽培物のセンサーデータを登録
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  $ref: '#/components/schemas/Id'
+                raspi_device_id:
+                  $ref: '#/components/schemas/Id'
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      psoc6_device_id:
+                        $ref: '#/components/schemas/Id'
+                      cultivation_id:
+                        $ref: '#/components/schemas/Id'
+                      humidity:
+                        description: 湿度
+                        type: number
+                        format: float
+                        example: 67.2
+                      temperature:
+                        description: 気温
+                        type: number
+                        format: float
+                        example: 24.3
+                      illuminance:
+                        description: 照度
+                        type: number
+                        format: float
+                        example: 500.5
+                      soil_moisture:
+                        description: 土壌含水率
+                        type: number
+                        format: float
+                        example: 70.5
+                      pressure:
+                        description: 気圧
+                        type: number
+                        format: float
+                        example: 101300.5
+              required:
+                - user_id
+                - raspi_device_id
+                - data
+      responses:
+        201:
+          $ref: '#/components/responses/201'
+
+        404:
+          $ref: '#/components/responses/404'
 
   /messages:
     get:
