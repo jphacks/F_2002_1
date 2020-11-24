@@ -59,7 +59,7 @@ func NewServer() *echo.Echo {
 			return
 		}
 		if he, ok := err.(*echo.HTTPError); ok {
-			c.JSON(he.Code, Response{
+			_ = c.JSON(he.Code, Response{
 				Status:  he.Code,
 				Message: he.Error(),
 			})
