@@ -59,7 +59,7 @@ func NewServer() *echo.Echo {
 			return
 		}
 		if he, ok := err.(*echo.HTTPError); ok {
-			c.JSON(he.Code, Response{
+			_ = c.JSON(he.Code, Response{
 				Status:  he.Code,
 				Message: he.Error(),
 			})
@@ -80,11 +80,6 @@ func NewServer() *echo.Echo {
 	v1.PUT("/users/:id", usersHandler.UpdateUser)
 	v1.DELETE("/users/:id", usersHandler.DeleteUser)
 
-	userHandler := handler.NewUserHandler(db)
-	v1.GET("/user", userHandler.GetUser)
-	v1.PUT("/user", userHandler.UpdateUser)
-	v1.DELETE("/user", userHandler.DeleteUser)
-
 	usersCultivationsHandler := handler.NewUsersCultivationsHandler(db)
 	v1.POST("/users/:id/cultivations", usersCultivationsHandler.PostUsersCultivation)
 
@@ -93,11 +88,19 @@ func NewServer() *echo.Echo {
 	v1.PUT("/cultivations/:id", cultivationsHandler.UpdateCultivation)
 	v1.DELETE("/cultivations/:id", cultivationsHandler.DeleteCultivation)
 
+	userHandler := handler.NewUserHandler(db)
+	v1.GET("/user", userHandler.GetUser)
+	v1.PUT("/user", userHandler.UpdateUser)
+	v1.DELETE("/user", userHandler.DeleteUser)
+
 	userCultivationsHandler := handler.NewUserCultivationsHandler(db)
 	v1.POST("/user/cultivations", userCultivationsHandler.PostUserCultivation)
 	v1.GET("/user/cultivations/:id", userCultivationsHandler.GetUserCultivation)
 	v1.PUT("/user/cultivations/:id", userCultivationsHandler.UpdateUserCultivation)
 	v1.DELETE("/user/cultivations/:id", userCultivationsHandler.DeleteUserCultivation)
+
+	iotSensorsHandler := handler.NewIotSensorsHandler(db)
+	v1.POST("/iot/sensors", iotSensorsHandler.PostIotSensors)
 
 	return e
 }
