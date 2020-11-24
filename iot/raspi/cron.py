@@ -2,7 +2,7 @@ import bluepy
 import requests
 
 devadr = "30:ae:a4:ee:8d:66"   # 実際にはmicro:bit のアドレスを記述
-BASE_URL = "i"
+BASE_URL = "https://example.com"
 
 
 
@@ -17,15 +17,15 @@ class MyDelegate(bluepy.btle.DefaultDelegate):
 
     def handleNotification(self, cHandle, data):
         global pressure, temperature,illuminance, solidMoisture
-        data = str(data).replace("'","")
-        if(cHandle ==42):
-          pressure =data.split(":")[1]
-        elif(cHandle ==45):
-          temperature =data.split(":")[1]
-        elif(cHandle ==47):
-          illuminance =data.split(":")[1]
-        elif(cHandle ==49):
-          solidMoisture =data.split(":")[1]
+        data = data.decode(encoding='utf-8').replace("'","").split(":")
+        if(data[0] =="pressure"):
+          pressure =data[1]
+        elif(data[0]=="temp"):
+          temperature =data[1]
+        elif(data[0] =="illuminance"):
+          illuminance =data[1]
+        elif(data[0]=="solid"):
+          solidMoisture =data[1]
 
 def main():
     peri = bluepy.btle.Peripheral()
@@ -43,7 +43,7 @@ def main():
     print("土壌:",solidMoisture)
 
     peri.disconnect()
-    getData = requests.get("https://example.com")
+    getData = requests.post(BASE_URL)
     print(getData)
 
 if __name__ == "__main__":
