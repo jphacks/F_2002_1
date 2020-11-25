@@ -78,6 +78,21 @@ func migrate(db *gorm.DB) {
 	for _, plant := range Plants {
 		db.Create(&plant)
 	}
+	for _, plantTemperatures := range PlantTemperatures {
+		db.Create(&plantTemperatures)
+	}
+	for _, plantPressures := range PlantPressures {
+		db.Create(&plantPressures)
+	}
+	for _, plantIlluminances := range PlantIlluminances {
+		db.Create(&plantIlluminances)
+	}
+	for _, plantHumidities := range PlantHumidities {
+		db.Create(&plantHumidities)
+	}
+	for _, plantSoilMoistures := range PlantSoilMoistures {
+		db.Create(&plantSoilMoistures)
+	}
 	log.Println("Finish inserting data")
 }
 
