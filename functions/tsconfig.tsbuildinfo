@@ -491,13 +491,8 @@
         "signature": "5330493098e0521a330cef4377a62f045155cacab3fbe0d3ecf7fa213e614fcd",
         "affectsGlobalScope": false
       },
-      "./node_modules/axios/index.d.ts": {
-        "version": "ccbe21bb6f8ed759347adc068509a3cfe32877394a2f2771eae0013d2048d4b2",
-        "signature": "ccbe21bb6f8ed759347adc068509a3cfe32877394a2f2771eae0013d2048d4b2",
-        "affectsGlobalScope": false
-      },
       "./src/index.ts": {
-        "version": "f22c4f84be090ac45237b64208fb129f3abf7941c8dfaa64c2a13449e4779d42",
+        "version": "76e0c00d0c1e9071ef159f205cc8eb2f415c379f2a7383bcb36d9c55cf83a823",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
@@ -747,10 +742,6 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/event-target-shim/index.d.ts"
-      ],
-      "./node_modules/axios/index.d.ts": [
-        "./node_modules/@types/node/base.d.ts",
-        "./node_modules/@types/node/index.d.ts"
       ],
       "./node_modules/event-target-shim/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
@@ -1205,7 +1196,6 @@
       "./src/index.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
-        "./node_modules/axios/index.d.ts",
         "./node_modules/firebase-admin/lib/index.d.ts",
         "./node_modules/firebase-functions/lib/index.d.ts"
       ]
@@ -1389,10 +1379,6 @@
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/index.d.ts",
         "./node_modules/event-target-shim/index.d.ts"
-      ],
-      "./node_modules/axios/index.d.ts": [
-        "./node_modules/@types/node/base.d.ts",
-        "./node_modules/@types/node/index.d.ts"
       ],
       "./node_modules/event-target-shim/index.d.ts": [
         "./node_modules/@types/node/base.d.ts",
@@ -1875,7 +1861,6 @@
       "./node_modules/@types/range-parser/index.d.ts",
       "./node_modules/@types/serve-static/index.d.ts",
       "./node_modules/abort-controller/dist/abort-controller.d.ts",
-      "./node_modules/axios/index.d.ts",
       "./node_modules/event-target-shim/index.d.ts",
       "./node_modules/firebase-admin/lib/auth.d.ts",
       "./node_modules/firebase-admin/lib/database.d.ts",
