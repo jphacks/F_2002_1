@@ -8,10 +8,10 @@ import (
 	"github.com/jphacks/F_2002_1/go/domain/entity"
 	"github.com/jphacks/F_2002_1/go/log"
 	"github.com/jphacks/F_2002_1/go/usecase"
-	"github.com/jphacks/F_2002_1/go/web/fbauth"
 	"github.com/jphacks/F_2002_1/go/web/handler/openapi"
 	"github.com/jphacks/F_2002_1/go/web/handler/request"
 	"github.com/jphacks/F_2002_1/go/web/handler/response"
+	"github.com/jphacks/F_2002_1/go/web/myfirebase"
 
 	"github.com/labstack/echo/v4"
 )
@@ -105,7 +105,7 @@ func (h *UsersHandler) PostUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
 
-	uid, err := fbauth.GetUIDByToken(c.Request().Header.Get("Authorization"))
+	uid, err := myfirebase.GetUIDByToken(c.Request().Header.Get("Authorization"))
 	if err != nil {
 		if errors.Is(err, entity.ErrInvalidIdToken) {
 			return echo.NewHTTPError(http.StatusUnauthorized, err.Error())

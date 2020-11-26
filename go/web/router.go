@@ -99,7 +99,7 @@ func NewServer() *echo.Echo {
 	v1.PUT("/user/cultivations/:id", userCultivationsHandler.UpdateUserCultivation)
 	v1.DELETE("/user/cultivations/:id", userCultivationsHandler.DeleteUserCultivation)
 
-	iotSensorsHandler := handler.NewIotSensorsHandler(db)
+	iotSensorsHandler := handler.NewIotSenorsHandler(db)
 	v1.POST("/iot/sensors", iotSensorsHandler.PostIotSensors)
 
 	return e
