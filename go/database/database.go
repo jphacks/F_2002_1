@@ -72,7 +72,6 @@ func migrate(db *gorm.DB) {
 		&entity.Water{},
 		&entity.Watering{},
 	)
-	db.Model(&entity.User{}).AddUniqueIndex("idx_user_uid", "uid")
 	log.Println("Finish auto migration")
 
 	log.Println("Start inserting data")
