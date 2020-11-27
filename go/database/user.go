@@ -22,7 +22,7 @@ func NewUserRepository(db *gorm.DB) *UserRepository {
 // FindByID は指定されたIDを持つユーザを取得します。
 func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 	var user entity.User
-	if err := r.db.Preload("Cultivations.Plant").First(&user, id).Error; err != nil {
+	if err := r.db.Preload("Cultivations").Preload("Cultivations.Plant").First(&user, id).Error; err != nil {
 		return nil, err
 	}
 	return &user, nil
@@ -31,7 +31,7 @@ func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 // FindIDByUID は指定されたUIDを持つユーザIDを取得します。
 func (r *UserRepository) FindIDByUID(uid string) (int, error) {
 	var user entity.User
-	if err := r.db.Preload("Cultivations.Plant").Find(&user, "uid = ?", uid).Error; err != nil {
+	if err := r.db.Preload("Cultivations").Preload("Cultivations.Plant").Find(&user, "uid = ?", uid).Error; err != nil {
 		return 0, err
 	}
 	return user.ID, nil
@@ -40,7 +40,7 @@ func (r *UserRepository) FindIDByUID(uid string) (int, error) {
 // FindAll は指定されたIDを持つユーザを取得します。
 func (r *UserRepository) FindAll() (*entity.Users, error) {
 	var users entity.Users
-	if err := r.db.Preload("Cultivations.Plant").Find(&users).Error; err != nil {
+	if err := r.db.Preload("Cultivations").Preload("Cultivations.Plant").Find(&users).Error; err != nil {
 		return nil, err
 	}
 	return &users, nil
@@ -48,7 +48,7 @@ func (r *UserRepository) FindAll() (*entity.Users, error) {
 
 // Store はユーザを新規保存します。
 func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
-	if err := r.db.Preload("Cultivations.Plant").Create(&user).First(&user).Error; err != nil {
+	if err := r.db.Preload("Cultivations").Preload("Cultivations.Plant").Create(&user).First(&user).Error; err != nil {
 		return nil, err
 	}
 	return user, nil
@@ -56,7 +56,7 @@ func (r *UserRepository) Store(user *entity.User) (*entity.User, error) {
 
 // UpdateByID はユーザの情報を更新します。
 func (r *UserRepository) UpdateByID(user *entity.User) (*entity.User, error) {
-	if err := r.db.Preload("Cultivations.Plant").Model(&entity.User{}).Update(&user).First(&user).Error; err != nil {
+	if err := r.db.Preload("Cultivations").Preload("Cultivations.Plant").Model(&entity.User{}).Update(&user).First(&user).Error; err != nil {
 		return nil, err
 	}
 	return user, nil
