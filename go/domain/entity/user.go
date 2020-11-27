@@ -7,7 +7,7 @@ type User struct {
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    *time.Time `sql:"index"`
-	Uid          string
+	Uid          string     `gorm:"unique"`
 	Name         string
 	Cultivations []Cultivation
 }
