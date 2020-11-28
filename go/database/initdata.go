@@ -76,3 +76,383 @@ var Plants = entity.Plants{
 		SeasonTo:    12,
 	},
 }
+
+
+// ToDo: LowerValue はしきい値が確定次第修正する
+
+var PlantTemperatures = entity.PlantTemperatures{
+	entity.PlantTemperature{
+		ID:    1,
+		PlantID: 1,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantTemperature{
+		ID:    2,
+		PlantID: 1,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantTemperature{
+		ID:    3,
+		PlantID: 2,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantTemperature{
+		ID:    4,
+		PlantID: 2,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantTemperature{
+		ID:    5,
+		PlantID: 3,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantTemperature{
+		ID:    6,
+		PlantID: 3,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantTemperature{
+		ID:    7,
+		PlantID: 4,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantTemperature{
+		ID:    8,
+		PlantID: 4,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantTemperature{
+		ID:    9,
+		PlantID: 5,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantTemperature{
+		ID:    10,
+		PlantID: 5,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantTemperature{
+		ID:    11,
+		PlantID: 6,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantTemperature{
+		ID:    12,
+		PlantID: 6,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+}
+
+var PlantPressures = entity.PlantPressures{
+	entity.PlantPressure{
+		ID:    1,
+		PlantID: 1,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantPressure{
+		ID:    2,
+		PlantID: 1,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantPressure{
+		ID:    3,
+		PlantID: 2,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantPressure{
+		ID:    4,
+		PlantID: 2,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantPressure{
+		ID:    5,
+		PlantID: 3,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantPressure{
+		ID:    6,
+		PlantID: 3,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantPressure{
+		ID:    7,
+		PlantID: 4,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantPressure{
+		ID:    8,
+		PlantID: 4,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantPressure{
+		ID:    9,
+		PlantID: 5,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantPressure{
+		ID:    10,
+		PlantID: 5,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantPressure{
+		ID:    11,
+		PlantID: 6,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantPressure{
+		ID:    12,
+		PlantID: 6,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+}
+
+
+var PlantIlluminances = entity.PlantIlluminances{
+	entity.PlantIlluminance{
+		ID:    1,
+		PlantID: 1,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantIlluminance{
+		ID:    2,
+		PlantID: 1,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantIlluminance{
+		ID:    3,
+		PlantID: 2,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantIlluminance{
+		ID:    4,
+		PlantID: 2,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantIlluminance{
+		ID:    5,
+		PlantID: 3,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantIlluminance{
+		ID:    6,
+		PlantID: 3,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantIlluminance{
+		ID:    7,
+		PlantID: 4,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantIlluminance{
+		ID:    8,
+		PlantID: 4,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantIlluminance{
+		ID:    9,
+		PlantID: 5,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantIlluminance{
+		ID:    10,
+		PlantID: 5,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantIlluminance{
+		ID:    11,
+		PlantID: 6,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantIlluminance{
+		ID:    12,
+		PlantID: 6,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+}
+
+var PlantHumidities = entity.PlantHumidities{
+	entity.PlantHumidity{
+		ID:    1,
+		PlantID: 1,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantHumidity{
+		ID:    2,
+		PlantID: 1,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantHumidity{
+		ID:    3,
+		PlantID: 2,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantHumidity{
+		ID:    4,
+		PlantID: 2,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantHumidity{
+		ID:    5,
+		PlantID: 3,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantHumidity{
+		ID:    6,
+		PlantID: 3,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantHumidity{
+		ID:    7,
+		PlantID: 4,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantHumidity{
+		ID:    8,
+		PlantID: 4,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantHumidity{
+		ID:    9,
+		PlantID: 5,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantHumidity{
+		ID:    10,
+		PlantID: 5,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantHumidity{
+		ID:    11,
+		PlantID: 6,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantHumidity{
+		ID:    12,
+		PlantID: 6,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+}
+
+
+var PlantSoilMoistures = entity.PlantSoilMoistures{
+	entity.PlantSoilMoisture{
+		ID:    1,
+		PlantID: 1,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    2,
+		PlantID: 1,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    3,
+		PlantID: 2,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    4,
+		PlantID: 2,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    5,
+		PlantID: 3,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    6,
+		PlantID: 3,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    7,
+		PlantID: 4,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    8,
+		PlantID: 4,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    9,
+		PlantID: 5,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    10,
+		PlantID: 5,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    11,
+		PlantID: 6,
+		Status: "low",
+		LowerValue: 0.0,
+	},
+	entity.PlantSoilMoisture{
+		ID:    12,
+		PlantID: 6,
+		Status: "high",
+		LowerValue: 30.0,
+	},
+}

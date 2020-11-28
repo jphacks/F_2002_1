@@ -2,7 +2,7 @@ package entity
 
 import "time"
 
-type PlantTemperature struct {
+type PlantHumidity struct {
 	ID         int `gorm:"primary_key"`
 	CreatedAt  time.Time
 	UpdatedAt  time.Time
@@ -13,4 +13,4 @@ type PlantTemperature struct {
 	LowerValue float32
 }
 
-type PlantTemperatures []PlantTemperature
+type PlantHumidities []PlantHumidity
