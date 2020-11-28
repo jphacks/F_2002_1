@@ -146,31 +146,34 @@ func (h *UserCultivationsHandler) PostUserCultivation(c echo.Context) error {
 		logger.Error(err)
 		return echo.NewHTTPError(http.StatusInternalServerError)
 	}
+	// res := &response.UserCultivationsPost{
+	// 	ID:        cultivation.ID,
+	// 	CreatedAt: cultivation.CreatedAt,
+	// 	UpdatedAt: cultivation.UpdatedAt,
+	// 	DeletedAt: cultivation.DeletedAt,
+	// 	Plant: openapi.Plant{
+	// 		ID:          cultivation.Plant.ID,
+	// 		CreatedAt:   cultivation.Plant.CreatedAt,
+	// 		UpdatedAt:   cultivation.Plant.UpdatedAt,
+	// 		DeletedAt:   cultivation.Plant.DeletedAt,
+	// 		Name:        cultivation.Plant.Name,
+	// 		NickName:    cultivation.Plant.NickName,
+	// 		Price:       cultivation.Plant.Price,
+	// 		Period:      cultivation.Plant.Period,
+	// 		Difficulty:  cultivation.Plant.Difficulty,
+	// 		Description: cultivation.Plant.Description,
+	// 		KitName:     cultivation.Plant.KitName,
+	// 		Season: openapi.Season{
+	// 			From: cultivation.Plant.SeasonFrom,
+	// 			To:   cultivation.Plant.SeasonTo,
+	// 		},
+	// 	},
+	// 	NickName:            cultivation.NickName,
+	// 	StartCultivatingAt:  cultivation.StartCultivatingAt,
+	// 	FinishCultivatingAt: cultivation.FinishCultivatingAt,
+	// }
 	res := &response.UserCultivationsPost{
-		ID:        cultivation.ID,
-		CreatedAt: cultivation.CreatedAt,
-		UpdatedAt: cultivation.UpdatedAt,
-		DeletedAt: cultivation.DeletedAt,
-		Plant: openapi.Plant{
-			ID:          cultivation.Plant.ID,
-			CreatedAt:   cultivation.Plant.CreatedAt,
-			UpdatedAt:   cultivation.Plant.UpdatedAt,
-			DeletedAt:   cultivation.Plant.DeletedAt,
-			Name:        cultivation.Plant.Name,
-			NickName:    cultivation.Plant.NickName,
-			Price:       cultivation.Plant.Price,
-			Period:      cultivation.Plant.Period,
-			Difficulty:  cultivation.Plant.Difficulty,
-			Description: cultivation.Plant.Description,
-			KitName:     cultivation.Plant.KitName,
-			Season: openapi.Season{
-				From: cultivation.Plant.SeasonFrom,
-				To:   cultivation.Plant.SeasonTo,
-			},
-		},
-		NickName:            cultivation.NickName,
-		StartCultivatingAt:  cultivation.StartCultivatingAt,
-		FinishCultivatingAt: cultivation.FinishCultivatingAt,
+		ID: cultivation.ID,
 	}
 
 	return c.JSON(http.StatusCreated, res)
