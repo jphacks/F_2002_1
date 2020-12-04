@@ -7,25 +7,29 @@
 #include <BLEUtils.h>
 #include <BLEServer.h>
 #include <BLE2902.h>
+#include <LiquidCrystal_I2C.h>
+#include "DHT.h"
 
-
+#define DHTPIN 14
+#define DHTTYPE DHT11
 #define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 
+ // Setting sensors
+Dps310 Dps310PressureSensor = Dps310();
+Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
+DHT dht(DHTPIN, DHTTYPE);
+
+// Setting BLE
 BLEServer *pServer;
 BLEService* pService;
 BLECharacteristic *pCharacteristicPressure;
 BLECharacteristic *pCharacteristicTemp;
 BLECharacteristic *pCharacteristicIlluminance;
 BLECharacteristic *pCharacteristicSolidMoist;
-
-
- // Setting a Temperature sensor
-Dps310 Dps310PressureSensor = Dps310();
-Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
+BLECharacteristic *pCharacteristicHumidity;
 
 bool deviceConnected = false;
-
 
 class MyServerCallbacks: public BLEServerCallbacks {
     void onConnect(BLEServer* pServer) {
@@ -37,6 +41,17 @@ class MyServerCallbacks: public BLEServerCallbacks {
     }
 };
 
+/**
+ * MEMO: 送信されるデータの通信規格について
+ *
+ * - Humidity: Analog
+ * - Illuminance: Analog
+ * - Pressure: I2C 
+ * - SolidMoisture: Analog
+ * - Temperature: I2C
+ * 
+ *  送信方法: Bluetooth LE で Notify 形式で送信 (今後取得したデータをもとにグラフ化を行い、今後の予測に役立てるため)
+*/
 
 
 void setup() {
@@ -82,14 +97,19 @@ void setup() {
                       BLECharacteristic::PROPERTY_NOTIFY |
                       BLECharacteristic::PROPERTY_INDICATE
                     );
-                    
+  pCharacteristicHumidity =  pService->createCharacteristic(
+                      CHARACTERISTIC_UUID,
+                      BLECharacteristic::PROPERTY_NOTIFY |
+                      BLECharacteristic::PROPERTY_INDICATE
+                    );
+
   BLE2902* ble9202 = new BLE2902();
   ble9202->setNotifications(true);
   pCharacteristicPressure->addDescriptor(ble9202);
   pCharacteristicTemp->addDescriptor(ble9202);
   pCharacteristicIlluminance->addDescriptor(ble9202);
   pCharacteristicSolidMoist->addDescriptor(ble9202);
-  
+  pCharacteristicHumidity->addDescriptor(ble9202);
   // Start the service
   pService->start();
 
@@ -109,10 +129,17 @@ void loop() {
 
   // Illuminance, Soil_Mist Sensor 
   
-  uint8_t illuminance,solid_moist;
+  uint8_t illuminance,solid_moist,humidity;
+
   illuminance = analogRead(33);
   solid_moist = analogRead(32);
+  humidity = dht.readHumidity();
   
+  if (isnan(h) || isnan(t)) {
+    Serial.println("Failed to read from DHT sensor!");
+  }
+
+
   //　Pressure, Temperature Sensor
   uint8_t pressureCount = 20,temperatureCount = 20;
 
@@ -137,15 +164,18 @@ void loop() {
    char sendTempData[100] = {'\0'};
    char sendIlluminanceData[100] = {'\0'};
    char sendSolidMoistData[100] = {'\0'};
+   char sendHumidityData[100] = {'\0'};
   if (deviceConnected) {
     sprintf(sendPressureData,"pressure:%f",avrPressure);
     sprintf(sendTempData,"temp:%f",avrTemp);
     sprintf(sendIlluminanceData,"illuminance:%d",illuminance);
     sprintf(sendSolidMoistData,"solid:%d",solid_moist);
+    sprintf(sendHumidityData,"humidity:%d",humidity);
     Serial.println(sendPressureData);
     Serial.println(sendTempData);
     Serial.println(sendIlluminanceData);
     Serial.println(sendSolidMoistData);
+    Serial.println(sendHumidityData);
     pCharacteristicPressure->setValue(sendPressureData);
     pCharacteristicPressure->notify();
     pCharacteristicTemp->setValue(sendTempData);
@@ -154,7 +184,8 @@ void loop() {
     pCharacteristicIlluminance->notify();
     pCharacteristicSolidMoist->setValue(sendSolidMoistData);
     pCharacteristicSolidMoist->notify();
-    
+    pCharacteristicHumidity->setValue(sendHumidityData);
+    pCharacteristicHumidity->notify();
   }
   
   delay(1000);
