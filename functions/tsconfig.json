@@ -5,8 +5,9 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2017",
-    "sourceMap": true,
+    "resolveJsonModule": true,
+    "target": "ES2017",
+    "sourceMap": false,
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
@@ -23,10 +24,13 @@
 
   },
   "compileOnSave": true,
+  "paths": {
+      "@/*": ["src/*"]
+  },
   "include": [
     "src"
   ],
   "exclude": [
-    "node_modules","dist"
+    "node_modules","dist","src/test"
   ]
 }
